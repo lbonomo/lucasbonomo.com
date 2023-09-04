@@ -1,0 +1,24 @@
+@media screen and (min-width: 1024px) {
+
+  .textwidget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .textwidget p {
+    margin: 0;
+  }
+
+  .mdl-mega-footer--drop-down-section:nth-child(1),
+  .mdl-mega-footer--drop-down-section:nth-child(2) {
+    justify-content: flex-start;
+  }
+
+  .mdl-mega-footer--drop-down-section:nth-child(3),
+  .mdl-mega-footer--drop-down-section:nth-child(4) {
+    justify-content: flex-end;
+  }
+}

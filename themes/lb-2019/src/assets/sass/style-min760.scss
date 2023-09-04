@@ -1,0 +1,26 @@
+// De 760 para arriba.
+
+@media screen and (min-width: 760px) {
+  
+  .mdl-mega-footer--middle-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .mdl-mega-footer--drop-down-section {
+    min-width: 100%;
+    justify-content: right;
+  }
+
+  h1.not-found {
+    font-size: 5rem;
+    margin-top: 3rem;
+  }
+
+  p.not-found {
+    line-height: 3rem;
+    width: 70%;
+    margin: 1rem auto;
+  }
+
+}

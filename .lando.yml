@@ -1,0 +1,17 @@
+name: lucasbonomo
+recipe: wordpress
+config:
+  webroot: wordpress
+  php: '8.2'
+services:
+  appserver:
+    # build_as_root:
+    # - apt-get update -y && apt-get install -y jq zip
+    run:
+    - /app/tools/enabled-debug.sh
+    overrides:
+      volumes:
+        - ./.wp-cli/:/var/www/.wp-cli/
+        - ./tools/:/app/tools/
+        - ./uploads/:/app/wordpress/wp-content/uploads/
+        - ./themes/lb-2019/dst/:/app/wordpress/wp-content/themes/lb19/

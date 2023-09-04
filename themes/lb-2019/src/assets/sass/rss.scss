@@ -1,0 +1,57 @@
+/*  Diario / RSS  */
+
+.wp-block-group.daily {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    padding: 1rem;
+    margin: 3rem 0;
+}
+
+h2.daily {
+	margin: 0;
+	padding: 2rem 0 0 0;
+    text-align: center;
+}
+
+h6.daily {
+	margin: 0.2rem 0;
+	padding: 0;
+    text-align: right;
+    font-weight: 300;
+}
+
+.wp-block-rss {
+	margin: 0;
+	padding: 1rem ;
+}
+
+ul.wp-block-rss {
+	list-style: none;
+	line-height: 1.8rem;
+    margin: 1rem auto;
+    padding: 0;
+}
+
+ul.wp-block-rss a {
+	text-decoration: none
+}
+
+li.wp-block-rss__item {
+	display: flex;
+    flex-direction: column-reverse;
+}
+
+li.wp-block-rss__item time {
+	font-size: 0.8rem;
+    margin: 1rem 0 0 0;
+    padding: 0;
+    height: auto;
+    border-bottom: 1px dotted rgba(0,0,0,0.5);
+    text-align: right;
+}
+
+@media screen and (min-width: 760px) {
+    .wp-block-group.daily {
+        padding: 2rem;
+        margin: 4rem 2rem 2rem;
+    }
+}

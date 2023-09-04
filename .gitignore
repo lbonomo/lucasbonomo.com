@@ -1,0 +1,6 @@
+themes/lb-2019/dst/
+node_modules/
+wordpress/
+uploads/
+tools/*.gz
+tools/*.sql
