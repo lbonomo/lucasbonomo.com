@@ -65,6 +65,10 @@ function custom_style() {
     color: var( --color-secondary );
   }
 
+  a {
+    color: var( --color-secondary );
+  }
+
   .mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
     background-color: var( --color-secondary );
   }
