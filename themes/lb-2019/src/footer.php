@@ -32,15 +32,6 @@
 					</div>
 				</div>
 			</footer>
-		<?php } else { ?>
-			<!-- Si no hay widgets.... -->
-			<footer class="mdl-mini-footer mdl-color--primary-dark">
-				  <div class="mdl-mini-footer__right-section">
-						<a href="https://getmdl.io/">
-							<img height="50px" src="<?php echo get_stylesheet_directory_uri().'/assets/images/logo-mdl.svg' ?>" />
-						</a>
-				</div>
-			</footer>
 		<?php } ?>
 		</div>
 	</div>
