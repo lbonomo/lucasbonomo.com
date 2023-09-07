@@ -21,8 +21,9 @@
 		</div>
 
 		<div class="mdl-grid mdl-cell mdl-cell--12-col">
-			<div class="mdl-layout-spacer"></div>
 			<span class="post-date"> <?php echo esc_html( get_the_date() ); ?></span>
+			<div class="mdl-layout-spacer"></div>
+			<?php lb19_posted_by(); ?>
 		</div>
 
 	<?php	} ?>
@@ -48,7 +49,5 @@
 			}
 		}
 		?>
-		<div class="mdl-layout-spacer"></div>
-		<span><?php lb19_posted_by(); ?></span>
 	</div>
 </div>
