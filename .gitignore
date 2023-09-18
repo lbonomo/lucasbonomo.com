@@ -4,3 +4,5 @@ wordpress/
 uploads/
 tools/*.gz
 tools/*.sql
+.sass-cache/
+.wp-cli/cache/

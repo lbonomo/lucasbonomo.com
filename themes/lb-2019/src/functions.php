@@ -165,3 +165,38 @@ if ( defined( 'WOOCOMMERCE_VERSION' ) ) {
  * Requires at last version ACF 4.4.12 to work
  */
 // define('ACF_EARLY_ACCESS', '5');
+
+
+
+add_filter( 'posts_search', 'lb19_search_by_slug', 10, 2 );
+/**
+ * Add post slugs to admin search for a specific post type
+ *
+ * Rebuilds the search clauses to include post slugs.
+ *
+ * @param  string $search
+ * @param  WP_Query $query
+ * @return string
+ */
+function lb19_search_by_slug( $search, $query ) {
+	global $wpdb;
+
+	// Only run if we're in the admin and searching our specific post type
+	if ( $query->is_search() && $query->is_admin && 'post' === $query->query_vars['post_type'] ) {
+		$search = ''; // We will rebuild the entire clause
+		$searchand = '';
+		foreach ( $query->query_vars['search_terms'] as $term ) {
+			$like = '%' . $wpdb->esc_like( $term ) . '%';
+			$search .= $wpdb->prepare( "{$searchand}(($wpdb->posts.post_title LIKE %s) OR ($wpdb->posts.post_content LIKE %s) OR ($wpdb->posts.post_name LIKE %s))", $like, $like, $like );
+			$searchand = ' AND ';
+		}
+
+		if ( ! empty( $search ) ) {
+			$search = " AND ({$search}) ";
+			if ( ! is_user_logged_in() )
+				$search .= " AND ($wpdb->posts.post_password = '') ";
+		}
+	}
+
+	return $search;
+}
