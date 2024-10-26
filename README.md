@@ -18,19 +18,20 @@
      --path=wordpress
    ```
  - Download the last database vers
-   `rsync -av vanguard.com.ar:/media/backup/mysql/lucasbonomo.1693803604.sql.gz ./tools`
+   `rsync -av vanguard.com.ar:/media/backup/mysql/lucasbonomo.* ./tools`
 
  - Import database. We need the last version of database into the `tools` folder,
-   ```
-   lando wp --path=/app/wordpress db import /app/tools/mysql.sql
+   ```bash
+   gunzip /app/tools/lucasbonomo.[date].sql.gz
+   wp db import /app/tools/lucasbonomo.[date].sql
    ```
  - Search and replace,
-   ```
-   lando wp --path=/app/wordpress --skip-plugins search-replace lucasbonomo.com lucasbonomo.lndo.site
+   ```bash
+   wp --path=/app/wordpress --skip-plugins search-replace lucasbonomo.com lucasbonomo.lndo.site
    ```
  - Create admin use to developer.
-   ```
-   lando wp --path=/app/wordpress user update admin --user_pass=fauno
+   ```bash
+   wp --path=/app/wordpress user update admin --user_pass=fauno
    ```
 ## Test github action localy
 

@@ -191,6 +191,8 @@ function lb19_search_by_slug( $search, $query ) {
 			$searchand = ' AND ';
 		}
 
+		error_log(print_r($search,true));
+
 		if ( ! empty( $search ) ) {
 			$search = " AND ({$search}) ";
 			if ( ! is_user_logged_in() )
