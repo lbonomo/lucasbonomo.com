@@ -1,0 +1,63 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `base` layer
+ *
+ * “Add things like base typography styles [or] opinionated global resets.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-base-styles
+ */
+
+/**
+ * This uses the background and foreground colors declared in the
+ * `theme.json` file and is applied both to the frontend and in the block
+ * editor.
+*/
+body {
+	/* @apply bg-background text-foreground font-sans; */
+}
+
+/* Layout */
+div.wp-block-group {
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+/* Header */
+header img.site-icon {
+	max-width: 48px;
+	max-height: 48px;
+}
+
+input[type=search] {
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid var(--wp--preset--color--primary);
+	border-radius: 3px;
+	font-size: 12px;
+	background-color: white;
+	background-image: url('../assets/images/search.svg');
+	background-repeat: no-repeat;
+	background-position: 4px 5px; 
+	padding: 4px 10px 4px 32px;
+}
+
+input[type=search]:focus {
+	box-shadow: none;
+	border: 1px solid var(--wp--preset--color--secondary);
+}
+
+header.entry-header .entry-title {
+	margin: 0
+}
+
+footer.entry-footer {
+	margin-top: 1rem;
+}
+
+a.load-more {
+	text-decoration: none;
+}
+
+.post-thumbnail {
+	min-width: 120px;
+	width: 120px;
+}
