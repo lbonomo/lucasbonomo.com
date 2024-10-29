@@ -16,3 +16,4 @@ services:
         - ./uploads/:/app/wordpress/wp-content/uploads/
         - ./themes/lb-2019/dst/:/app/wordpress/wp-content/themes/lb19/
         - ./themes/material-design-block/dst/:/app/wordpress/wp-content/themes/material-design-block/
+        - ./themes/lb-tailwind:/app/wordpress/wp-content/themes/lb-tailwind/
