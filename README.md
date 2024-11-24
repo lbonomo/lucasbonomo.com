@@ -30,13 +30,23 @@
    wp --path=/app/wordpress --skip-plugins search-replace lucasbonomo.com lucasbonomo.lndo.site
    ```
  - Create admin use to developer.
-   ```bash
-   wp --path=/app/wordpress user update admin --user_pass=fauno
-   ```
+  ```bash
+    wp --path=/app/wordpress user update admin --user_pass=fauno
+    wp plugin install --activate query-monitor
+    wp plugin deactivate wp-mail-smtp
+    wp config set WP_DEBUG true --raw
+    wp config set WP_DEBUG_LOG true --raw
+    wp config set WP_DEBUG_DISPLAY true --raw
+    wp config set SCRIPT_DEBUG true --raw
+  ```
 ## Test github action localy
 
 - install [`act`](https://github.com/nektos/act#installation)
 - run `act -W [work flow file]` Ex: `act -W .github/workflows/deploy-development.yml`
+## Deploy
+```
+rsync -av themes/lb-2019/dst/* vanguard.com.ar:/var/www/lucasbonomo.com/wordpress/wp-content/themes/lb19/
+```
 
 ## Working with theme
 - `npm install`
