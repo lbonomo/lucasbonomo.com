@@ -24,7 +24,8 @@ $characteristics = array_map(
 						</div>
 
 						<?php if ( count($characteristics) >= 1 ) : ?>
-						<div class="characteristics">
+						<div class="mdl-cell--12-col">
+							<div class="mdl-layout-spacer"></div>
 							<?php foreach ( $characteristics as $characterist ) : ?>
 								<span class="mdl-chip characterist">
 									<span class="mdl-chip__text"><?php echo $characterist; ?></span>
