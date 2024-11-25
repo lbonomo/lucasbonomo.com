@@ -5,9 +5,24 @@
  * @package lb19
  */
 
+$characteristics = array_map(
+	fn($term) => $term->name,
+	get_the_terms(get_the_ID(), 'caracteristica')
+);
 ?>
 
 <div class="mdl-grid mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-card mdl-shadow--4dp">
+
+	<?php if ( count($characteristics) >= 1 ) : ?>
+		<div class="characteristics">
+		<?php foreach ( $characteristics as $characterist ) : ?>
+			<span class="mdl-chip characterist">
+				<span class="mdl-chip__text"><?php echo $characterist; ?></span>
+			</span>
+		<?php endforeach ?>
+	</div>
+	<?php endif; ?>
+
 	<div class="mdl-cell mdl-cell--12-col">
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
 			<?php
@@ -21,6 +36,7 @@
 		<h2 class="mdl-card__title-text">
 			<a href="<?php echo esc_url( get_the_permalink() ); ?>" ><?php the_title(); ?></a>
 		</h2>
+
 		
 		<!-- <div class="mdl-card__supporting-text padding-top"><span></span></div> -->
 
