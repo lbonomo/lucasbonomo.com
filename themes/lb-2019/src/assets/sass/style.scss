@@ -1,9 +1,10 @@
 /* Import base */
-@import './normalize.scss';
-@import './material.scss';
-@import './mercadopago.scss';
-@import './woocommerce.scss';
-@import './footer.scss';
+@use "sass:meta";
+@use 'normalize.scss';
+@use 'material.scss';
+@use 'mercadopago.scss';
+@use 'woocommerce.scss';
+@use 'footer.scss';
 
 
 /* Layout */
@@ -461,9 +462,9 @@ figure img {
   font-weight: 500;
 }
 
-@import './pagination.scss';
-@import './trabajos.scss';
-@import './proyectos.scss';
-@import './rss.scss';
-@import './style-min760.scss';
-@import './style-min1024.scss';
+@include meta.load-css('pagination.scss');
+@include meta.load-css('trabajos.scss');
+@include meta.load-css('proyectos.scss');
+@include meta.load-css('rss.scss');
+@include meta.load-css('style-min760.scss');
+@include meta.load-css('style-min1024.scss');

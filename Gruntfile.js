@@ -21,7 +21,7 @@ module.exports = function (grunt) {
       dev: {
         bsFiles: {
           src: [
-            'dst/**/*.{png,svg,php,css,js,txt,html,png,svg}'
+            'dst/**/*.{png,svg,php,css,js,txt,html,png,svg,gif}'
           ]
         },
         options: {
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         files: [{
           cwd: 'themes/lb-2019/src/',
           src: [
-            '**/*.{png,svg,php,css,js,txt,html,png,svg}'
+            '**/*.{png,svg,php,css,js,txt,html,png,svg,gif}'
           ],
           dest: 'themes/lb-2019/dst/',
         }]
