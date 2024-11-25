@@ -10,21 +10,6 @@
 /* Layout */
 /*  */
 
-h1.not-found {
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 100;
-  margin-top: 3rem;
-}
-
-p.not-found {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 100;
-  line-height: 2.2rem;
-  margin: 1rem;
-}
-
 .content-max-width {
   max-width: 1120px;
   margin: auto;
@@ -468,3 +453,4 @@ figure img {
 @include meta.load-css('rss.scss');
 @include meta.load-css('style-min760.scss');
 @include meta.load-css('style-min1024.scss');
+@include meta.load-css('404.scss');

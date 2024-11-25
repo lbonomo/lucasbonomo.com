@@ -1,0 +1,35 @@
+img {
+	&.travolta {
+		max-height: 300px;
+		height: auto;
+		width: auto;
+		max-width: 291px;
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+h1 {
+	&.not-found {
+		margin: 2rem auto 0;
+		font-size: 3rem;
+		font-weight: 400;
+		max-width: 90%;
+		text-align: center;
+	}
+}
+
+p {
+	&.not-found {
+		text-align: center;
+		font-size: 1.2rem;
+		line-height: 2rem;
+		width: 70%;
+		margin: 1rem auto;
+		font-weight: 150;
+		span {
+			font-weight: 300;
+		}
+	}
+}
+
