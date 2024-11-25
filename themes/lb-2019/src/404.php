@@ -133,7 +133,7 @@ $mensajes404 = [
 	"404: La página decidió empezar de nuevo en otra parte.",
 	"Esto es más confuso que un test de física cuántica.",
 	"404: Página no encontrada, pero ¿has probado meditar sobre ello?",
-	"Esto está tan vacío como mi lista de compras después de olvidarla.",
+	"Esto está tan vacío como mi lista de compras después del 15.",
 	"404: Esta página se mudó, pero no dejó dirección.",
 	"Esto está más roto que un juguete después de Navidad.",
 	"404: Página perdida como un mensaje sin respuesta.",
