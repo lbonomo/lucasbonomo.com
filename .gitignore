@@ -5,4 +5,6 @@ uploads/
 tools/*.gz
 tools/*.sql
 .sass-cache/
+.wp-cli/cache/vendor/
+vendor/
 .wp-cli/cache/
