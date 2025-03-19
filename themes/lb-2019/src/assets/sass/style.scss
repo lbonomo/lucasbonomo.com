@@ -112,6 +112,14 @@ a {
   position: absolute;
 }
 
+
+
+/* Elementos incrustados */
+.aligncenter iframe {
+  margin: 0 auto;
+  display: flex;
+}
+
 /* is-small-screen */
 
 /*  */
@@ -445,6 +453,12 @@ figure img {
   align-items: center;
   color: white;
   font-weight: 500;
+}
+
+/* Gallery */
+.wp-block-gallery {
+	gap: 1rem;
+	padding: 1rem;
 }
 
 @include meta.load-css('pagination.scss');
