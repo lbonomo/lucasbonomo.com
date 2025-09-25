@@ -20,6 +20,4 @@ services:
         - ./tools/:/app/tools/
         - ./uploads/:/app/wordpress/wp-content/uploads/
         - ./mu-plugins/:/app/wordpress/wp-content/mu-plugins/
-        - ./themes/lb-2019/dst/:/app/wordpress/wp-content/themes/lb19/
-        - ./themes/material-design-block/dst/:/app/wordpress/wp-content/themes/material-design-block/
-        - ./themes/lb-tailwind:/app/wordpress/wp-content/themes/lb-tailwind/
+        - ./themes/lb25:/app/wordpress/wp-content/themes/lb25/
