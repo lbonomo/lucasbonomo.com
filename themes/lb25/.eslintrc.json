@@ -1,0 +1,9 @@
+{
+  "extends": ["plugin:wordpress/eslint-recommended"],
+  "plugins": ["wordpress"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {}
+}

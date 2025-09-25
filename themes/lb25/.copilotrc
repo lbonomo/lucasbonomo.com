@@ -1,0 +1,15 @@
+{
+  "description": "Configuración de comportamiento para IA en este proyecto.",
+  "rules": [
+    "Seguir los estándares de WordPress para PHP, JavaScript, HTML y CSS.",
+    "Cada archivo nuevo debe comenzar con una sección de documentación básica, adaptada al tipo de archivo y siguiendo los estándares de WordPress.",
+    "Estructurar los archivos aplicando las mejores prácticas del desarrollo WordPress.",
+    "Almacenar todos los comandos indicados en el directorio del proyecto para referencia futura."
+  ],
+  "linting": {
+    "php": "phpcs.xml",
+    "js": ".eslintrc.json",
+    "css": ".stylelintrc.json"
+  },
+  "documentation": "Mantener este archivo actualizado con nuevas reglas y comportamientos deseados para la IA."
+}
