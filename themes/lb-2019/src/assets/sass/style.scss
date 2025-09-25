@@ -461,6 +461,11 @@ figure img {
 	padding: 1rem;
 }
 
+.wp-block-gallery figcaption.wp-element-caption {
+  color: #212121 !important;
+  text-shadow: none !important;
+}
+
 @include meta.load-css('pagination.scss');
 @include meta.load-css('trabajos.scss');
 @include meta.load-css('proyectos.scss');

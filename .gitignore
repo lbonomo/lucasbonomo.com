@@ -8,3 +8,4 @@ tools/*.sql
 .wp-cli/cache/vendor/
 vendor/
 .wp-cli/cache/
+otros/

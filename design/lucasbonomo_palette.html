@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta de Colores - Lucas Bonomo</title>
+    <style>
+        /* Colores principales */
+        :root {
+            --yellow: #FFB800;
+            --dark-gray: #32363C;
+            --black: #000000;
+            --white: #FFFFFF;
+            --light-gray: #C8C8C8;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        header {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: var(--yellow);
+            color: var(--black);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #E6A800;
+        }
+
+        .section {
+            padding: 20px;
+            margin: 10px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .section-dark {
+            background-color: var(--dark-gray);
+            color: var(--white);
+        }
+
+        footer {
+            background-color: var(--light-gray);
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a LucasBonomo.com</h1>
+        <p>Una página web con una paleta de colores elegante y moderna.</p>
+    </header>
+    <main>
+        <div class="section">
+            <h2>Sección Principal</h2>
+            <p>Este es un ejemplo de cómo se ve el texto sobre un fondo blanco.</p>
+            <button class="button">Llamada a la Acción</button>
+        </div>
+        <div class="section section-dark">
+            <h2>Sección Alternativa</h2>
+            <p>Este es un ejemplo de texto sobre un fondo oscuro.</p>
+            <button class="button">Llamada a la Acción</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Lucas Bonomo. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

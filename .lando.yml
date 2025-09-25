@@ -4,11 +4,16 @@ config:
   webroot: wordpress
   php: '8.2'
 services:
+  database:
+    api: 3
+    type: mariadb:10.4
+    healthcheck:
+      command: mysql -uroot --silent --execute "SHOW DATABASES;"
   appserver:
     # build_as_root:
     # - apt-get update -y && apt-get install -y jq zip
-    run:
-    - /app/tools/enabled-debug.sh
+    # run:
+    # - /app/tools/enabled-debug.sh
     overrides:
       volumes:
         - ./.wp-cli/:/var/www/.wp-cli/
