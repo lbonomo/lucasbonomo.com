@@ -2,10 +2,10 @@
 ip=45.152.44.24
 port=65002
 user=u112496268
-domain=gabrielasolano.com.ar
+domain=lucasbonomo.com
 path=/home/$user/domains/$domain/public_html/
 VERSION=$(grep "Version:" style.css | cut -d':' -f2 | tr -d ' ')
-theme_name="gs-tailwind"
+theme_name=$(grep "Text Domain:" style.css | cut -d':' -f2 | tr -d ' ')
 
 # Build theme
 echo "🔨 Building theme version $VERSION..."

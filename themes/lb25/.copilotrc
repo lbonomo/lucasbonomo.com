@@ -11,5 +11,5 @@
     "js": ".eslintrc.json",
     "css": ".stylelintrc.json"
   },
-  "documentation": "Mantener este archivo actualizado con nuevas reglas y comportamientos deseados para la IA."
+  "documentation": "Usar los siguientes parámetros para la documentación inicial de cada archivo nuevo:\n\n * @package    LB25\n * @author     Lucas Bonomo <bonomo.lucas@gmail.com>\n * @version    1.0.0\n * @since      1.0.0\n * @created    Date created\n * @modified   Last modified date\n * @license    MIT License\n\nMantener este archivo actualizado con nuevas reglas y comportamientos deseados para la IA."
 }

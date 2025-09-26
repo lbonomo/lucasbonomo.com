@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Nombre del tema y versión
-THEME_NAME="gs-tailwind"
+THEME_NAME=$(grep "Text Domain:" style.css | cut -d':' -f2 | tr -d ' ')
 VERSION=$(grep "Version:" style.css | cut -d':' -f2 | tr -d ' ')
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 OUTPUT_FILE="zips/${THEME_NAME}.${VERSION}.zip"

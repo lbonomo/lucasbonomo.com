@@ -1,0 +1,11 @@
+.main-header {
+  @apply bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200;
+}
+
+.site-branding {
+  @apply flex items-center justify-between h-16;
+}
+
+.custom-logo {
+  @apply flex-shrink-0;
+}
