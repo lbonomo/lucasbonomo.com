@@ -26,3 +26,10 @@ function lb25_enqueue_scripts() {
 add_action('wp_enqueue_scripts', 'lb25_enqueue_scripts');
 
 
+// Register main menu
+function lb25_register_menus() {
+    register_nav_menus(array(
+        'header-menu' => __('Header Menu', 'lb25'),
+    ));
+}
+add_action('init', 'lb25_register_menus');

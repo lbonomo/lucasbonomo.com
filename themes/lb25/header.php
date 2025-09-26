@@ -50,7 +50,7 @@ add_filter('body_class', function ($classes) {
 				</div>
 
 				<!-- Main Navigation -->
-				<div class="hidden md:block">
+				<div class="desktop-menu">
 					<?php
 					require_once get_template_directory() . '/inc/class-tailwind-nav-walker.php';
 					wp_nav_menu(array(
@@ -77,7 +77,7 @@ add_filter('body_class', function ($classes) {
 			</div>
 		</div>
 		<!-- Menú Móvil, se muestra/oculta basado en el estado. -->
-		<div class="md:hidden hidden" id="mobile-menu">
+		<div class="mobile-menu" id="mobile-menu">
 			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 				<a href="#beneficios" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Beneficios</a>
 				<a href="#servicios" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Servicios</a>

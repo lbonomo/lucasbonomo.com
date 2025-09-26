@@ -9,3 +9,11 @@
 .custom-logo {
   @apply flex-shrink-0;
 }
+
+.desktop-menu {
+  @apply hidden md:block;
+}
+
+.mobile-menu {
+  @apply md:hidden hidden;
+}
