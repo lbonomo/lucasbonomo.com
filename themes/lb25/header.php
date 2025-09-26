@@ -87,6 +87,3 @@ add_filter('body_class', function ($classes) {
 			</div>
 		</div>
 	</nav>
-
-
-	<main class="site-main">

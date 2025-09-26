@@ -1,0 +1,126 @@
+/* ===== CORE BLOCK STYLES BASED ON index_2025.html DESIGN ===== */
+
+/* Button Styles - Based on reference design */
+.wp-block-button:not(.is-style-outline) .wp-block-button__link {
+	@apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 inline-block;
+	box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+/* Button Outline Styles */
+.wp-block-button.is-style-outline .wp-block-button__link {
+	@apply bg-transparent text-blue-600 font-bold py-4 px-8 rounded-lg border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition duration-300;
+}
+
+/* Cover Block - Hero Style (matching reference design) */
+.wp-block-cover.is-style-hero {
+	@apply w-full min-h-screen flex items-center justify-center;
+	background: radial-gradient(circle at top left, rgba(29, 78, 216, 0.05), transparent 40%),
+				radial-gradient(circle at bottom right, rgba(147, 51, 234, 0.04), transparent 50%);
+}
+
+.wp-block-cover.is-style-hero .wp-block-cover__inner-container {
+	@apply text-center max-w-4xl mx-auto px-6;
+}
+
+/* Section Backgrounds */
+.wp-block-group.section-glow {
+	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.02), transparent 70%);
+}
+
+/* Card Styles for Columns/Groups */
+.wp-block-columns .wp-block-column,
+.wp-block-group.is-style-card {
+	@apply bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-500 transition-all duration-300;
+	transform: translateY(0);
+}
+
+.wp-block-columns .wp-block-column:hover,
+.wp-block-group.is-style-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Headings Styles */
+h1, .wp-block-heading.has-xxx-large-font-size {
+	@apply text-3xl md:text-4xl font-bold text-gray-900;
+}
+
+h2, .wp-block-heading.has-xx-large-font-size {
+	@apply text-2xl md:text-3xl font-bold text-gray-900;
+}
+
+h3, .wp-block-heading.has-x-large-font-size {
+	@apply text-xl md:text-2xl font-bold text-gray-900;
+}
+
+/* List Styles with Icons */
+.wp-block-list li {
+	@apply flex items-start mb-5;
+}
+
+.wp-block-list li::before {
+	content: "";
+	@apply w-6 h-6 mr-3 flex-shrink-0 mt-1;
+	background-image: url("data:image/svg+xml,%3Csvg class='w-6 h-6 text-green-500' fill='none' stroke='%2310b981' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+/* Media & Text Block */
+.wp-block-media-text {
+	@apply grid gap-8 items-center;
+}
+
+.wp-block-media-text .wp-block-media-text__content {
+	@apply p-8;
+}
+
+/* Quote Block */
+.wp-block-quote {
+	@apply bg-gray-50 p-8 rounded-xl border border-gray-200 italic text-gray-600;
+}
+
+.wp-block-quote cite {
+	@apply font-bold text-gray-900 not-italic block mt-4;
+}
+
+/* Separator */
+.wp-block-separator {
+	@apply border-gray-200 my-12;
+}
+
+/* Image Block */
+.wp-block-image {
+	@apply rounded-xl overflow-hidden;
+}
+
+.wp-block-image img {
+	@apply w-full h-auto transition-transform duration-300 hover:scale-105;
+}
+
+/* Gallery Block */
+.wp-block-gallery {
+	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+/* Navigation Block */
+.wp-block-navigation {
+	@apply flex items-center space-x-4;
+}
+
+.wp-block-navigation-item {
+	@apply text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors;
+}
+
+/* Search Block */
+.wp-block-search {
+	@apply max-w-md;
+}
+
+.wp-block-search__input {
+	@apply bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
+}
+
+.wp-block-search__button {
+	@apply text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5;
+}
