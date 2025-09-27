@@ -68,6 +68,12 @@ function lb25_register_block_styles()
 		'label' => __('Benefits', 'lb25'),
 	));
 
+	// Section style for Group block
+	register_block_style('core/group', array(
+		'name'  => 'section-services',
+		'label' => __('Services', 'lb25'),
+	));
+
 	// Card style for Group block
 	register_block_style('core/group', array(
 		'name'  => 'card',
