@@ -40,3 +40,8 @@
 	@apply text-xl font-bold text-gray-900 mt-0 mb-3
 }
 
+
+/* Services solo 2 columnas */
+.wp-block-group.is-style-section-services.is-layout-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12;
+}
