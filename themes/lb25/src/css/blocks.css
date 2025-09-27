@@ -1,9 +1,16 @@
 /* ===== CORE BLOCK STYLES BASED ON index_2025.html DESIGN ===== */
 
 /* Button Styles - Based on reference design */
-.wp-block-button:not(.is-style-outline) .wp-block-button__link {
+.wp-block-button:not(.is-style-outline) .wp-block-button__link,
+.wp-block-button.is-style-primary .wp-block-button__link {
 	@apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 inline-block;
 	box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+/* Button Secondary Style */
+.wp-block-button.is-style-secondary .wp-block-button__link {
+	@apply bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 inline-block;
+	box-shadow: 0 10px 15px -3px rgba(107, 114, 128, 0.3);
 }
 
 /* Button Outline Styles */
@@ -22,25 +29,111 @@
 	@apply text-center max-w-4xl mx-auto px-6;
 }
 
-/* Section Backgrounds */
-.wp-block-group.section-glow {
+/* Heading Styles */
+.wp-block-heading.is-style-hero-title {
+	@apply text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4;
+}
+
+.wp-block-heading.is-style-section-title {
+	@apply text-3xl md:text-4xl font-bold text-gray-900 mb-6;
+}
+
+.wp-block-heading.is-style-highlight {
+	@apply text-xl md:text-2xl text-blue-600 font-semibold;
+}
+
+/* Section Group Backgrounds */
+.wp-block-group.is-style-section-glow {
 	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.02), transparent 70%);
 }
 
-/* Card Styles for Columns/Groups */
-.wp-block-columns .wp-block-column,
+.wp-block-group.is-style-section-padding {
+	@apply py-20;
+}
+
+.wp-block-group.is-style-section-white {
+	@apply bg-white;
+}
+
+.wp-block-group.is-style-section-gray {
+	@apply bg-gray-50;
+}
+
+.wp-block-group.is-style-section-hero {
+	@apply py-20 lg:py-32;
+	background: radial-gradient(circle at top left, rgba(29, 78, 216, 0.05), transparent 40%),
+				radial-gradient(circle at bottom right, rgba(147, 51, 234, 0.04), transparent 50%);
+}
+
+.wp-block-group.is-style-section-benefits {
+	@apply py-20 bg-white;
+}
+
+/* Card Styles for Groups */
 .wp-block-group.is-style-card {
 	@apply bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-500 transition-all duration-300;
 	transform: translateY(0);
 }
 
-.wp-block-columns .wp-block-column:hover,
 .wp-block-group.is-style-card:hover {
 	transform: translateY(-8px);
 	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Headings Styles */
+/* Columns Grid Styles */
+.wp-block-columns.is-style-benefits-grid {
+	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+}
+
+.wp-block-columns.is-style-services-grid {
+	@apply grid grid-cols-1 lg:grid-cols-2 gap-10;
+}
+
+.wp-block-columns.is-style-testimonials-grid {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+/* Benefits Grid Column Cards */
+.wp-block-columns.is-style-benefits-grid .wp-block-column {
+	@apply bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-500 transition-all duration-300;
+	transform: translateY(0);
+}
+
+.wp-block-columns.is-style-benefits-grid .wp-block-column:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Quote Block Testimonial Styles */
+.wp-block-quote.is-style-testimonial {
+	@apply bg-gray-50 p-8 rounded-xl border border-gray-200 italic text-gray-600;
+}
+
+.wp-block-quote.is-style-testimonial-card {
+	@apply bg-white p-8 rounded-xl border border-gray-200 shadow-sm italic text-gray-600;
+}
+
+.wp-block-quote.is-style-testimonial cite,
+.wp-block-quote.is-style-testimonial-card cite {
+	@apply font-bold text-gray-900 not-italic block mt-4;
+}
+
+/* Gallery Portfolio Grid */
+.wp-block-gallery.is-style-portfolio-grid {
+	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.wp-block-gallery.is-style-portfolio-grid .wp-block-image {
+	@apply bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-300;
+	transform: translateY(0);
+}
+
+.wp-block-gallery.is-style-portfolio-grid .wp-block-image:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings Default Styles */
 h1, .wp-block-heading.has-xxx-large-font-size {
 	@apply text-3xl md:text-4xl font-bold text-gray-900;
 }
@@ -75,7 +168,7 @@ h3, .wp-block-heading.has-x-large-font-size {
 	@apply p-8;
 }
 
-/* Quote Block */
+/* Quote Block Default */
 .wp-block-quote {
 	@apply bg-gray-50 p-8 rounded-xl border border-gray-200 italic text-gray-600;
 }
@@ -98,7 +191,7 @@ h3, .wp-block-heading.has-x-large-font-size {
 	@apply w-full h-auto transition-transform duration-300 hover:scale-105;
 }
 
-/* Gallery Block */
+/* Gallery Block Default */
 .wp-block-gallery {
 	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
 }

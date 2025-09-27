@@ -10,7 +10,7 @@
  * @license    MIT License
  */
 
-class Tailwind_Nav_Walker extends Walker_Nav_Menu {
+class Nav_Walker extends Walker_Nav_Menu {
     /**
      * Start Level
      */

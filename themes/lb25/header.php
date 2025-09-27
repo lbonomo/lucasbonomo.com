@@ -52,12 +52,12 @@ add_filter('body_class', function ($classes) {
 				<!-- Main Navigation -->
 				<div class="desktop-menu">
 					<?php
-					require_once get_template_directory() . '/inc/class-tailwind-nav-walker.php';
+					require_once get_template_directory() . '/inc/class-nav-walker.php';
 					wp_nav_menu(array(
 						'theme_location' => 'header-menu',
 						'container'      => false,
 						'menu_class'     => '', // Walker genera el contenedor y las clases
-						'walker'         => new Tailwind_Nav_Walker(),
+						'walker'         => new Nav_Walker(),
 					));
 					?>
 				</div>

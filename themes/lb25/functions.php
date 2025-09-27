@@ -53,50 +53,8 @@ function lb25_register_menus()
 }
 add_action('init', 'lb25_register_menus');
 
-// Register block styles
-function lb25_register_block_styles()
-{
-	// Hero style for Cover block
-	register_block_style('core/cover', array(
-		'name'  => 'hero',
-		'label' => __('Hero', 'lb25'),
-	));
-
-	// Section styles for Group block
-	register_block_style('core/group', array(
-		'name'  => 'section-benefits',
-		'label' => __('Benefits', 'lb25'),
-	));
-
-	// Card style for Group block
-	register_block_style('core/group', array(
-		'name'  => 'card',
-		'label' => __('Card', 'lb25'),
-	));
-
-	register_block_style('core/group', array(
-		'name'  => 'section-glow',
-		'label' => __('Section with Glow', 'lb25'),
-	));
-
-	// Benefits grid for Columns block
-	register_block_style('core/columns', array(
-		'name'  => 'benefits-grid',
-		'label' => __('Benefits Grid', 'lb25'),
-	));
-
-	// Portfolio grid for Gallery block
-	register_block_style('core/gallery', array(
-		'name'  => 'portfolio-grid',
-		'label' => __('Portfolio Grid', 'lb25'),
-	));
-
-	// Testimonial style for Quote block
-	register_block_style('core/quote', array(
-		'name'  => 'testimonial',
-		'label' => __('Testimonial', 'lb25'),
-	));
-}
-add_action('init', 'lb25_register_block_styles');
+// Include theme classes
+// Block styles are registered in class-block-styles.php
+require_once get_template_directory() . '/inc/class-block-styles.php';
 
 
