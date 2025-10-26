@@ -1,0 +1,74 @@
+/**
+ * Historial List Block Style - Timeline Design
+ */
+
+.wp-block-list.is-style-historial {
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+    counter-reset: timeline-counter;
+}
+
+.wp-block-list.is-style-historial li {
+    position: relative;
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+    counter-increment: timeline-counter;
+}
+
+.wp-block-list.is-style-historial li::before {
+    content: counter(timeline-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--wp--preset--color--blue-accent);
+    background-image: none;
+    color: var(--wp--preset--color--background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.wp-block-list.is-style-historial li:last-child::before {
+    content: "";
+    background-color: var(--wp--preset--color--success);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'%3e%3c/path%3e%3cpolyline points='22 4 12 14.01 9 11.01'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.wp-block-list.is-style-historial li::after {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    top: 2.5rem;
+    width: 2px;
+    height: 60%;
+    background-color: var(--wp--preset--color--light-accent);
+    z-index: 1;
+}
+
+.wp-block-list.is-style-historial li:last-child::after {
+    display: none;
+}
+
+.wp-block-list.is-style-historial li strong {
+    color: var(--wp--preset--color--text);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.wp-block-list.is-style-historial li p {
+    color: var(--wp--preset--color--secondary);
+    margin: 0;
+    line-height: 1.6;
+}
