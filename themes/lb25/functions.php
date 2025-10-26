@@ -57,4 +57,7 @@ add_action('init', 'lb25_register_menus');
 // Block styles are registered in class-block-styles.php
 require_once get_template_directory() . '/inc/class-block-styles.php';
 
+// Include block styles
+require get_template_directory() . '/inc/block-styles.php';
+
 
