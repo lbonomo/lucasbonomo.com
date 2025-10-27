@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./blocks.css";
+@import "./core-blocks.css";
 @import "./sections.css";
 @import "./header.css";
 

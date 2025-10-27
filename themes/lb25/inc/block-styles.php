@@ -22,6 +22,24 @@ function lb25_register_block_styles() {
             'label' => __('Historial', 'lb25'),
         )
     );
+
+    // Register 'tags' style for core/list block
+    register_block_style(
+        'core/list',
+        array(
+            'name'  => 'tags',
+            'label' => __('Tags', 'lb25'),
+        )
+    );
+
+    // Register 'checks' style for core/list block
+    register_block_style(
+        'core/list',
+        array(
+            'name'  => 'checks',
+            'label' => __('Checks', 'lb25'),
+        )
+    );
 }
 add_action('init', 'lb25_register_block_styles');
 
@@ -35,6 +53,24 @@ function lb25_enqueue_block_styles() {
             'handle' => 'lb25-list-historial-style',
             'src'    => get_theme_file_uri('assets/css/blocks/list-historial.css'),
             'path'   => get_theme_file_path('assets/css/blocks/list-historial.css'),
+        )
+    );
+
+    wp_enqueue_block_style(
+        'core/list',
+        array(
+            'handle' => 'lb25-list-tags-style',
+            'src'    => get_theme_file_uri('assets/css/blocks/list-tags.css'),
+            'path'   => get_theme_file_path('assets/css/blocks/list-tags.css'),
+        )
+    );
+
+    wp_enqueue_block_style(
+        'core/list',
+        array(
+            'handle' => 'lb25-list-check-style',
+            'src'    => get_theme_file_uri('assets/css/blocks/list-checks.css'),
+            'path'   => get_theme_file_path('assets/css/blocks/list-checks.css'),
         )
     );
 }

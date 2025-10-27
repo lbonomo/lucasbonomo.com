@@ -2,20 +2,27 @@
 	"name": "lb25",
 	"description": "Lucas Bonomo 2025 (Tailwind)",
 	"scripts": {
-		"build:css": "tailwindcss -i ./src/css/style.css -o ./assets/css/style.css && tailwindcss -i ./src/css/blocks/list-historial.css -o ./assets/css/blocks/list-historial.css",
-		"build:js": "terser src/js/blocks.js -o assets/js/blocks.min.js && terser src/js/main.js -o assets/js/main.min.js",
+		"build:css:style": "tailwindcss -i ./src/css/style.css -o ./assets/css/style.css",
+		"build:css:checks": "tailwindcss -i ./src/css/blocks/list-checks.css -o ./assets/css/blocks/list-checks.css",
+		"build:css:tags": "tailwindcss -i ./src/css/blocks/list-tags.css -o ./assets/css/blocks/list-tags.css",
+		"build:css:historial": "tailwindcss -i ./src/css/blocks/list-historial.css -o ./assets/css/blocks/list-historial.css",
+		"build:css": "npm-run-all --parallel build:css:*",
+		"build:js": "terser src/js/main.js -o assets/js/main.min.js",
 		"build": "npm run build:css && npm run build:js",
-		"watch:css": "tailwindcss -i ./src/css/style.css -o ./assets/css/style.css --watch & tailwindcss -i ./src/css/blocks/list-historial.css -o ./assets/css/blocks/list-historial.css --watch",
+		"watch:css": "npm-run-all --parallel watch:css:*",
+		"watch:css:style": "tailwindcss -i ./src/css/style.css -o ./assets/css/style.css --watch",
+		"watch:css:checks": "tailwindcss -i ./src/css/blocks/list-checks.css -o ./assets/css/blocks/list-checks.css --watch",
+		"watch:css:tags": "tailwindcss -i ./src/css/blocks/list-tags.css -o ./assets/css/blocks/list-tags.css --watch",
+		"watch:css:historial": "tailwindcss -i ./src/css/blocks/list-historial.css -o ./assets/css/blocks/list-historial.css --watch",
 		"watch:js": "chokidar 'src/js/*.js' -c 'npm run build:js'",
 		"watch": "npm run watch:css & npm run watch:js"
 	},
 	"devDependencies": {
 		"@tailwindcss/cli": "^4.1.13",
 		"@tailwindcss/postcss": "^4.1.13",
-		"tailwindcss": "^4.1.13",
-		"terser": "^5.44.0",
+		"chokidar-cli": "^3.0.0",
 		"npm-run-all": "^4.1.5",
-		"chokidar-cli": "^3.0.0"
+		"tailwindcss": "^4.1.13",
+		"terser": "^5.44.0"
 	}
 }
-

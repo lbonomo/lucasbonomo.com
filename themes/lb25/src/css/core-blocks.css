@@ -146,18 +146,6 @@ h3, .wp-block-heading.has-x-large-font-size {
 	@apply text-xl md:text-2xl font-bold text-gray-900;
 }
 
-/* List Styles with Icons */
-.wp-block-list li {
-	@apply flex flex-col ml-10 mb-5 relative;
-}
-
-.wp-block-list li::before {
-	content: "";
-	@apply absolute top-0 -left-10 w-6 h-6 mr-3 flex-shrink-0 mt-1;
-	background-image: url("data:image/svg+xml,%3Csvg class='w-6 h-6 text-green-500' fill='none' stroke='%2310b981' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
 
 /* Media & Text Block */
 .wp-block-media-text {
