@@ -39,6 +39,7 @@ class LB25_Block_Styles
 		$this->register_quote_styles();
 		$this->register_button_styles();
 		$this->register_heading_styles();
+		$this->register_list_styles();
 	}
 
 	/**
@@ -215,6 +216,28 @@ class LB25_Block_Styles
 	}
 
 	/**
+	 * Register List block styles
+	 */
+	private function register_list_styles() {
+		$list_styles = array(
+			array(
+				array(
+					'name'  => 'checks',
+					'label' => __('Checks', 'lb25'),
+				),
+				array(
+					'name'  => 'tags',
+					'label' => __('Tags', 'lb25'),
+				),
+				array(
+					'name'  => 'historial',
+					'label' => __('Historial', 'lb25'),
+				),
+			)
+		);
+	}
+
+	/**
 	 * Get all registered block styles
 	 * Useful for debugging or displaying available styles
 	 *
@@ -223,13 +246,14 @@ class LB25_Block_Styles
 	public function get_registered_styles()
 	{
 		return array(
-			'core/cover' => array('hero'),
-			'core/group' => array('section-benefits', 'card', 'section-glow', 'section-padding', 'section-hero', 'section-white', 'section-gray'),
+			'core/cover'   => array('hero'),
+			'core/group'   => array('section-benefits', 'card', 'section-glow', 'section-padding', 'section-hero', 'section-white', 'section-gray'),
 			'core/columns' => array('benefits-grid', 'services-grid', 'testimonials-grid'),
 			'core/gallery' => array('portfolio-grid'),
-			'core/quote' => array('testimonial', 'testimonial-card'),
-			'core/button' => array('primary', 'secondary', 'outline'),
+			'core/quote'   => array('testimonial', 'testimonial-card'),
+			'core/button'  => array('primary', 'secondary', 'outline'),
 			'core/heading' => array('hero-title', 'section-title', 'highlight'),
+			'core/list'    => array('historial', 'tags', 'checks')
 		);
 	}
 }
