@@ -1,0 +1,32 @@
+/**
+ * Block Template: Card Style
+ * Replace [BLOCK-NAME] with your card style name
+ * Replace [card-style-name] with the CSS class name
+ */
+
+.wp-block-group.is-style-[card-style-name] {
+    /* Add your card container styles here */
+    background-color: var(--wp--preset--color--background);
+    border: 1px solid var(--wp--preset--color--light-accent);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.wp-block-group.is-style-[card-style-name]:hover {
+    /* Add hover styles here */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.wp-block-group.is-style-[card-style-name] .wp-block-heading {
+    /* Card title styles */
+    margin-bottom: 1rem;
+    color: var(--wp--preset--color--text);
+}
+
+.wp-block-group.is-style-[card-style-name] p {
+    /* Card content styles */
+    color: var(--wp--preset--color--secondary);
+    margin-bottom: 0;
+}

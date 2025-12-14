@@ -1,0 +1,8 @@
+/**
+ * Lists Block Styles
+ * Import all list-related block styles
+ */
+
+@import "./list-checks.css";
+@import "./list-historial.css";
+@import "./list-tags.css";

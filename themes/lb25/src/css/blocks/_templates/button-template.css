@@ -1,0 +1,20 @@
+/**
+ * Block Template: Button Style
+ * Replace [BLOCK-NAME] with your button style name
+ * Replace [button-style-name] with the CSS class name
+ */
+
+.wp-block-button.is-style-[button-style-name] .wp-block-button__link {
+    /* Add your button styles here */
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--background);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.wp-block-button.is-style-[button-style-name] .wp-block-button__link:hover {
+    /* Add hover styles here */
+    background-color: var(--wp--preset--color--primary);
+    transform: translateY(-2px);
+}

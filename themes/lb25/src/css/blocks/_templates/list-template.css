@@ -1,0 +1,30 @@
+/**
+ * Block Template: List Style
+ * Replace [BLOCK-NAME] with your list style name
+ * Replace [list-style-name] with the CSS class name
+ */
+
+.wp-block-list.is-style-[list-style-name] {
+    list-style: none;
+    padding-left: 0;
+    /* Add your list container styles here */
+}
+
+.wp-block-list.is-style-[list-style-name] li {
+    position: relative;
+    /* Add your list item styles here */
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.wp-block-list.is-style-[list-style-name] li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    /* Add your custom marker styles here */
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--wp--preset--color--primary);
+    border-radius: 50%;
+}
