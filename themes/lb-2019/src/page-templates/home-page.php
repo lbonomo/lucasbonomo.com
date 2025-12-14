@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home Page
+ * Template Name: Full Width no title
  * Template Post Type: page
  *
  * Custom page template for the full width home page.
