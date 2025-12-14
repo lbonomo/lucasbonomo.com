@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "settings": {
+    "color": {
+      "defaultPalette": false,
+      "palette": [
+        {
+          "name": "Primario",
+          "slug": "primary",
+          "color": "#004d40"
+        },
+        {
+          "name": "Secundario",
+          "slug": "secondary",
+          "color": "#ff6f00"
+        },
+        {
+          "name": "Acento",
+          "slug": "accent",
+          "color": "#00bcd4"
+        },
+        {
+          "name": "Fondo",
+          "slug": "background",
+          "color": "#f5f5f5"
+        },
+        {
+          "name": "Texto",
+          "slug": "text",
+          "color": "#212121"
+        }
+      ]
+    },
+    "spacing": {
+      "units": [
+        "px",
+        "em",
+        "rem",
+        "vh",
+        "vw",
+        "%"
+      ],
+      "blockGap": "1.5rem",
+      "spacingScale": {
+        "operator": "*",
+        "steps": [
+          {
+            "step": 0,
+            "unit": "rem",
+            "size": "0rem",
+            "slug": "0"
+          },
+          {
+            "step": 1,
+            "unit": "rem",
+            "size": "0.5rem",
+            "slug": "xs"
+          },
+          {
+            "step": 2,
+            "unit": "rem",
+            "size": "1rem",
+            "slug": "sm"
+          },
+          {
+            "step": 3,
+            "unit": "rem",
+            "size": "1.5rem",
+            "slug": "md"
+          },
+          {
+            "step": 4,
+            "unit": "rem",
+            "size": "2rem",
+            "slug": "lg"
+          },
+          {
+            "step": 5,
+            "unit": "rem",
+            "size": "3rem",
+            "slug": "xl"
+          },
+          {
+            "step": 6,
+            "unit": "rem",
+            "size": "4rem",
+            "slug": "xxl"
+          }
+        ]
+      }
+    },
+    "blocks": {
+      "core/group": {
+        "spacing": {
+          "margin": true,
+          "padding": true
+        }
+      }
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#212121"
+    }
+  }
+}

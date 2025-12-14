@@ -36,7 +36,7 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         files: {
-          './dst/assets/js/build.js': [
+          './lb19/assets/js/build.js': [
             'src/assets/js/*.js',
             '!src/assets/js/customizer.js', // Es para el backend de WordPress
             '!src/assets/js/build.js'
@@ -48,11 +48,11 @@ module.exports = function (grunt) {
     sync: {
       theme2019: {
         files: [{
-          cwd: 'themes/lb-2019/src/',
+          cwd: 'src/',
           src: [
             '**/*.{png,svg,php,css,js,txt,html,png,svg,gif}'
           ],
-          dest: 'themes/lb-2019/dst/',
+          dest: 'lb19/',
         }]
       },
       verbose: true, // Display log messages when copying files
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
     watch: {
       theme2019: {
         files: [
-          'themes/lb-2019/src/**/*.{png,svg,php,css,js,txt,html,png,svg,scss}'
+          'src/**/*.{png,svg,php,css,js,txt,html,png,svg,scss}'
         ],
         tasks: [
           'sync:theme2019',
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
 
     clean: {
       theme2019: {
-        src: ['themes/lb-2019/dst/*']
+        src: ['lb19/*']
       }
     },
 
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {
-          'themes/lb-2019/dst/assets/css/style.css': 'themes/lb-2019/src/assets/sass/style.scss'
+          'lb19/assets/css/style.css': 'src/assets/sass/style.scss'
         }
       }
     }
