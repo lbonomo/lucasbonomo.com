@@ -4,12 +4,8 @@ config:
   webroot: wordpress
   php: '8.2'
 services:
-  database:
-    api: 3
-    type: mariadb:10.4
-    healthcheck:
-      command: mysql -uroot --silent --execute "SHOW DATABASES;"
   appserver:
+    ssl: true
     # build_as_root:
     # - apt-get update -y && apt-get install -y jq zip
     # run:
@@ -20,4 +16,6 @@ services:
         - ./tools/:/app/tools/
         - ./uploads/:/app/wordpress/wp-content/uploads/
         - ./mu-plugins/:/app/wordpress/wp-content/mu-plugins/
-        - ./themes/lb25:/app/wordpress/wp-content/themes/lb25/
+        - ./themes/lb25:/app/wordpress/wp-content/themes/lb25/    
+        - ./themes/lb-2019/dst/:/app/wordpress/wp-content/themes/lb19/
+    
