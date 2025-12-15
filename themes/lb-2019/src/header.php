@@ -75,30 +75,20 @@
 </head>
 <body class="mdl-lb19 mdl-color--grey-100 mdl-color-text--grey-900 mdl-base">
 
-	<div class="mdl-layout__container has-scrolling-header">
+<div class="mdl-layout__container has-scrolling-header">
 
 		<div <?php body_class('mdl-layout mdl-js-layout mdl-layout--fixed-header'); ?> >
 
 			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-				<div class="lb19-brand">
-					<!-- Separador  -->
-					<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
-					<!-- Separador  -->
-
+				<div class="mdl-layout__header-row">
 					<!-- Title -->
 					<?php get_template_part( 'template-parts/header', 'title' ); ?>
-					<!-- Title -->
-
-					<!-- Separador  -->
-		      <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
-					<!-- Separador  -->
 				</div>
-
-				<!-- Primary menu -->
-				<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
-				<!-- Primary menu -->
-
 	    </header>
+
+			<div class="mdl-layout__drawer">
+				<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
+			</div>
 
 			<div class="lb19-ribbon mdl-color--primary-contrast"></div>
 

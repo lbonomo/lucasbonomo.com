@@ -18,34 +18,31 @@ if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
 }
 
 if ( has_nav_menu( 'primary' ) ) {
-	// si el menu principal no existe, no mostrar nada!
-	// TODO - Mejorar el codigo. Pasar a PHP con printf o echo.
-	// Devuelve booleano Si una ubicación de menú de navegación registrada tiene un menú asignado.
 	?>
-	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+	<nav class="mdl-navigation">
 	<?php
 	$menu_location = 'primary';
 	$locations     = get_nav_menu_locations();
 	$menu_id       = $locations[ $menu_location ];
 	$menu_items    = wp_get_nav_menu_items( $menu_id );
 
-	foreach ( $menu_items as $key => $item ) {
-
-		if ( $current_url === $item->url ) {
-			$active = true;
-		} else {
-			$active = false;
+	if ( $menu_items ) {
+		foreach ( $menu_items as $key => $item ) {
+			if ( $current_url === $item->url ) {
+				$active = true;
+			} else {
+				$active = false;
+			}
+			?>
+			<a href="<?php echo esc_url( $item->url ); ?>"
+				 class="mdl-navigation__link <?php if ( $active ) { echo 'is-active';} ?> ">
+				 <?php echo esc_html( $item->title ); ?>
+			 </a>
+			<?php
 		}
-		// TODO - Resolver el tema de los submenus.
-		?>
-		<a href="<?php echo esc_url( $item->url ); ?>"
-			 class="mdl-layout__tab mdl-color-text--primary <?php if ( $active ) { echo 'is-active';} ?> ">
-			 <?php echo esc_attr($item->title); ?>
-		 </a>
-		<?php } ?>
-	</div>
+	}
+	?>
+	</nav>
 	<?php
 }
 ?>
-
-<!-- Primary menu -->

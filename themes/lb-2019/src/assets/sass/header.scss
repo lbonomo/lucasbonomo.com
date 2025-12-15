@@ -1,0 +1,111 @@
+/* Custom Styles */
+
+/* Modern Header Tweaks */
+.mdl-layout__header-row {
+    padding: 0 40px 0 20px;
+}
+
+/* Logo Styling */
+.site-logo {
+    // height: 40px;
+    width: auto;
+    vertical-align: middle;
+    color: #fff;
+    /* Default to white in header */
+}
+
+.mdl-layout__drawer .site-logo {
+    color: #333;
+    /* Dark in drawer */
+    margin: 20px;
+}
+
+/* Navigation Overrides */
+.mdl-navigation__link {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Drawer Title override to use logo */
+.mdl-layout__drawer-title {
+    padding: 0;
+    line-height: normal;
+    min-height: auto;
+}
+
+.mdl-layout__title {
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.is-compact .mdl-layout__title span {
+    display: none;
+}
+
+.content-header .mdl-layout__header-row {
+    height: 36px;
+}
+
+.is-small-screen .content-header .mdl-layout__header-row {
+    padding: 0;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.is-small-screen .custom-logo-link {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .mdl-layout__header-row {
+        padding: 0 16px 0 20px;
+        /* Reduced left padding, right will have button */
+    }
+}
+
+/* --- Right Side Drawer Implementation --- */
+
+/* 1. Move Drawer to Right */
+.mdl-layout__drawer {
+    left: auto;
+    right: 0;
+    transform: translateX(250px);
+    /* Move off-screen to the right */
+    border-left: 1px solid #e0e0e0;
+    border-right: none;
+}
+
+/* 2. Open State */
+.mdl-layout__drawer.is-visible {
+    transform: translateX(0);
+}
+
+/* 3. Move Hamburger Button to Right */
+.mdl-layout__drawer-button {
+    left: auto;
+    right: 40px;
+    /* Align with header padding */
+    /* Remove default background to match refined look if needed, or keep it */
+}
+
+/* Adjust button position on smaller screens */
+@media screen and (max-width: 1024px) {
+    .mdl-layout__drawer-button {
+        right: 4px;
+        /* Standard MDL mobile margin */
+    }
+}
+
+/* 4. Close Button in Drawer */
+.mdl-layout__drawer-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    color: #757575;
+    /* Match navigation links */
+}
