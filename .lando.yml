@@ -17,5 +17,5 @@ services:
         - ./uploads/:/app/wordpress/wp-content/uploads/
         - ./mu-plugins/:/app/wordpress/wp-content/mu-plugins/
         - ./themes/lb25:/app/wordpress/wp-content/themes/lb25/    
-        - ./themes/lb-2019/dst/:/app/wordpress/wp-content/themes/lb19/
+        - ./themes/lb-2019/lb19/:/app/wordpress/wp-content/themes/lb19/
     

@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         files: [{
           cwd: 'src/',
           src: [
-            '**/*.{png,svg,php,css,js,txt,html,png,svg,gif}'
+            '**/*.{png,svg,php,css,js,txt,html,png,svg,gif,json}'
           ],
           dest: 'lb19/',
         }]
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
     watch: {
       theme2019: {
         files: [
-          'src/**/*.{png,svg,php,css,js,txt,html,png,svg,scss}'
+          'src/**/*.{png,svg,php,css,js,txt,html,png,svg,scss,json}'
         ],
         tasks: [
           'sync:theme2019',
