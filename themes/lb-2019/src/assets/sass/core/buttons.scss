@@ -1,0 +1,40 @@
+/* Core button overrides */
+.wp-block-buttons.is-layout-flex {
+	align-items: center;
+	gap: 1rem;
+}
+
+.wp-block-buttons.is-layout-flex > .wp-block-button {
+	flex: 1 1 100%;
+}
+
+.wp-block-buttons.is-layout-flex > .wp-block-button .wp-block-button__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+@media (min-width: 782px) {
+	.wp-block-buttons.is-layout-flex {
+		flex-wrap: nowrap;
+	}
+
+	.wp-block-buttons.is-layout-flex > .wp-block-button {
+		flex: 1 1 0;
+		margin: 0;
+		max-width: 250px;
+	}
+}
+
+@media (max-width: 781px) {
+	.wp-block-buttons.is-layout-flex {
+		flex-direction: column;
+	}
+
+	.wp-block-buttons.is-layout-flex > .wp-block-button {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

@@ -117,6 +117,16 @@
                     "margin": true,
                     "padding": true
                 }
+            },
+            "core/buttons": {
+                "spacing": {
+                    "blockGap": "1rem"
+                },
+                "layout": {
+                    "type": "flex",
+                    "justifyContent": "center",
+                    "flexWrap": "wrap"
+                }
             }
         }
     },
@@ -129,7 +139,15 @@
             "core/button": {
                 "color": {
                     "background": "var:preset|color|secondary",
-                    "text": "var:preset|color|text"
+                    "text": "var:preset|color|primary-text"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "0.75rem",
+                        "right": "1.5rem",
+                        "bottom": "0.75rem",
+                        "left": "1.5rem"
+                    }
                 }
             }
         }
