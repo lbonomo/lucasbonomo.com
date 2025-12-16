@@ -17,7 +17,9 @@ if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
 	$current_url = '';
 }
 
+
 if ( has_nav_menu( 'primary' ) ) {
+
 	?>
 	<nav class="mdl-navigation">
 	<?php
@@ -25,7 +27,7 @@ if ( has_nav_menu( 'primary' ) ) {
 	$locations     = get_nav_menu_locations();
 	$menu_id       = $locations[ $menu_location ];
 	$menu_items    = wp_get_nav_menu_items( $menu_id );
-
+	
 	if ( $menu_items ) {
 		foreach ( $menu_items as $key => $item ) {
 			if ( $current_url === $item->url ) {

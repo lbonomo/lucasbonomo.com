@@ -1,13 +1,13 @@
 {
-    "key": "group_670e82e00a2b7",
-    "title": "Proyectos",
+    "key": "group_65df35b369fa6",
+    "title": "Actions",
     "fields": [
         {
-            "key": "field_670e82e0ddacd",
-            "label": "url",
-            "name": "url",
+            "key": "field_65df35b43186f",
+            "label": "Action",
+            "name": "action",
             "aria-label": "",
-            "type": "url",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -17,15 +17,17 @@
                 "id": ""
             },
             "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
-            "key": "field_6717b6e776611",
-            "label": "Repositorio",
-            "name": "repositorio",
+            "key": "field_65df35d731870",
+            "label": "Account",
+            "name": "account",
             "aria-label": "",
-            "type": "url",
+            "type": "relationship",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,14 +36,29 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
+            "post_type": [
+                "prospect"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": "",
+            "bidirectional": 0,
+            "bidirectional_target": []
         },
         {
-            "key": "field_67acab34b3e7d",
-            "label": "Estado",
-            "name": "status",
+            "key": "field_65df38868d445",
+            "label": "Channel",
+            "name": "channel",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -53,14 +70,16 @@
                 "id": ""
             },
             "choices": {
-                "On-line": "On-line",
-                "Off-line": "Off-line"
+                "e-mail": "e-mail",
+                "WhatsApp": "WhatsApp",
+                "Telegram": "Telegram",
+                "Telefono": "Telefono",
+                "Instagram": "Instagram"
             },
-            "default_value": "On-line",
+            "default_value": "e-mail",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
-            "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -73,7 +92,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "proyecto"
+                "value": "account_action"
             }
         ]
     ],
@@ -85,7 +104,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 1,
+    "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765905984
+    "modified": 1765898474
 }

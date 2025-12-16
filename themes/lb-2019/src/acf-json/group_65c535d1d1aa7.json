@@ -1,10 +1,10 @@
 {
-    "key": "group_670e82e00a2b7",
-    "title": "Proyectos",
+    "key": "group_65c535d1d1aa7",
+    "title": "Accounts",
     "fields": [
         {
-            "key": "field_670e82e0ddacd",
-            "label": "url",
+            "key": "field_65c53615158a7",
+            "label": "URL",
             "name": "url",
             "aria-label": "",
             "type": "url",
@@ -17,15 +17,14 @@
                 "id": ""
             },
             "default_value": "",
-            "allow_in_bindings": 0,
             "placeholder": ""
         },
         {
-            "key": "field_6717b6e776611",
-            "label": "Repositorio",
-            "name": "repositorio",
+            "key": "field_65c53626158a8",
+            "label": "Notes",
+            "name": "notes",
             "aria-label": "",
-            "type": "url",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -35,13 +34,41 @@
                 "id": ""
             },
             "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         },
         {
-            "key": "field_67acab34b3e7d",
-            "label": "Estado",
-            "name": "status",
+            "key": "field_65d36c3544233",
+            "label": "Tecnology",
+            "name": "is_a",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "WordPress": "WordPress",
+                "WooCommerce": "WooCommerce"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Añadir nueva opción"
+        },
+        {
+            "key": "field_65dba83430101",
+            "label": "Type",
+            "name": "type",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -53,14 +80,14 @@
                 "id": ""
             },
             "choices": {
-                "On-line": "On-line",
-                "Off-line": "Off-line"
+                "Lead": "Lead",
+                "Opportunity": "Opportunity",
+                "Client": "Client"
             },
-            "default_value": "On-line",
+            "default_value": "Lead",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
-            "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -73,7 +100,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "proyecto"
+                "value": "prospect"
             }
         ]
     ],
@@ -85,7 +112,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 1,
+    "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765905984
+    "modified": 1765898473
 }

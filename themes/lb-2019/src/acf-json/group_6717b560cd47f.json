@@ -1,13 +1,13 @@
 {
-    "key": "group_670e82e00a2b7",
-    "title": "Proyectos",
+    "key": "group_6717b560cd47f",
+    "title": "Tripulante",
     "fields": [
         {
-            "key": "field_670e82e0ddacd",
-            "label": "url",
-            "name": "url",
+            "key": "field_6717b562232e3",
+            "label": "email",
+            "name": "email",
             "aria-label": "",
-            "type": "url",
+            "type": "email",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -18,54 +18,48 @@
             },
             "default_value": "",
             "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_6717b6e776611",
-            "label": "Repositorio",
-            "name": "repositorio",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_67acab34b3e7d",
-            "label": "Estado",
-            "name": "status",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "On-line": "On-line",
-                "Off-line": "Off-line"
-            },
-            "default_value": "On-line",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
             "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6717b591444da",
+            "label": "Github username",
+            "name": "github_username",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6717b5a9913fa",
+            "label": "LinkedIn",
+            "name": "linkedin",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -73,7 +67,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "proyecto"
+                "value": "tripulante"
             }
         ]
     ],
@@ -85,7 +79,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 1,
+    "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765905984
+    "modified": 1765898479
 }
