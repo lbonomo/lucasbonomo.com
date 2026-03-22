@@ -1,254 +1,102 @@
 {
-  "version": 2,
-  "settings": {
-    "color": {
-      "custom": false,
-      "palette": [
-        {
-          "slug": "primary",
-          "color": "#1E3A8A",
-          "name": "Primary Blue"
-        },
-        {
-          "slug": "secondary",
-          "color": "#6B7280",
-          "name": "Secondary Gray"
-        },
-        {
-          "slug": "accent",
-          "color": "#F59E0B",
-          "name": "Accent Orange"
-        },
-        {
-          "slug": "background",
-          "color": "#FFFFFF",
-          "name": "Background White"
-        },
-        {
-          "slug": "text",
-          "color": "#111827",
-          "name": "Text Dark"
-        },
-        {
-          "slug": "light-accent",
-          "color": "#E5E7EB",
-          "name": "Light Gray Accent"
-        },
-        {
-          "slug": "blue-accent",
-          "color": "rgb(37, 99, 235)",
-          "name": "Blue Accent"
-        },
-        {
-          "slug": "success",
-          "color": "#10B981",
-          "name": "Success Green"
-        }
-      ]
-    },
-    "typography": {
-      "customFontSize": false,
-      "fontSizes": [
-        {
-          "name": "Extra Small",
-          "slug": "x-small",
-          "size": "0.75rem"
-        },
-        {
-          "name": "Small",
-          "slug": "small",
-          "size": "0.875rem"
-        },
-        {
-          "name": "Medium",
-          "slug": "medium",
-          "size": "1rem"
-        },
-        {
-          "name": "Large",
-          "slug": "large",
-          "size": "1.25rem"
-        },
-        {
-          "name": "Extra Large",
-          "slug": "x-large",
-          "size": "1.5rem"
-        },
-        {
-          "name": "XX Large",
-          "slug": "xx-large",
-          "size": "2rem"
-        },
-        {
-          "name": "XXX Large",
-          "slug": "xxx-large",
-          "size": "3.75rem"
-        }
-      ],
-      "fontFamilies": [
-        {
-          "fontFamily": "Inter, Arial, sans-serif",
-          "slug": "primary",
-          "name": "Primary Font",
-          "fontFace": [
-            {
-              "fontFamily": "Inter",
-              "fontWeight": "100 900",
-              "fontStyle": "normal",
-              "src": [
-                "file:./assets/fonts/InterVariable.woff2"
-              ]
-            }
-          ]
-        },
-        {
-          "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif",
-          "slug": "system",
-          "name": "System Font"
-        }
-      ]
-    },
-    "spacing": {
-      "margin": true,
-      "padding": true,
-      "units": [
-        "px",
-        "%",
-        "em",
-        "rem",
-        "vw",
-        "vh"
-      ],
-      "customSpacingSize": false,
-      "spacingSizes": [
-        {
-          "name": "Extra Small",
-          "slug": "10",
-          "size": "0.25rem"
-        },
-        {
-          "name": "Small",
-          "slug": "20",
-          "size": "0.5rem"
-        },
-        {
-          "name": "Medium",
-          "slug": "30",
-          "size": "1rem"
-        },
-        {
-          "name": "Large",
-          "slug": "40",
-          "size": "1.5rem"
-        },
-        {
-          "name": "Extra Large",
-          "slug": "50",
-          "size": "2rem"
-        },
-        {
-          "name": "XX Large",
-          "slug": "60",
-          "size": "3rem"
-        }
-      ]
-    },
-    "layout": {
-      "contentSize": "800px",
-      "wideSize": "1200px"
-    }
-  },
-  "styles": {
-    "typography": {
-      "fontFamily": "var(--wp--preset--font-family--primary)",
-      "fontSize": "var(--wp--preset--font-size--medium)"
-    },
-    "color": {
-      "background": "var(--wp--preset--color--background)",
-      "text": "var(--wp--preset--color--text)"
-    },
-    "elements": {
-      "h1": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--xxx-large)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--primary)"
-        }
-      },
-      "h2": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--xx-large)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--primary)"
-        }
-      },
-      "h3": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--x-large)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--secondary)"
-        }
-      },
-      "h4": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--large)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--secondary)"
-        }
-      },
-      "h5": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--medium)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--text)"
-        }
-      },
-      "h6": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--small)",
-          "fontWeight": "bold"
-        },
-        "color": {
-          "text": "var(--wp--preset--color--text)"
-        }
-      },
-      "button": {
-        "color": {
-          "background": "var(--wp--preset--color--accent)",
-          "text": "var(--wp--preset--color--background)"
-        },
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--medium)",
-          "fontWeight": "bold"
-        }
-      },
-      "link": {
-        "color": {
-          "text": "var(--wp--preset--color--primary)"
-        }
-      }
-    },
-    "blocks": {
-      "core/navigation": {
-        "color": {
-          "text": "var(--wp--preset--color--text)"
-        }
-      },
-      "core/button": {
-        "color": {
-          "background": "var(--wp--preset--color--accent)"
-        }
-      }
-    }
-  }
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "800px",
+			"wideSize": "1280px"
+		},
+		"color": {
+			"palette": [
+				{ "slug": "void", "color": "#F5FBFF", "name": "Sky Mist" },
+				{ "slug": "deep-navy", "color": "#EAF4FF", "name": "Light Horizon" },
+				{ "slug": "card-bg", "color": "#FFFFFF", "name": "Card White" },
+				{ "slug": "electric", "color": "#0EA5FF", "name": "Vivid Azure" },
+				{ "slug": "cool-white", "color": "#10233A", "name": "Ink Navy" },
+				{ "slug": "muted-grey", "color": "#5D7288", "name": "Steel Blue" },
+				{ "slug": "dim-grey", "color": "#8FA2B5", "name": "Cloud Grey" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"slug": "display",
+					"name": "Display"
+				},
+				{
+					"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+					"slug": "body",
+					"name": "Body"
+				},
+				{
+					"fontFamily": "'Courier New', 'Courier', monospace",
+					"slug": "mono",
+					"name": "Mono"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "tiny", "size": "0.6rem", "name": "Tiny" },
+				{ "slug": "small", "size": "0.75rem", "name": "Small" },
+				{ "slug": "medium", "size": "1rem", "name": "Medium" },
+				{ "slug": "large", "size": "1.25rem", "name": "Large" },
+				{ "slug": "x-large", "size": "1.75rem", "name": "Extra Large" },
+				{ "slug": "huge", "size": "clamp(2.5rem, 4vw, 3.5rem)", "name": "Huge" }
+			]
+		},
+		"spacing": {
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#F5FBFF",
+			"text": "#10233A"
+		},
+		"typography": {
+			"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+			"fontSize": "1rem",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"lineHeight": "1.1"
+				},
+				"color": {
+					"text": "#10233A"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#0EA5FF"
+				},
+				":hover": {
+					"color": {
+						"text": "#0B79BF"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/list": {
+				"color": {
+					"text": "#0EA5FF"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--mono)",
+					"fontSize": "0.65rem",
+					"fontWeight": "500",
+					"letterSpacing": "0.25em",
+					"lineHeight": "1.4",
+					"textTransform": "uppercase"
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "1.5rem"
+		}
+	}
 }

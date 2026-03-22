@@ -37,7 +37,6 @@ class LB25_Block_Styles
 		$this->register_columns_styles();
 		$this->register_gallery_styles();
 		$this->register_quote_styles();
-		$this->register_button_styles();
 		$this->register_heading_styles();
 		$this->register_list_styles();
 	}
@@ -162,33 +161,6 @@ class LB25_Block_Styles
 	}
 
 	/**
-	 * Register Button block styles
-	 *
-	 * @return void
-	 */
-	private function register_button_styles()
-	{
-		$button_styles = array(
-			array(
-				'name'  => 'primary',
-				'label' => __('Primary Button', 'lb25'),
-			),
-			array(
-				'name'  => 'secondary',
-				'label' => __('Secondary Button', 'lb25'),
-			),
-			array(
-				'name'  => 'outline',
-				'label' => __('Outline Button', 'lb25'),
-			),
-		);
-
-		foreach ($button_styles as $style) {
-			register_block_style('core/button', $style);
-		}
-	}
-
-	/**
 	 * Register Heading block styles
 	 *
 	 * @return void
@@ -251,7 +223,6 @@ class LB25_Block_Styles
 			'core/columns' => array('benefits-grid', 'services-grid', 'testimonials-grid'),
 			'core/gallery' => array('portfolio-grid'),
 			'core/quote'   => array('testimonial', 'testimonial-card'),
-			'core/button'  => array('primary', 'secondary', 'outline'),
 			'core/heading' => array('hero-title', 'section-title', 'highlight'),
 			'core/list'    => array('historial', 'tags', 'checks')
 		);

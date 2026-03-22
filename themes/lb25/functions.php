@@ -48,10 +48,67 @@ add_action('enqueue_block_editor_assets', 'lb25_enqueue_block_scripts');
 function lb25_register_menus()
 {
 	register_nav_menus(array(
-		'header-menu' => __('Header Menu', 'lb25'),
+		'main-menu'   => __('Menu principal', 'lb25'),
+		'header-menu' => __('Header Menu (legacy)', 'lb25'),
 	));
 }
 add_action('init', 'lb25_register_menus');
+
+/**
+ * Resolve the primary menu location to keep backward compatibility.
+ *
+ * @return string
+ */
+function lb25_get_primary_menu_location()
+{
+	if (has_nav_menu('main-menu')) {
+		return 'main-menu';
+	}
+
+	return 'header-menu';
+}
+
+/**
+ * Fallback markup when no menu is assigned.
+ *
+ * @param array $args Menu arguments.
+ * @return void
+ */
+function lb25_primary_menu_fallback($args)
+{
+	$items = array(
+		array(
+			'label' => __('Inicio', 'lb25'),
+			'url'   => home_url('/'),
+		),
+		array(
+			'label' => __('Blog', 'lb25'),
+			'url'   => home_url('/blog/'),
+		),
+		array(
+			'label' => __('Contacto', 'lb25'),
+			'url'   => home_url('/#contacto'),
+		),
+	);
+
+	$menu_class = 'header-nav';
+
+	if (!empty($args['menu_class'])) {
+		$menu_class = $args['menu_class'];
+	}
+
+	echo '<ul class="' . esc_attr($menu_class) . '">';
+
+	foreach ($items as $item) {
+		echo '<li class="menu-item">';
+		echo '<a href="' . esc_url($item['url']) . '">';
+		echo esc_html($item['label']);
+		echo '</a>';
+		echo '</li>';
+	}
+
+	echo '</ul>';
+}
 
 // Include theme classes
 // Block styles are registered in class-block-styles.php
