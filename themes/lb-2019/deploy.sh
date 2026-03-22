@@ -28,7 +28,7 @@ fi
 
 # Clean up Claudflare cache.
 echo "🌐 Limpiando cache de Cloudflare..."
-zone_id="889a84026fb83775ac107265294e2e92"
+zone_id="8bc7d21dcec20fd1dc75c3384d47f13a"
 api_token="cfut_D7t1FitYA2rD3SLgzlvXJSWR2eO5aiRXEWrhpgif9fa392ba"
 curl -X POST "https://api.cloudflare.com/client/v4/zones/$zone_id/purge_cache" \
      -H "Authorization: Bearer $api_token" \

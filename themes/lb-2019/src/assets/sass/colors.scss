@@ -1,0 +1,44 @@
+:root {
+	/* Brand colors. These values act as fallbacks and can be overridden later by the Customizer output. */
+	--color-primary: #1f2933;
+	--color-primary-hover: #111827;
+	--color-primary-text: rgba(255, 255, 255, 1);
+	--color-secondary: #0ea5a4;
+	--color-secondary-hover: #0b8e8d;
+	--color-secondary-text: rgba(255, 255, 255, 1);
+
+	/* Neutral UI scale. */
+	--color-surface: #ffffff;
+	--color-surface-soft: #f7fafc;
+	--color-text: #212121;
+	--color-text-muted: #5a6e81;
+	--color-input-text: #8ca3b9;
+	--color-border: rgba(31, 41, 51, 0.18);
+	--color-border-strong: rgba(31, 41, 51, 0.32);
+
+	/* Feedback colors. */
+	--color-success: #00b474;
+	--color-success-soft: #e6fff0;
+	--color-warning: #fb584e;
+	--color-warning-soft: #ffedec;
+	--color-warning-border: #ffbab6;
+
+	/* Semantic helpers. */
+	--color-priority-low: #0f766e;
+	--color-priority-low-soft: #ecfdf5;
+	--color-priority-medium: #b45309;
+	--color-priority-medium-soft: #fffbeb;
+	--color-priority-high: #b91c1c;
+	--color-priority-high-soft: #fef2f2;
+	--color-request-plugin: #1d4ed8;
+	--color-request-improvement: #7c3aed;
+	--color-request-custom: #0f766e;
+	--color-request-other: #475569;
+
+	/* Focus helpers. */
+	--color-focus-ring: rgba(14, 165, 164, 0.18);
+
+	/* Shadows */
+	--color-shadow-strong: rgba(31, 41, 51, 0.32);
+	--color-shadow-soft: rgba(31, 41, 51, 0.12);
+}
