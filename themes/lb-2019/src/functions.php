@@ -102,7 +102,6 @@ function lb19_scripts() {
 	// wp_enqueue_style( 'lb19-style', get_stylesheet_uri(), false, 'all' );
 	wp_enqueue_style( 'lb19-style', get_template_directory_uri(). '/assets/css/style.css', false, 'all' );
 
-	wp_enqueue_script( 'lb16_js', get_template_directory_uri() . '/assets/js/lb19.js', array(), '20191229', true );
 	wp_enqueue_script( 'mdl_js', get_template_directory_uri() . '/vendor/js/material.min.js', array(), '20190601', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
