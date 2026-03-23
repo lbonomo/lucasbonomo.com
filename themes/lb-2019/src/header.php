@@ -82,16 +82,40 @@
 
 			<header class="site-header bg-[var(--color-primary)] text-[var(--color-primary-text)] sticky top-0 z-40 shadow-sm">
 				<div class="mx-auto w-full max-w-7xl px-4 py-4">
-					<!-- Title -->
-					<?php get_template_part( 'template-parts/header', 'title' ); ?>
+					<div class="flex items-center justify-between">
+						<!-- Logo on the left -->
+						<div class="flex-shrink-0">
+							<?php get_template_part( 'template-parts/header', 'title' ); ?>
+						</div>
+
+						<!-- Menu on the right (hidden on mobile) -->
+						<div class="hidden md:block">
+							<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
+						</div>
+
+						<!-- Mobile menu button -->
+						<button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white hover:bg-opacity-20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+								aria-expanded="false"
+								aria-controls="mobile-menu"
+								id="mobile-menu-button">
+							<span class="sr-only"><?php esc_html_e( 'Open menu', 'lb19' ); ?></span>
+							<!-- Hamburger icon -->
+							<svg class="hamburger-icon block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+							<!-- Close icon (X) -->
+							<svg class="close-icon hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+
+					<!-- Mobile menu (hidden by default) -->
+					<div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-white border-opacity-20 pt-4">
+						<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
+					</div>
 				</div>
 	    </header>
-
-			<div class="site-menu w-full border-b border-slate-200 bg-white">
-				<div class="mx-auto w-full max-w-7xl px-4 py-3">
-				<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
-				</div>
-			</div>
 
 			<div class="lb19-ribbon bg-[var(--color-primary)]"></div>
 

@@ -100,6 +100,7 @@ function lb19_scripts() {
 	// wp_enqueue_style( 'lb19-style', get_stylesheet_uri(), false, 'all' );
 	wp_enqueue_style( 'lb19-style', get_template_directory_uri(). '/assets/css/style.css', false, 'all' );
 	wp_enqueue_script( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), null, false );
+	wp_enqueue_script( 'lb19-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(), '1.0.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
