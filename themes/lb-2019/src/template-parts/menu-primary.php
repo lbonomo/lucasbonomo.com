@@ -21,7 +21,7 @@ if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
 if ( has_nav_menu( 'primary' ) ) {
 
 	?>
-	<nav class="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 lg:gap-4" aria-label="<?php esc_attr_e( 'Primary menu', 'lb19' ); ?>">
+	<nav class="menu-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'lb19' ); ?>">
 	<?php
 	$menu_location = 'primary';
 	$locations     = get_nav_menu_locations();
@@ -30,14 +30,10 @@ if ( has_nav_menu( 'primary' ) ) {
 	
 	if ( $menu_items ) {
 		foreach ( $menu_items as $key => $item ) {
-			if ( $current_url === $item->url ) {
-				$active = true;
-			} else {
-				$active = false;
-			}
+			$is_active = $current_url === $item->url;
 			?>
 			<a href="<?php echo esc_url( $item->url ); ?>"
-				 class="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide md:text-white md:hover:bg-white md:hover:bg-opacity-20 text-slate-700 hover:bg-slate-100 hover:text-slate-900 <?php if ( $active ) { echo 'md:bg-white md:bg-opacity-20 bg-slate-200 text-slate-900 md:text-white'; } ?>">
+				 class="menu-link <?php echo $is_active ? 'active' : ''; ?>">
 				 <?php echo esc_html( $item->title ); ?>
 			 </a>
 			<?php

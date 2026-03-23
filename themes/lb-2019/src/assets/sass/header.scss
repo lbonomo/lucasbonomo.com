@@ -48,41 +48,63 @@
     transform: scale(1.1);
 }
 
+/* Navigation Menu Styles */
+.menu-nav {
+    @apply flex flex-col gap-2;
+
+    @media (min-width: 768px) {
+        @apply flex-row items-center gap-3 lg:gap-4;
+    }
+}
+
+.menu-link {
+    @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide;
+    @apply text-slate-700 transition-colors;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: currentColor;
+        transition: width 0.3s ease;
+    }
+
+    &:hover {
+        @apply hover:bg-slate-100 hover:text-slate-900;
+
+        &::after {
+            width: 100%;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+    }
+
+    &.active {
+        @apply bg-slate-200 text-slate-900;
+    }
+
+    @media (min-width: 768px) {
+        @apply text-white hover:bg-white hover:bg-opacity-20;
+
+        &.active {
+            @apply bg-white bg-opacity-20;
+        }
+    }
+}
+
 /* Mobile Menu Styles */
 #mobile-menu {
     animation: slideDown 0.3s ease-out;
 
     &.hidden {
         display: none !important;
-    }
-
-    nav a {
-        display: block;
-        padding: 0.75rem 0.75rem;
-        transition: background-color 0.2s ease;
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: currentColor;
-            transition: width 0.3s ease;
-        }
-
-        &:hover {
-            &::after {
-                width: 100%;
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid currentColor;
-            outline-offset: -2px;
-        }
     }
 }
 
@@ -94,38 +116,6 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Desktop Navigation */
-@media (min-width: 768px) {
-    nav a {
-        transition: background-color 0.2s ease;
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: currentColor;
-            transition: width 0.3s ease;
-        }
-
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-
-            &::after {
-                width: 100%;
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid currentColor;
-            outline-offset: -2px;
-        }
     }
 }
 
