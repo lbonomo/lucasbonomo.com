@@ -12,3 +12,40 @@
 * Tested up to: 5.5
 * Requires PHP: 5.6
 */
+
+/**
+ * Main stylesheet for the theme
+ * Tailwind CSS + Custom SCSS
+ * Built with Vite + PostCSS + Tailwind CSS
+ *
+ * @package lb19
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import custom SCSS components */
+@import './assets/sass/normalize.scss';
+@import './assets/sass/colors.scss';
+@import './assets/sass/material.scss';
+@import './assets/sass/header.scss';
+@import './assets/sass/footer.scss';
+@import './assets/sass/pagination.scss';
+@import './assets/sass/404.scss';
+@import './assets/sass/cf7.scss';
+@import './assets/sass/rss.scss';
+@import './assets/sass/proyectos.scss';
+@import './assets/sass/trabajos.scss';
+@import './assets/sass/woocommerce.scss';
+@import './assets/sass/mercadopago.scss';
+@import './assets/sass/core/buttons.scss';
+
+/* Responsive breakpoints */
+@media screen and (min-width: 760px) {
+  @import './assets/sass/style-min760.scss';
+}
+
+@media screen and (min-width: 1024px) {
+  @import './assets/sass/style-min1024.scss';
+}

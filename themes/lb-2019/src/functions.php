@@ -93,15 +93,13 @@ require get_template_directory() . '/inc/widgets-areas.php';
  * Enqueue scripts and styles.
  */
 function lb19_scripts() {
+	// Load main stylesheet (compiled from Vite + Tailwind + SCSS)
+	wp_enqueue_style( 'lb19-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0.0', 'all' );
 
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en', false, 'all' );
+	// Load main JavaScript bundle (compiled from Vite)
+	wp_enqueue_script( 'lb19-main', get_template_directory_uri() . '/assets/js/main.min.js', array(), '1.0.0', true );
 
-	// echo get_stylesheet_uri(); https://lucasbonomo.lndo.site/wp-content/themes/lb19/style.css
-	// wp_enqueue_style( 'lb19-style', get_stylesheet_uri(), false, 'all' );
-	wp_enqueue_style( 'lb19-style', get_template_directory_uri(). '/assets/css/style.css', false, 'all' );
-	wp_enqueue_script( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), null, false );
-	wp_enqueue_script( 'lb19-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(), '1.0.0', true );
-
+	// Load comment reply script if needed
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

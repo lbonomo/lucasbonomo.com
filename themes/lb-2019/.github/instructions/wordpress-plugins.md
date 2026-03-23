@@ -1,4 +1,4 @@
-# WordPress Theme Copilot Instructions (LB25)
+# WordPress Theme Copilot Instructions
 
 Estas reglas aplican al tema WordPress de este repositorio.
 

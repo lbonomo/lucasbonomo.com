@@ -58,9 +58,7 @@
 }
 
 .menu-link {
-    @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide;
-    @apply text-slate-700 transition-colors;
-    position: relative;
+    @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide text-slate-700 transition-colors relative;
 
     &::after {
         content: '';
