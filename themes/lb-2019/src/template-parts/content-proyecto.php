@@ -18,20 +18,19 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 }
 ?>
 
-<div class="mdl-grid mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-card mdl-shadow--4dp">
+<div class="col-span-12 md:col-span-6 grid gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
 
 	<?php if ( count( $characteristics ) >= 1 ) : ?>
-		<div class="mdl-cell--12-col">
-		<div class="mdl-layout-spacer"></div>
+		<div class="w-full flex flex-wrap gap-2">
 		<?php foreach ( $characteristics as $characterist ) : ?>
-		<span class="mdl-chip characterist">
-			<span class="mdl-chip__text"><?php echo esc_html( $characterist ); ?></span>
+		<span class="characterist inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs">
+			<span><?php echo esc_html( $characterist ); ?></span>
 		</span>
 		<?php endforeach ?>
 	</div>
 	<?php endif; ?>
 
-	<div class="mdl-cell mdl-cell--12-col">
+	<div class="w-full">
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
 			<?php
 				the_post_thumbnail('large', array(
@@ -40,36 +39,35 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 			?>
 		</a>
 	</div>
-	<div class="mdl-cell mdl-cell--12-col">
+	<div class="w-full">
 
-		<h2 class="mdl-card__title-text">
+		<h2 class="text-2xl font-semibold leading-tight">
 			<a href="<?php echo esc_url( get_the_permalink() ); ?>" ><?php the_title(); ?></a>
 		</h2>
 
 		
-		<!-- <div class="mdl-card__supporting-text padding-top"><span></span></div> -->
+		<!-- <div class="pt-3"><span></span></div> -->
 
-		<div class="mdl-card__supporting-text no-left-padding">
+		<div class="space-y-3 mt-3">
 			<?php
 			the_excerpt();
 			// Categorias y etiquetas.
 			if ( has_category() ) {
 				foreach ( get_the_category() as $category ) {
-					echo '<span class="mdl-chip post-category"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span class="mdl-chip__text">' . esc_html( $category->name ) . '</span></a></span>';
+					echo '<span class="post-category inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></span>';
 				}
 			}
 			if ( has_tag() ) {
 				foreach ( get_the_tags() as $tag_post ) {
-					echo '<span class="mdl-chip post-tag"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '"><span class="mdl-chip__text">' . esc_attr( $tag_post->name ) . '</span></a></span>';
+					echo '<span class="post-tag inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_attr( $tag_post->name ) . '</a></span>';
 				}
 			}
 
 			?>
 
 	</div>
-		<div class="mdl-card__actions mdl-grid">
-			<div class="mdl-layout-spacer"></div>
-			<a class="mdl-button mdl-js-button mdl-button--raised mdl-color--secondary mdl-color-text--secondary"
+		<div class="flex justify-end">
+			<a class="inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold bg-[var(--color-secondary)] text-[var(--color-secondary-text)]"
 				href="<?php the_permalink(); ?>" >Leer más</a>
 		</div>
 	</div>

@@ -11,7 +11,7 @@
 get_header();
 ?>
 <!-- primary -->
-<div class="mdl-grid content-max-width content-contact">
+<div class="grid grid-cols-12 gap-6 content-max-width content-contact">
 		<?php if ( have_posts() ) : ?>
 
 			<?php

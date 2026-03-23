@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-			<div class="mdl-grid content-max-width project">
+			<div class="grid grid-cols-12 gap-6 content-max-width project">
 					<?php
 					while ( have_posts() ) :
 						the_post();

@@ -33,7 +33,6 @@ if ( ! function_exists( 'lb19_header_style' ) ) :
 		$color_primary       = get_theme_mod( 'mdl-color-primary', 'FFFFFF' );
 		$color_primary_dark  = get_theme_mod( 'mdl-color-primary-dark', 'FFFFFF' );
 		$color_primary_light = get_theme_mod( 'mdl-color-primary-light', 'FFFFFF' );
-		$color_secondary     = get_theme_mod( 'mdl-color-secondary', 'FFFFFF' );
 
 		/*
 		 * If no custom options for text are set, let's bail.
@@ -52,22 +51,18 @@ if ( ! function_exists( 'lb19_header_style' ) ) :
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
 
-			span.mdl-layout__title h1 a  {
+			.site-title {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
-
-			span.mdl-layout__title {
-				color: #<?php echo esc_attr( $header_text_color ); ?>;
-			}
-			.mdl-color--primary {
+			.site-header {
 				background-color: <?php echo esc_attr( $color_primary ); ?> !important;
 			}
 
-			.mdl-color--primary-dark {
+			.site-footer {
 				background-color: <?php echo esc_attr( $color_primary_dark ); ?> !important;
 			}
 
-			.mdl-color--primary-light {
+			.lb19-ribbon {
 				background-color: <?php echo esc_attr( $color_primary_dark ); ?> !important;
 			}
 

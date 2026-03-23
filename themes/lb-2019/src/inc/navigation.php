@@ -12,10 +12,10 @@
  */
 function mdl_the_posts_navigation() {
 	echo '<!-- mdl_the_posts_navigation -->';
-	echo '<nav class="post-nav mdl-cell mdl-cell--12-col mdl-grid">';
-	next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--fab mdl-color--secondary"><i class="material-icons mdl-color-text--secondary" role="presentation">navigate_before</i></button>' );
-	echo '<div class="mdl-layout-spacer"></div>';
-	previous_posts_link( '<button class="mdl-button mdl-js-button  mdl-button--fab mdl-color--secondary"><i class="material-icons mdl-color-text--secondary" role="presentation">navigate_next</i></button>' );
+	echo '<nav class="post-nav col-span-12 grid grid-cols-2 gap-4 items-center">';
+	next_posts_link( '<span class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium bg-[var(--color-secondary)] text-[var(--color-secondary-text)]">←</span>' );
+	echo '<div class="justify-self-center"></div>';
+	previous_posts_link( '<span class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium bg-[var(--color-secondary)] text-[var(--color-secondary-text)]">→</span>' );
 	echo '</nav>';
 	echo '<!-- mdl_the_posts_navigation -->';
 

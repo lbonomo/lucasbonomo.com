@@ -11,25 +11,24 @@
 
 <!-- template-parts/content-single.php -->
 
-<div class="post mdl-cell mdl-cell--12-col mdl-shadow--4dp">
-	<div class="mdl-card__supporting-text">
+<div class="post col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm">
+	<div class="p-6 md:p-8">
 		<?php the_content(); ?>
 	</div>
 
-	<div class="mdl-card__actions mdl-grid">
+	<div class="flex flex-wrap items-center gap-2 px-6 pb-6 md:px-8 md:pb-8">
 		<?php
 		if ( has_category() ) {
 			foreach ( get_the_category() as $category ) {
-				echo '<span class="mdl-chip post-category"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span class="mdl-chip__text">' . esc_html( $category->name ) . '</span></a></span>';
+				echo '<span class="post-category inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></span>';
 			}
 		}
 		if ( has_tag() ) {
 			foreach ( get_the_tags() as $tag_item ) {
-				echo '<span class="mdl-chip post-tag"><a href="' . esc_url( get_tag_link( $tag_item->term_id ) ) . '"><span class="mdl-chip__text">' . esc_attr( $tag_item->name ) . '</span></a></span>';
+				echo '<span class="post-tag inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs"><a href="' . esc_url( get_tag_link( $tag_item->term_id ) ) . '">' . esc_attr( $tag_item->name ) . '</a></span>';
 			}
 		}
 		?>
-		<div class="mdl-layout-spacer"></div>
-		<span><?php lb19_posted_by(); ?></span>
+		<span class="ml-auto text-sm text-slate-500"><?php lb19_posted_by(); ?></span>
 	</div>
 </div>

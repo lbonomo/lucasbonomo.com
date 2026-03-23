@@ -16,18 +16,18 @@
 	is_active_sidebar( 'sidebar-3' ) ||
 	is_active_sidebar( 'sidebar-4' ) ) { ?>
 
-			<footer class="mdl-mega-footer mdl-color--primary-dark">
-				<div class="mdl-mega-footer--middle-section">
-					<div class="mdl-mega-footer--drop-down-section">
+			<footer class="site-footer bg-[var(--color-primary)]/90 text-[var(--color-primary-text)] mt-12">
+				<div class="mx-auto w-full max-w-7xl px-4 py-10 grid gap-8 md:grid-cols-4">
+					<div>
 						<?php if ( is_active_sidebar( 'sidebar-1' ) ) { dynamic_sidebar( 'sidebar-1' );	} ?>
 					</div>
-					<div class="mdl-mega-footer--drop-down-section">
+					<div>
 						<?php if ( is_active_sidebar( 'sidebar-2' ) ) { dynamic_sidebar( 'sidebar-2' );	} ?>
 					</div>
-					<div class="mdl-mega-footer--drop-down-section">
+					<div>
 						<?php if ( is_active_sidebar( 'sidebar-3' ) ) { dynamic_sidebar( 'sidebar-3' );	} ?>
 					</div>
-					<div class="mdl-mega-footer--drop-down-section">
+					<div>
 						<?php if ( is_active_sidebar( 'sidebar-4' ) ) { dynamic_sidebar( 'sidebar-4' );	} ?>
 					</div>
 				</div>

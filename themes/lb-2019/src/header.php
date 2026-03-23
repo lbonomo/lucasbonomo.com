@@ -13,7 +13,7 @@
 	<!-- Add to homescreen for Safari on iOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+	<meta name="apple-mobile-web-app-title" content="LB19">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo get_template_directory_uri() ?>/assets/images/ios-desktop.png">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -53,7 +53,7 @@
 	    flex-shrink: 0;
 		}
 
-		div.post.mdl-cell {
+		div.post {
 
 		}
 
@@ -72,25 +72,28 @@
 <?php wp_head(); ?>
 
 </head>
-<body <?php body_class( 'mdl-lb19 mdl-color--grey-100 mdl-color-text--grey-900 mdl-base' ); ?>>
+<body <?php body_class( 'lb19 bg-slate-100 text-slate-900 min-h-screen' ); ?>>
 <?php wp_body_open(); ?>
 
-<div class="mdl-layout__container has-scrolling-header">
 
-		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="has-scrolling-header min-h-screen flex flex-col">
 
-			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-				<div class="mdl-layout__header-row">
+		<div class="min-h-screen flex flex-col">
+
+			<header class="site-header bg-[var(--color-primary)] text-[var(--color-primary-text)] sticky top-0 z-40 shadow-sm">
+				<div class="mx-auto w-full max-w-7xl px-4 py-4">
 					<!-- Title -->
 					<?php get_template_part( 'template-parts/header', 'title' ); ?>
 				</div>
 	    </header>
 
-			<div class="mdl-layout__drawer">
+			<div class="site-menu w-full border-b border-slate-200 bg-white">
+				<div class="mx-auto w-full max-w-7xl px-4 py-3">
 				<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
+				</div>
 			</div>
 
-			<div class="lb19-ribbon mdl-color--primary-contrast"></div>
+			<div class="lb19-ribbon bg-[var(--color-primary)]"></div>
 
 			<!-- Contenido principal -->
-			<main class="lb19-main mdl-layout__content ">
+			<main class="lb19-main flex-1">

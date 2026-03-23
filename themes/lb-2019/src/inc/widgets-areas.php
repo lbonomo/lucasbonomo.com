@@ -16,7 +16,7 @@ function lb19_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'lb19' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mdl-mega-footer--heading  widget-title">',
+			'before_title'  => '<h2 class="widget-title text-base font-semibold mb-3">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -28,7 +28,7 @@ function lb19_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'lb19' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mdl-mega-footer--heading  widget-title">',
+			'before_title'  => '<h2 class="widget-title text-base font-semibold mb-3">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -40,7 +40,7 @@ function lb19_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'lb19' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mdl-mega-footer--heading widget-title">',
+			'before_title'  => '<h2 class="widget-title text-base font-semibold mb-3">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -52,7 +52,7 @@ function lb19_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'lb19' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mdl-mega-footer--heading widget-title">',
+			'before_title'  => '<h2 class="widget-title text-base font-semibold mb-3">',
 			'after_title'   => '</h2>',
 		)
 	);

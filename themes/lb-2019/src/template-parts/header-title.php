@@ -7,8 +7,8 @@
 
 ?>
 
-<span class="mdl-layout__title">
+<span class="site-title inline-flex items-center">
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="site-logo" alt="<?php bloginfo( 'name' ); ?>">
+		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="site-logo h-10 w-auto" alt="<?php bloginfo( 'name' ); ?>">
 	</a>
 </span>

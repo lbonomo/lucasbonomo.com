@@ -147,11 +147,11 @@ $mensajes404 = [
 
 
 ?>
-	<div class="mdl-grid content-max-width">
-		<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-			<img class="travolta" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/john-travolta.gif') ?>" >
+	<div class="grid grid-cols-12 gap-6 content-max-width">
+		<div class="col-span-12 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+			<img class="travolta" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/john-travolta.gif' ); ?>" >
 			<h1 class="not-found">
-				<?php echo $mensajes404[array_rand($mensajes404)] ?>
+				<?php echo esc_html( $mensajes404[ array_rand( $mensajes404 ) ] ); ?>
 			</h1>
 			<p class="not-found">
 				Vas a ser redirigido a la página de inicio en <span id="seconds">x</span> segundos

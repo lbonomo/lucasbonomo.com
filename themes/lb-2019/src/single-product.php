@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-<div class="mdl-grid content-max-width">
+<div class="grid grid-cols-12 gap-6 content-max-width">
 <!-- single-product.php -->
 	<?php
 		while ( have_posts() ) {

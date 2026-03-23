@@ -9,11 +9,11 @@
 
 get_header();
 ?>
-<div class="mdl-grid portfolio-max-width portfolio-contact">
+<div class="grid grid-cols-12 gap-6 portfolio-max-width portfolio-contact">
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
+			<header class="page-header col-span-12">
 				<h1 class="page-title">
 					<?php
 					/* translators: %s: search query. */

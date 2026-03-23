@@ -1,7 +1,6 @@
 ---
 applyTo: \*\*/\*.php
-description: WordPress PHP Coding Standards (WPCS) for plugin and theme
-  development
+description: WordPress PHP Coding Standards (WPCS) for plugin and theme development
 ---
 
 # WordPress Coding Standards (WPCS)

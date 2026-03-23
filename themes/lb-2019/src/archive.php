@@ -11,11 +11,11 @@ get_header();
 ?>
 <!-- primary -->
 <!-- <h1>archive.php</h1> -->
-<div class="mdl-grid content-max-width content-contact">
+<div class="grid grid-cols-12 gap-6 content-max-width content-contact">
 		<?php if ( have_posts() ) : ?>
 
 			<!--  -->
-			<header class="page-header">
+			<header class="page-header col-span-12">
 				<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );

@@ -94,15 +94,12 @@ require get_template_directory() . '/inc/widgets-areas.php';
  */
 function lb19_scripts() {
 
-	// MDL.
 	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en', false, 'all' );
-	wp_enqueue_style( 'mdl_fonts', 'https://fonts.googleapis.com/icon?family=Material+Icons', false, 'all' );
 
 	// echo get_stylesheet_uri(); https://lucasbonomo.lndo.site/wp-content/themes/lb19/style.css
 	// wp_enqueue_style( 'lb19-style', get_stylesheet_uri(), false, 'all' );
 	wp_enqueue_style( 'lb19-style', get_template_directory_uri(). '/assets/css/style.css', false, 'all' );
-
-	wp_enqueue_script( 'mdl_js', get_template_directory_uri() . '/vendor/js/material.min.js', array(), '20190601', true );
+	wp_enqueue_script( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), null, false );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -212,10 +209,10 @@ function lb19_search_by_slug( $search, $query ) {
  */
 function mdl_the_posts_navigation() {
 	echo '<!-- mdl_the_posts_navigation -->';
-	echo '<nav class="post-nav mdl-cell mdl-cell--12-col mdl-grid">';
-	next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--fab mdl-color--secondary"><i class="material-icons mdl-color-text--secondary" role="presentation">navigate_before</i></button>' );
-	echo '<div class="mdl-layout-spacer"></div>';
-	previous_posts_link( '<button class="mdl-button mdl-js-button  mdl-button--fab mdl-color--secondary"><i class="material-icons mdl-color-text--secondary" role="presentation">navigate_next</i></button>' );
+	echo '<nav class="post-nav col-span-12 grid grid-cols-2 gap-4 items-center">';
+	next_posts_link( '<span class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium bg-[var(--color-secondary)] text-[var(--color-secondary-text)]">←</span>' );
+	echo '<div class="justify-self-center"></div>';
+	previous_posts_link( '<span class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium bg-[var(--color-secondary)] text-[var(--color-secondary-text)]">→</span>' );
 	echo '</nav>';
 	echo '<!-- mdl_the_posts_navigation -->';
 }

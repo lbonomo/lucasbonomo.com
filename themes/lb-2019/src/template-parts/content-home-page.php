@@ -9,7 +9,7 @@
 
 ?>
 <!-- template-parts/content-home-page.php -->
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'home-page-template__article mdl-cell mdl-cell--12-col' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'home-page-template__article col-span-12' ); ?>>
 	<div class="home-page-template__content">
 		<?php
 			the_content();

@@ -11,7 +11,7 @@
 get_header();
 ?>
 
-<div class="home-page-template mdl-grid mdl-grid--no-spacing">
+<div class="home-page-template grid grid-cols-12 gap-0">
 	<?php
 	while ( have_posts() ) :
 		the_post();

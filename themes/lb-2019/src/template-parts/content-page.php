@@ -9,8 +9,8 @@
 
 ?>
 <!-- template-parts/content-page.php -->
-<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-	<div class="mdl-card__supporting-text">
+<div class="col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm">
+	<div class="p-6 md:p-8">
 		<?php the_content(); ?>
 	</div>
 </div>

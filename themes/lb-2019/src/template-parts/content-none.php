@@ -8,13 +8,13 @@
  */
 
 ?>
-<div class="mdl-grid content-max-width content-contact">
+<div class="grid grid-cols-12 gap-6 content-max-width content-contact">
 
-	<header class="page-header">
+	<header class="page-header col-span-12">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'lb19' ); ?></h1>
 	</header><!-- .page-header -->
 
-	<div class="page-content">
+	<div class="page-content col-span-12">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
 

@@ -24,8 +24,8 @@ function getcontrast( $hex ) {
 function custom_style() {
 	$color_primary   = get_theme_mod( 'mdl-color-primary' );
 	$color_secondary = get_theme_mod( 'mdl-color-secondary' );
-  $color_primary_text = getcontrast( $color_primary );
-  $color_secondary_text = getcontrast( $color_secondary );
+	$color_primary_text   = getcontrast( $color_primary );
+	$color_secondary_text = getcontrast( $color_secondary );
 
 	$css = '
   
@@ -36,63 +36,30 @@ function custom_style() {
     --color-secondary-text: ' . $color_secondary_text . ';
   }
 
-  .mdl-color--primary {
+  .site-header {
     background-color: var(--color-primary);
-  }
-
-  .mdl-color-text--primary {
     color: var(--color-primary-text);
   }
 
-  .mdl-color--primary-dark {
+  .site-footer {
     background-color: var(--color-primary);
-    filter: brightness(85%);
+    color: var(--color-primary-text);
   }
 
-  .mdl-color--primary-contrast {
-    background-color: var(--color-text-primary);
-  }
-
-  .mdl-color-text--primary-contrast {
-    color: var(--color-text-primary);
-  }
-
-  .mdl-color-text--primary-dark {
+  .site-menu a:hover {
     color: var(--color-primary);
-  }
-
-  .mdl-mega-footer {
-    color: var( --color-secondary );
   }
 
   a {
     color: var( --color-secondary );
   }
 
-  .mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+  .post-nav a,
+  .post-nav span,
+  .button,
+  button[type="submit"].button {
     background-color: var( --color-secondary );
-  }
-
-	.mdl-layout.is-upgraded .mdl-layout__tab:hover::after {
-    background-color: var( --color-secondary );	
-	}
-
-  .mdl-color--primary-contrast {
-    background-color: var(--color-primary);
-  }
-
-  .mdl-button:hover {
-    background-color: var( --color-secondary-text );
-    color: var( --color-secondary );
-  }
-
-  .mdl-color--secondary {
-     background-color: var( --color-secondary, var(--brand-600) );
-     color: var(--color-primary, var(--bg));
-  }
-
-  .mdl-color-text--secondary {
-     color: var(--color-secondary-text, var(--bg));
+    color: var(--color-secondary-text);
   }
 
   a.checkout-button,
@@ -101,9 +68,9 @@ function custom_style() {
     color: var(--color-secondary-text);
   }
 
-  a.checkout-button:hover
+  a.checkout-button:hover,
   button[type="submit"].button:hover,
-  .mdl-button:hover {
+  .button:hover {
     background-color: var(--color-primary);
   }
 ';
