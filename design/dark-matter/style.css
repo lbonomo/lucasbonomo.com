@@ -1,0 +1,299 @@
+/*
+Theme Name: Dark Matter
+Author: WordPress Telex
+Description: A moody, cinematic dark portfolio theme for freelancers and systems designers. Features electric teal accents, monospace UI typography, scanline overlays, and a dramatic dark aesthetic. Built with TailwindCSS and reusable PHP template parts.
+Version: 0.1.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GPLv2 or later
+Text Domain: dark-matter
+Tags: portfolio, dark, custom-colors, custom-logo, featured-images, threaded-comments
+
+Dark Matter — Systems-grade portfolio theme.
+*/
+
+:root {
+	--void: #0A0A0A;
+	--deep-navy: #0D0F1A;
+	--card-bg: #111420;
+	--electric: #4AF0F0;
+	--cool-white: #E8E8EC;
+	--muted-grey: #A8A8A8;
+	--dim-grey: #555555;
+	--border-subtle: rgba(74, 240, 240, 0.15);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--void);
+	color: var(--cool-white);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+/* Sticky Header */
+.site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background: rgba(10, 10, 10, 0.85);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Logo cursor blink */
+.logo-cursor {
+	display: inline-block;
+	width: 8px;
+	height: 16px;
+	background: var(--electric);
+	animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
+/* Status dot pulse */
+.status-dot {
+	width: 6px;
+	height: 6px;
+	background: var(--electric);
+	border-radius: 50%;
+	box-shadow: 0 0 8px var(--electric);
+	animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+	0%, 100% { box-shadow: 0 0 8px var(--electric); }
+	50% { box-shadow: 0 0 20px var(--electric), 0 0 40px rgba(74, 240, 240, 0.3); }
+}
+
+/* Hero scanline overlay */
+.hero-scanline {
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	pointer-events: none;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(74, 240, 240, 0.015) 2px,
+		rgba(74, 240, 240, 0.015) 4px
+	);
+}
+
+/* Hero grid overlay */
+.hero-grid-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+	pointer-events: none;
+	background:
+		linear-gradient(90deg, rgba(74, 240, 240, 0.03) 1px, transparent 1px),
+		linear-gradient(0deg, rgba(74, 240, 240, 0.03) 1px, transparent 1px);
+	background-size: 120px 120px;
+}
+
+/* Hero image treatment */
+.hero-bg-element {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.hero-bg-element::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to right,
+		var(--void) 0%,
+		rgba(10, 10, 10, 0.7) 30%,
+		rgba(10, 10, 10, 0.3) 70%,
+		rgba(10, 10, 10, 0.5) 100%
+	);
+	z-index: 2;
+}
+
+.hero-bg-element::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40%;
+	background: linear-gradient(to top, var(--void) 0%, transparent 100%);
+	z-index: 3;
+}
+
+.hero-bg-element img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: saturate(0.15) contrast(1.2) brightness(0.6);
+}
+
+/* Nav link underline animation */
+.nav-link {
+	position: relative;
+}
+
+.nav-link::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background: var(--electric);
+	transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+	width: 100%;
+}
+
+/* CTA button base */
+.btn-electric {
+	border: 1px solid var(--electric);
+	color: var(--electric);
+	background: transparent;
+	transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn-electric:hover {
+	background: var(--electric);
+	color: var(--void);
+}
+
+/* Card styles */
+.dm-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-subtle);
+	transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dm-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--electric);
+	box-shadow: 0 8px 32px rgba(74, 240, 240, 0.08);
+}
+
+/* Card image */
+.dm-card-image {
+	position: relative;
+	overflow: hidden;
+}
+
+.dm-card-image img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	filter: saturate(0.3) contrast(1.1) brightness(0.7);
+	transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.dm-card:hover .dm-card-image img {
+	filter: saturate(0.5) contrast(1.1) brightness(0.8);
+	transform: scale(1.03);
+}
+
+/* Section divider */
+.section-divider {
+	height: 1px;
+	background: linear-gradient(to right, transparent, var(--border-subtle), transparent);
+}
+
+/* Scroll indicator */
+.scroll-line {
+	width: 1px;
+	height: 40px;
+	background: linear-gradient(to bottom, var(--electric), transparent);
+}
+
+/* Service card number */
+.service-number {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Contact banner glow */
+.contact-glow {
+	position: relative;
+}
+
+.contact-glow::before {
+	content: '';
+	position: absolute;
+	inset: -1px;
+	border-radius: inherit;
+	background: linear-gradient(135deg, rgba(74, 240, 240, 0.15), transparent 50%);
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in-up {
+	animation: fadeInUp 0.6s ease forwards;
+	opacity: 0;
+}
+
+.fade-in-up-delay-1 { animation-delay: 0.1s; }
+.fade-in-up-delay-2 { animation-delay: 0.2s; }
+.fade-in-up-delay-3 { animation-delay: 0.3s; }
+.fade-in-up-delay-4 { animation-delay: 0.4s; }
+
+/* Responsive hero adjustments */
+@media (max-width: 768px) {
+	.hero-bg-element {
+		width: 100%;
+		height: 40%;
+		top: auto;
+		bottom: 0;
+	}
+
+	.hero-bg-element::after {
+		background: linear-gradient(
+			to top,
+			var(--void) 10%,
+			rgba(10, 10, 10, 0.8) 50%,
+			rgba(10, 10, 10, 0.4) 100%
+		);
+	}
+}
+
+/* Footer credit */
+.footer-credit a {
+	color: var(--electric);
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.footer-credit a:hover {
+	opacity: 0.7;
+}

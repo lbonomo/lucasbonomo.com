@@ -1,0 +1,87 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "800px",
+			"wideSize": "1280px"
+		},
+		"color": {
+			"palette": [
+				{ "slug": "void", "color": "#0A0A0A", "name": "Void" },
+				{ "slug": "deep-navy", "color": "#0D0F1A", "name": "Deep Navy" },
+				{ "slug": "card-bg", "color": "#111420", "name": "Card Background" },
+				{ "slug": "electric", "color": "#4AF0F0", "name": "Electric Teal" },
+				{ "slug": "cool-white", "color": "#E8E8EC", "name": "Cool White" },
+				{ "slug": "muted-grey", "color": "#A8A8A8", "name": "Muted Grey" },
+				{ "slug": "dim-grey", "color": "#555555", "name": "Dim Grey" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"slug": "display",
+					"name": "Display"
+				},
+				{
+					"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+					"slug": "body",
+					"name": "Body"
+				},
+				{
+					"fontFamily": "'Courier New', 'Courier', monospace",
+					"slug": "mono",
+					"name": "Mono"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "tiny", "size": "0.6rem", "name": "Tiny" },
+				{ "slug": "small", "size": "0.75rem", "name": "Small" },
+				{ "slug": "medium", "size": "1rem", "name": "Medium" },
+				{ "slug": "large", "size": "1.25rem", "name": "Large" },
+				{ "slug": "x-large", "size": "1.75rem", "name": "Extra Large" },
+				{ "slug": "huge", "size": "clamp(2.5rem, 4vw, 3.5rem)", "name": "Huge" }
+			]
+		},
+		"spacing": {
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#0A0A0A",
+			"text": "#E8E8EC"
+		},
+		"typography": {
+			"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+			"fontSize": "1rem",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"lineHeight": "1.1"
+				},
+				"color": {
+					"text": "#E8E8EC"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#4AF0F0"
+				},
+				":hover": {
+					"color": {
+						"text": "#E8E8EC"
+					}
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "1.5rem"
+		}
+	}
+}
