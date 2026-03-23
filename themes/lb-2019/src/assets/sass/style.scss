@@ -25,6 +25,22 @@ body {
   font-family: "Roboto"
 }
 
+body.admin-bar .mdl-layout__container {
+  top: 32px;
+  height: calc(100% - 32px);
+}
+
+#wpadminbar {
+  z-index: 99999;
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar .mdl-layout__container {
+    top: 46px;
+    height: calc(100% - 46px);
+  }
+}
+
 p {
   font-size: 20px;
   font-weight: 300;
@@ -46,7 +62,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #212121;
+  color: var(--text-primary);
 }
 
 h1 a,
@@ -56,7 +72,7 @@ h4 a,
 h5 a,
 h6 a {
   text-decoration: none;
-  color: #212121;
+  color: var(--text-primary);
 }
 
 a {
@@ -213,7 +229,7 @@ span.mdl-layout__title h1 a {
 
 .mdl-chip a {
   text-decoration: none;
-  color: rgb(66, 66, 66);
+  color: var(--text-secondary);
   font-weight: 300;
 }
 
@@ -226,7 +242,7 @@ blockquote.wp-block-quote {
   padding: 0.25em 0 0 15px;
   line-height: 1.45;
   position: relative;
-  border-left: 1px solid lightgray;
+  border-left: 1px solid var(--border);
 }
 
 blockquote.wp-block-quote p {
@@ -245,7 +261,7 @@ h1 {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.04em;
-  color: #757575 !important;
+  color: var(--text-secondary) !important;
 }
 
 
@@ -266,16 +282,16 @@ h2 {
 }
 
 div.post.mdl-cell {
-  background-color: white;
+  background-color: var(--bg);
 }
 
 .post-date {
   padding: 0;
-  color: rgb(66, 66, 66);
+  color: var(--text-secondary);
 }
 
 .post-image {
-  background-color: #ffffff;
+  background-color: var(--bg);
 }
 
 .author a {
@@ -283,8 +299,8 @@ div.post.mdl-cell {
 }
 
 .wp-block-code {
-  background-color: #2c3037;
-  color: #e7e7e7;
+  background-color: var(--code-bg);
+  color: var(--code-text);
   padding: 1rem;
 }
 
@@ -295,7 +311,7 @@ div.post.mdl-cell {
 }
 
 .mdl-card__media {
-  background-color: #ffffff;
+  background-color: var(--bg);
   text-align: center;
 }
 
@@ -442,7 +458,7 @@ figure img {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  color: white;
+  color: var(--bg);
   font-weight: 500;
 }
 
@@ -453,7 +469,7 @@ figure img {
 }
 
 .wp-block-gallery figcaption.wp-element-caption {
-  color: #212121 !important;
+  color: var(--text-primary) !important;
   text-shadow: none !important;
 }
 

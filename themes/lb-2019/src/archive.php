@@ -6,7 +6,6 @@
  *
  * @package lb19
  */
-require get_template_directory() . '/inc/navigation.php';
 
 get_header();
 ?>

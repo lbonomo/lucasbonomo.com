@@ -10,12 +10,12 @@
     // height: 40px;
     width: auto;
     vertical-align: middle;
-    color: #fff;
+    color: var(--bg);
     /* Default to white in header */
 }
 
 .mdl-layout__drawer .site-logo {
-    color: #333;
+    color: var(--text-primary);
     /* Dark in drawer */
     margin: 20px;
 }
@@ -75,7 +75,7 @@
     right: 0;
     transform: translateX(250px);
     /* Move off-screen to the right */
-    border-left: 1px solid #e0e0e0;
+    border-left: 1px solid var(--border);
     border-right: none;
 }
 
@@ -106,6 +106,6 @@
     top: 10px;
     right: 10px;
     z-index: 10;
-    color: #757575;
+    color: var(--text-secondary);
     /* Match navigation links */
 }

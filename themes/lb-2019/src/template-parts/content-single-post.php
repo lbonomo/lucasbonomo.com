@@ -12,22 +12,6 @@
 <!-- template-parts/content-single-post.php -->
 
 <div class="post mdl-cell mdl-cell--12-col mdl-shadow--4dp">
-
-	<?php	if ( ! is_front_page() ) { ?>
-		<div class="mdl-grid mdl-cell mdl-cell--12-col post-title">
-			<div class="mdl-cell mdl-cell--12-col">
-				<h1><?php	the_title(); ?></h1>
-			</div>
-		</div>
-
-		<div class="mdl-grid mdl-cell mdl-cell--12-col">
-			<span class="post-date"> <?php echo esc_html( get_the_date() ); ?></span>
-			<div class="mdl-layout-spacer"></div>
-			<?php lb19_posted_by(); ?>
-		</div>
-
-	<?php	} ?>
-
 	<div class="mdl-card__supporting-text">
 		<?php the_content(); ?>
 	</div>
@@ -36,7 +20,7 @@
 		<?php
 		if ( has_category() ) {
 			foreach ( get_the_category() as $category ) {
-				echo '<span class="mdl-chip post-category"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span class="mdl-chip__text">' . esc_html( $category->name ) . '</a></span>';
+				echo '<span class="mdl-chip post-category"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span class="mdl-chip__text">' . esc_html( $category->name ) . '</span></a></span>';
 			}
 		}
 		if ( has_tag() ) {

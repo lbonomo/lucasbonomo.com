@@ -5,20 +5,27 @@
  * @package lb19
  */
 
-$characteristics = array_map(
-	fn($term) => $term->name,
-	get_the_terms(get_the_ID(), 'caracteristica')
-);
+$characteristics = array();
+$terms           = get_the_terms( get_the_ID(), 'caracteristica' );
+
+if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
+	$characteristics = array_map(
+		function ( $term ) {
+			return $term->name;
+		},
+		$terms
+	);
+}
 ?>
 
 <div class="mdl-grid mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-card mdl-shadow--4dp">
 
-	<?php if ( count($characteristics) >= 1 ) : ?>
+	<?php if ( count( $characteristics ) >= 1 ) : ?>
 		<div class="mdl-cell--12-col">
 		<div class="mdl-layout-spacer"></div>
 		<?php foreach ( $characteristics as $characterist ) : ?>
 		<span class="mdl-chip characterist">
-			<span class="mdl-chip__text"><?php echo $characterist; ?></span>
+			<span class="mdl-chip__text"><?php echo esc_html( $characterist ); ?></span>
 		</span>
 		<?php endforeach ?>
 	</div>
@@ -31,6 +38,7 @@ $characteristics = array_map(
 					'class' => 'proyect-image'
 				));
 			?>
+		</a>
 	</div>
 	<div class="mdl-cell mdl-cell--12-col">
 

@@ -2,7 +2,6 @@
 <html <?php language_attributes(); ?>>
 <head>
 
-
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -34,7 +33,7 @@
 		z-index: 900;
 	}
 
-<?php
+	<?php
 	if ( is_single() ) { echo "
 
 		.lb19-main {
@@ -65,7 +64,7 @@
 				}";
 	}
 	;
-?>
+	?>
 
 </style>
 
@@ -73,11 +72,12 @@
 <?php wp_head(); ?>
 
 </head>
-<body class="mdl-lb19 mdl-color--grey-100 mdl-color-text--grey-900 mdl-base">
+<body <?php body_class( 'mdl-lb19 mdl-color--grey-100 mdl-color-text--grey-900 mdl-base' ); ?>>
+<?php wp_body_open(); ?>
 
 <div class="mdl-layout__container has-scrolling-header">
 
-		<div <?php body_class('mdl-layout mdl-js-layout mdl-layout--fixed-header'); ?> >
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
 				<div class="mdl-layout__header-row">

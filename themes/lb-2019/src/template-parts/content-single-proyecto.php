@@ -8,10 +8,17 @@
  */
 
 $fields          = get_fields();
-$characteristics = array_map(
-	fn($term) => $term->name,
-	get_the_terms(get_the_ID(), 'caracteristica')
-);
+$characteristics = array();
+$terms           = get_the_terms( get_the_ID(), 'caracteristica' );
+
+if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
+	$characteristics = array_map(
+		function ( $term ) {
+			return $term->name;
+		},
+		$terms
+	);
+}
 
 ?>
 
@@ -23,12 +30,12 @@ $characteristics = array_map(
 							<h1><?php the_title(); ?></h1>
 						</div>
 
-						<?php if ( count($characteristics) >= 1 ) : ?>
+						<?php if ( count( $characteristics ) >= 1 ) : ?>
 						<div class="mdl-cell--12-col">
 							<div class="mdl-layout-spacer"></div>
 							<?php foreach ( $characteristics as $characterist ) : ?>
 								<span class="mdl-chip characterist">
-									<span class="mdl-chip__text"><?php echo $characterist; ?></span>
+									<span class="mdl-chip__text"><?php echo esc_html( $characterist ); ?></span>
 								</span>
 							<?php endforeach ?>
 						</div>

@@ -1,44 +1,49 @@
 :root {
-	/* Brand colors. These values act as fallbacks and can be overridden later by the Customizer output. */
-	--color-primary: #1f2933;
-	--color-primary-hover: #111827;
-	--color-primary-text: rgba(255, 255, 255, 1);
-	--color-secondary: #0ea5a4;
-	--color-secondary-hover: #0b8e8d;
-	--color-secondary-text: rgba(255, 255, 255, 1);
+  --bg: #ffffff;
+  --surface: #f9fafb;
+  --border: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
 
-	/* Neutral UI scale. */
-	--color-surface: #ffffff;
-	--color-surface-soft: #f7fafc;
-	--color-text: #212121;
-	--color-text-muted: #5a6e81;
-	--color-input-text: #8ca3b9;
-	--color-border: rgba(31, 41, 51, 0.18);
-	--color-border-strong: rgba(31, 41, 51, 0.32);
+  --brand-50: #f0f9ff;
+  --brand-100: #e0f2fe;
+  --brand-500: #0ea5e9;
+  --brand-600: #0284c7;
+  --brand-900: #0c4a6e;
 
-	/* Feedback colors. */
-	--color-success: #00b474;
-	--color-success-soft: #e6fff0;
-	--color-warning: #fb584e;
-	--color-warning-soft: #ffedec;
-	--color-warning-border: #ffbab6;
+  /* Feedback colors */
+  --success-50: #ecfdf5;
+  --success-500: #10b981;
+  --success-600: #059669;
 
-	/* Semantic helpers. */
-	--color-priority-low: #0f766e;
-	--color-priority-low-soft: #ecfdf5;
-	--color-priority-medium: #b45309;
-	--color-priority-medium-soft: #fffbeb;
-	--color-priority-high: #b91c1c;
-	--color-priority-high-soft: #fef2f2;
-	--color-request-plugin: #1d4ed8;
-	--color-request-improvement: #7c3aed;
-	--color-request-custom: #0f766e;
-	--color-request-other: #475569;
+  --warning-50: #fef3c7;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
 
-	/* Focus helpers. */
-	--color-focus-ring: rgba(14, 165, 164, 0.18);
+  --error-50: #fee2e2;
+  --error-500: #ef4444;
+  --error-600: #dc2626;
 
-	/* Shadows */
-	--color-shadow-strong: rgba(31, 41, 51, 0.32);
-	--color-shadow-soft: rgba(31, 41, 51, 0.12);
+  /* Priority levels */
+  --priority-low-50: #ecfdf5;
+  --priority-low-500: #0f766e;
+
+  --priority-medium-50: #fffbeb;
+  --priority-medium-500: #b45309;
+
+  --priority-high-50: #fef2f2;
+  --priority-high-500: #b91c1c;
+
+  /* Request types */
+  --request-plugin: #1d4ed8;
+  --request-improvement: #7c3aed;
+  --request-custom: #0f766e;
+  --request-other: #475569;
+
+  /* Code blocks */
+  --code-bg: #2c3037;
+  --code-text: #e7e7e7;
+
+  /* Forms */
+  --input-focus: #92acc7;
 }

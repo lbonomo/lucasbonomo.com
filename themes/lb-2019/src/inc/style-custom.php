@@ -87,12 +87,12 @@ function custom_style() {
   }
 
   .mdl-color--secondary {
-    background-color: var( --color-secondary );
-    color: var(--color-primary);
+     background-color: var( --color-secondary, var(--brand-600) );
+     color: var(--color-primary, var(--bg));
   }
 
   .mdl-color-text--secondary {
-    color: var(--color-secondary-text);
+     color: var(--color-secondary-text, var(--bg));
   }
 
   a.checkout-button,

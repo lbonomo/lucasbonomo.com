@@ -24,19 +24,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 	switch ( $request_uri ) {
 
 		case '/':
-			add_filter( 'option_active_plugins', 'wpo_home', 1 );
+			// add_filter( 'option_active_plugins', 'wpo_home', 1 );
 			break;
 
 		case '/entradas/':
-			add_filter( 'option_active_plugins', 'wpo_entradas', 1 );
+			// add_filter( 'option_active_plugins', 'wpo_entradas', 1 );
 			break;
 
 		case '/thunderbird/':
-			add_filter( 'option_active_plugins', 'wpo_thunderbird', 1 );
+			// add_filter( 'option_active_plugins', 'wpo_thunderbird', 1 );
 			break;
 
 		case '/proyectos/':
-			add_filter( 'option_active_plugins', 'wpo_proyectos', 1 );
+			// add_filter( 'option_active_plugins', 'wpo_proyectos', 1 );
 			break;
 	}
 }
@@ -50,6 +50,7 @@ function wpo_home() {
 		'tua-forma/tua-forma.php',
 		'seo-by-rank-math/rank-math.php',
 		'simple-social-icons/simple-social-icons.php',
+		'query-monitor/query-monitor.php',
 	);
 	return $plugin_list;
 }
@@ -61,6 +62,7 @@ function wpo_entradas() {
 		'promotore-simple-analytics/promotore-simple-analytics.php',
 		'seo-by-rank-math/rank-math.php',
 		'simple-social-icons/simple-social-icons.php',
+		'query-monitor/query-monitor.php',
 	);
 	return $plugin_list;
 }
@@ -74,6 +76,7 @@ function wpo_thunderbird() {
 		'seo-by-rank-math/rank-math.php',
 		'simple-social-icons/simple-social-icons.php',
 		'envira-gallery-lite/envira-gallery-lite.php',
+		'query-monitor/query-monitor.php',
 	);
 	return $plugin_list;
 }
@@ -87,7 +90,8 @@ function wpo_proyectos($plugin_list) {
 		'seo-by-rank-math/rank-math.php',
 		'envira-gallery-lite/envira-gallery-lite.php',
 		'advanced-custom-fields-pro/acf.php',
-		'promotore-simple-analytics/promotore-simple-analytics.php'
+		'promotore-simple-analytics/promotore-simple-analytics.php',
+		'query-monitor/query-monitor.php',
 	);
 	return $plugin_list;
 }

@@ -65,7 +65,7 @@ button[type="submit"].single_add_to_cart_button {
 	background: transparent;
 	border: none;
 	border-radius: 2px;
-	color: rgb(0,0,0);
+	color: var(--text-primary);
 	position: relative;
 	height: 36px;
 	min-width: 64px;
@@ -118,7 +118,7 @@ ul.wc_payment_methods {
 }
 
 li.wc_payment_method {
-  border-top: 1px dotted darkgray;
+  border-top: 1px dotted var(--border);
   padding: 0.7em;
 }
 
@@ -127,7 +127,7 @@ li.wc_payment_method label {
 }
 
 li.wc_payment_method:hover {
-  background-color: lightgray;
+  background-color: var(--surface);
 }
 
 div.woocommerce-notices-wrapper {
@@ -135,7 +135,7 @@ div.woocommerce-notices-wrapper {
 }
 
 ul.woocommerce-error {
-	border: 1px red solid;
+	border: 1px solid var(--error-500);
 	padding: 1rem 1rem;
 	border-radius: 3px;
 	margin: 1rem 0;
@@ -186,13 +186,13 @@ ul.products {
 li.product {
   display: flex;
   flex-direction: column;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--border);
   margin: 1rem auto;
   padding: 1rem;
 }
 
 li.product:hover {
-  background-color: #f4f4f4;
+  background-color: var(--surface);
 }
 
 li.product a img {
@@ -241,7 +241,7 @@ h3.product-title {
 }
 
 div.product-description {
-  border-top: 1px dotted darkgray;
+  border-top: 1px dotted var(--border);
   padding: 1rem 0;
 }
 
