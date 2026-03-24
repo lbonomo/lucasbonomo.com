@@ -1,18 +1,20 @@
+/**
+ * ⚠️ DEPRECATED - Este archivo ha sido reemplazado por Vite
+ *
+ * El tema ahora usa:
+ * - Vite para compilar JS y CSS
+ * - vite-plugin-copy para sincronizar archivos PHP, JSON e imágenes
+ * - Scripts NPM para ejecutar el build completo
+ *
+ * Comandos:
+ *   npm run dev    → Inicia servidor de desarrollo Vite
+ *   npm run build  → Compila y sincroniza tema a lb19/
+ *   npm run sync   → Sincroniza solo archivos estáticos (sin compilación)
+ *
+ * Este archivo se mantiene como referencia histórica.
+ */
+
 /*
-# Debug
-
-
-# Dist
-*.php    = Sincronizar
-*.css    = en "dst"
-*.js     = en "dst"
-*.scss   = transcompilar style.scss > CSS en "dst"
-imagenes = optimizar y copiar en "dst"
-
-https://github.com/gruntjs/grunt-contrib-watch
-
-
-*/
 module.exports = function (grunt) {
 
   grunt.initConfig({

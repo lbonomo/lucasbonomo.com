@@ -32,7 +32,7 @@ ul.wp-block-rss {
 }
 
 ul.wp-block-rss a {
-	text-decoration: none
+    text-decoration: none;
 }
 
 li.wp-block-rss__item {

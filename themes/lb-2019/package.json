@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && npm run sync",
+    "preview": "vite preview",
+    "sync": "node scripts/copy-theme-files.js"
   },
   "author": "Lucas Bonomo",
   "license": "GPL-3.0",

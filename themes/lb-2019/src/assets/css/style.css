@@ -1,13 +1,19 @@
 /* Import base */
-@use "sass:meta";
-@use 'colors.scss';
-@use 'normalize.scss';
-@use 'mercadopago.scss';
-@use 'woocommerce.scss';
-@use 'footer.scss';
-@use 'core/buttons.scss';
-@use 'cf7.scss';
-@use 'header.scss';
+@import './colors.css';
+@import './normalize.css';
+@import './mercadopago.css';
+@import './woocommerce.css';
+@import './footer.css';
+@import './core/buttons.css';
+@import './cf7.css';
+@import './header.css';
+@import './pagination.css';
+@import './trabajos.css';
+@import './proyectos.css';
+@import './rss.css';
+@import './404.css';
+@import './style-min760.css' screen and (min-width: 760px);
+@import './style-min1024.css' screen and (min-width: 1024px);
 
 
 .mdl-grid {
@@ -138,7 +144,7 @@
 /*  */
 /* Layout */
 body {
-  font-family: "Roboto"
+  font-family: "Roboto";
 }
 
 body.admin-bar .mdl-layout__container {
@@ -197,9 +203,9 @@ a {
 
 /* Primary menu */
 /* * */
-// .mdl-lb19 .mdl-layout__header-row {
-//   padding-left: 40px;
-// }
+/* .mdl-lb19 .mdl-layout__header-row {
+  padding-left: 40px;
+} */
 
 .mdl-lb19 .mdl-layout__tab-bar-button {
   display: none;
@@ -387,7 +393,7 @@ h1.mdl-card__title-text.post-title {
 }
 
 h4.mdl-card__title-text a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 h2 {
@@ -507,7 +513,7 @@ img.article-image {
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
-  letter-spacing: 0
+  letter-spacing: 0;
 }
 
 .widget a,
@@ -588,11 +594,3 @@ figure img {
   color: var(--text-primary) !important;
   text-shadow: none !important;
 }
-
-@include meta.load-css('pagination.scss');
-@include meta.load-css('trabajos.scss');
-@include meta.load-css('proyectos.scss');
-@include meta.load-css('rss.scss');
-@include meta.load-css('style-min760.scss');
-@include meta.load-css('style-min1024.scss');
-@include meta.load-css('404.scss');

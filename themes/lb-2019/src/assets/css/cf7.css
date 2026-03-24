@@ -6,7 +6,7 @@
 	--cf7-font-weight: 300;
 }
 
-// Align CF7 form with the rest of the content
+/* Align CF7 form with the rest of the content */
 .wpcf7 p {
 	display: flex;
 	flex-direction: column;
@@ -20,7 +20,7 @@
 	align-items: flex-end;
 }
 
-// Fixes the width of the CF7 form selector in the block editor
+/* Fixes the width of the CF7 form selector in the block editor */
 .mdl-card__supporting-text .wp-block-contact-form-7-contact-form-selector {
 	width: 100%;
 }
@@ -160,7 +160,7 @@
 	line-height: 1.4;
 	width: -moz-available;
 	width: -webkit-fill-available;
-	width: fill-available;
+	width: stretch;
 }
 
 .wpcf7 input[type="file"]::file-selector-button,
@@ -305,7 +305,7 @@
 }
 
 .wpcf7 .wpcf7-radio .wpcf7-list-item input[type="radio"]:focus-visible {
-	outline: none
+	outline: none;
 }
 
 .wpcf7 .wpcf7-quiz-label {

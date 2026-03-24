@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
-import { glob } from 'glob'
 import path from 'path'
 
 export default defineConfig({
   root: 'src',
   base: '/wp-content/themes/lb19/',
   server: {
-    middlewareMode: true,
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
     cors: true,
     hmr: {
       host: 'localhost',
