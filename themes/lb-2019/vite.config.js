@@ -66,6 +66,9 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name].min.js',
         chunkFileNames: 'assets/js/[name].[hash].min.js',
         assetFileNames: ({ name }) => {
+          if (/\.(woff2?|ttf|otf|eot)$/i.test(name ?? '')) {
+            return 'assets/fonts/[name][extname]'
+          }
           if (/\.css$/.test(name ?? '')) {
             return 'assets/css/[name].min[extname]'
           }

@@ -11,5 +11,14 @@ fi
 # Get version from style.css
 VERSION=$(grep "Version:" dist/style.css | cut -d':' -f2 | tr -d ' ')
 
-# Create zip file
-zip -r lb-2019.$VERSION.zip dist
+# Create zip file with lb19/ as root directory
+TMP_DIR="$(mktemp -d)"
+mkdir -p "$TMP_DIR/lb19"
+cp -a dist/. "$TMP_DIR/lb19/"
+
+(
+    cd "$TMP_DIR" || exit 1
+    zip -r "$OLDPWD/lb-2019.$VERSION.zip" lb19
+)
+
+rm -rf "$TMP_DIR"

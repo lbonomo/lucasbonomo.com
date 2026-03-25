@@ -22,8 +22,6 @@ const patterns = [
   'acf-json/**/*',
   // Images
   'assets/images/**/*',
-  // Fonts
-  'assets/fonts/**/*',
   // Languages
   'languages/**/*',
   // Vendor assets
@@ -52,6 +50,32 @@ function copyFile(src, dest) {
   const dir = path.dirname(dest)
   ensureDir(dir)
   fs.copyFileSync(src, dest)
+}
+
+/**
+ * Copiar directorio completo recursivamente
+ */
+function copyDirRecursive(src, dest) {
+  if (!fs.existsSync(src)) {
+    return
+  }
+
+  ensureDir(dest)
+  fs.cpSync(src, dest, { recursive: true })
+}
+
+/**
+ * Eliminar directorios legacy de fuentes en dist/assets
+ */
+function removeLegacyFontDirs(destAssetsDir) {
+  const legacyDirs = ['ttf', 'woff', 'woff2', 'otf', 'eot']
+
+  for (const dirName of legacyDirs) {
+    const fullPath = path.join(destAssetsDir, dirName)
+    if (fs.existsSync(fullPath)) {
+      fs.rmSync(fullPath, { recursive: true, force: true })
+    }
+  }
 }
 
 let copiedCount = 0
@@ -95,6 +119,17 @@ for (const pattern of patterns) {
     console.error(`⚠️  Error procesando patrón "${pattern}":`, err.message)
     errorCount++
   }
+}
+
+try {
+  const fontsSrc = path.join(srcDir, 'assets/fonts')
+  const fontsDest = path.join(destDir, 'assets/fonts')
+
+  copyDirRecursive(fontsSrc, fontsDest)
+  removeLegacyFontDirs(path.join(destDir, 'assets'))
+} catch (err) {
+  console.error(`⚠️  Error copiando assets/fonts: ${err.message}`)
+  errorCount++
 }
 
 console.log(`✅ Completado: ${copiedCount} archivos copiados`)

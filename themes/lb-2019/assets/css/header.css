@@ -114,7 +114,7 @@
 }
 
 .menu-link {
-	@apply relative inline-flex items-center px-3 py-2 text-sm font-medium uppercase tracking-wide text-white transition-colors;
+  @apply relative inline-flex items-center px-3 py-2 text-sm font-semibold uppercase tracking-wide text-white transition-colors;
   
 	&::after {
 		@apply absolute bottom-0 left-0 h-[3px] w-0 bg-current transition-[width] duration-300 ease-in-out;
@@ -168,7 +168,7 @@
 }
 
 .mdl-navigation__link {
-  @apply text-sm font-medium uppercase tracking-[0.5px];
+  @apply text-sm font-semibold uppercase tracking-[0.5px];
 }
 
 .mdl-layout__drawer-title {

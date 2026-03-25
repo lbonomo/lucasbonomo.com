@@ -24,16 +24,16 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 
 <!-- template-parts/content-single.php -->
 
-	<div class="post col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm">
-		<div class="grid gap-6 p-6 md:p-8 post-title">
+	<div class="post proyecto-single-card">
+		<div class="post-title proyecto-single-content">
 			<div>
 				<h1><?php the_title(); ?></h1>
 			</div>
 
 			<?php if ( count( $characteristics ) >= 1 ) : ?>
-			<div class="w-full flex flex-wrap gap-2">
+			<div class="proyecto-single-tags">
 				<?php foreach ( $characteristics as $characterist ) : ?>
-					<span class="characterist inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs">
+					<span class="characterist proyecto-single-tag">
 						<span><?php echo esc_html( $characterist ); ?></span>
 					</span>
 				<?php endforeach ?>
@@ -46,7 +46,7 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 				</a>
 			</div>
 
-			<div class="w-full text-right">
+			<div class="proyecto-single-meta">
 				<!-- <span class="post-date"> <?php echo esc_html( get_the_date() ); ?></span> -->
 			</div>
 

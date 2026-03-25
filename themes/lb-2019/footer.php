@@ -17,7 +17,7 @@
 	is_active_sidebar( 'sidebar-4' ) ) { ?>
 
 			<footer class="site-footer bg-[var(--color-primary)]/90 text-[var(--color-primary-text)] mt-12">
-				<div class="mx-auto w-full max-w-7xl px-4 py-10 grid gap-8 md:grid-cols-4">
+				<div class="mx-auto w-fit max-w-7xl px-4 py-10 grid gap-8 md:grid-cols-4">
 					<div>
 						<?php if ( is_active_sidebar( 'sidebar-1' ) ) { dynamic_sidebar( 'sidebar-1' );	} ?>
 					</div>
