@@ -1,14 +1,21 @@
 
 .cta {
-	@apply inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold transition-transform duration-200;
-	background-color: var(--color-secondary);
-	color: var(--color-secondary-text);
+	@apply border-0 inline-flex items-center rounded-sm bg-[var(--color-secondary)] px-4 py-2 text-[var(--color-secondary-text)] text-sm font-semibold transition-transform duration-200;
 
 	&:hover {
 		@apply scale-105;
 	}
 
 	&:focus-visible {
-		@apply outline outline-2 outline-offset-2 outline-slate-400;
+		@apply outline-none;
+	}
+}
+
+a.cta {
+	@apply inline-flex items-center gap-2;
+
+	&::after {
+		@apply no-underline;
+		content: "→";
 	}
 }
