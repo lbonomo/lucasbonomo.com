@@ -9,7 +9,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Get version from style.css
-VERSION=$(grep "Version:" lb19/style.css | cut -d':' -f2 | tr -d ' ')
+VERSION=$(grep "Version:" dist/style.css | cut -d':' -f2 | tr -d ' ')
 
 # Create zip file
-zip -r lb-2019.$VERSION.zip lb19
+zip -r lb-2019.$VERSION.zip dist

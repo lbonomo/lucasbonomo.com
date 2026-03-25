@@ -2,10 +2,10 @@
   "name": "lb19-theme",
   "version": "1.2.2",
   "description": "Lucas Bonomo - Tema WordPress moderno con Vite + Tailwind CSS",
-  "main": "src/main.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run sync && vite build --sourcemap --mode development && vite --mode development",
     "build": "vite build && npm run sync",
     "preview": "vite preview",
     "sync": "node scripts/copy-theme-files.js"

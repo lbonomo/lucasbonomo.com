@@ -1,0 +1,148 @@
+.site-title a {
+  @apply inline-flex items-center;
+}
+
+.site-title a:focus-visible {
+  @apply outline outline-2 outline-current outline-offset-2;
+}
+
+.site-logo {
+  @apply w-auto max-w-[200px] align-middle transition-transform duration-200 ease-in-out;
+}
+
+.site-logo:hover {
+  @apply scale-105;
+}
+
+#mobile-menu-button {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+#mobile-menu-button:hover {
+  @apply bg-white/20;
+}
+
+#mobile-menu-button:focus-visible {
+  @apply outline outline-2 outline-current outline-offset-[-2px];
+}
+
+.hamburger-icon,
+.close-icon {
+  @apply block transition-transform duration-200 ease-in-out;
+}
+
+#mobile-menu-button:hover .hamburger-icon,
+#mobile-menu-button:hover .close-icon {
+  @apply scale-110;
+}
+
+.menu-nav {
+  @apply flex flex-col gap-2 md:flex-row md:items-center md:gap-3 lg:gap-4;
+}
+
+.menu-link {
+	@apply relative inline-flex items-center px-3 py-2 text-sm font-medium uppercase tracking-wide text-white transition-colors;
+  
+	&::after {
+		@apply absolute bottom-0 left-0 h-[3px] w-0 bg-current transition-[width] duration-300 ease-in-out;
+		content: '';
+	}
+	
+	&:hover::after {
+	  @apply w-full;
+	}
+	
+	&:focus-visible {
+	  @apply outline outline-2 outline-current outline-offset-[-2px];
+	}
+	
+	&.active {
+		&::after {
+			@apply w-full;
+		}
+
+		&:hover::after {
+			@apply w-0;
+		}
+
+	}
+}
+
+
+#mobile-menu {
+  animation: slideDown 0.3s ease-out;
+}
+
+#mobile-menu.hidden {
+  display: none !important;
+}
+
+@keyframes slideDown {
+  from {
+    @apply opacity-0 -translate-y-[10px];
+  }
+
+  to {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+.mdl-layout__header-row {
+  @apply pl-5 pr-10;
+}
+
+.mdl-navigation__link {
+  @apply text-sm font-medium uppercase tracking-[0.5px];
+}
+
+.mdl-layout__drawer-title {
+  @apply min-h-0 p-0 leading-normal;
+}
+
+.mdl-layout__title {
+  @apply text-[1.2rem] font-thin;
+}
+
+.is-compact .mdl-layout__title span {
+  @apply hidden;
+}
+
+.content-header .mdl-layout__header-row {
+  @apply h-9;
+}
+
+.is-small-screen .content-header .mdl-layout__header-row {
+  @apply justify-center p-0;
+}
+
+.is-small-screen .custom-logo-link {
+  @apply hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header-row {
+    @apply pl-5 pr-4;
+  }
+}
+
+.mdl-layout__drawer {
+  @apply left-auto right-0 translate-x-[250px] border-l border-r-0 border-[var(--border)];
+}
+
+.mdl-layout__drawer.is-visible {
+  @apply translate-x-0;
+}
+
+.mdl-layout__drawer-button {
+  @apply left-auto right-10;
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__drawer-button {
+    @apply right-1;
+  }
+}
+
+.mdl-layout__drawer-close-button {
+  @apply absolute right-2.5 top-2.5 z-10 text-[var(--text-secondary)];
+}

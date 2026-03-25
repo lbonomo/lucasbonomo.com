@@ -1,3 +1,4 @@
-lb19
 node_modules
 *.zip
+dist/
+vendor/

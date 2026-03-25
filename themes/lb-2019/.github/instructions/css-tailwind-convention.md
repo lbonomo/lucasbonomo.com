@@ -1,153 +1,181 @@
 # CSS Tailwind Convention
 
-## Descripción
-Este documento establece la convención de uso de clases CSS en combinación con Tailwind CSS para mantener el código HTML limpio y legible, y facilitar el mantenimiento de estilos.
+## Description
+This document defines the CSS + Tailwind convention used in this project to keep HTML clean, readable, and maintainable.
 
-## Regla Principal
-**En lugar de aplicar directamente clases de Tailwind en el HTML, se deben definir clases CSS personalizadas en archivos SCSS/CSS que utilicen la directiva `@apply` de Tailwind para agrupar las utilidades correspondientes.**
+## Main Rule
+Do not place long Tailwind utility lists directly in HTML templates.
+Create semantic CSS classes in project CSS files and compose styles with `@apply`.
 
-## Beneficios
-- ✅ HTML más limpio y legible
-- ✅ Estilos centralizados y fáciles de mantener
-- ✅ Mejor reutilización de componentes
-- ✅ Cambios globales más fáciles de implementar
-- ✅ Separación clara entre estructura y presentación
+## Nested CSS Directive
+Nested CSS is allowed and encouraged for component states and structure.
 
-## Ejemplo Correcto
+Use nesting for:
+- `:hover`, `:focus-visible`, `:active`
+- modifier classes (for example `&.active`)
+- pseudo-elements (`&::before`, `&::after`)
+- media-query blocks inside the component
 
-### ❌ Incorrecto: Clases Tailwind directo en HTML
+Keep nesting shallow (recommended max depth: 2 levels) to avoid hard-to-maintain selectors.
+
+Example:
+```scss
+.menu-link {
+    @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide;
+    @apply text-slate-700 transition-colors;
+
+    &:hover {
+        @apply bg-slate-100 text-slate-900;
+    }
+
+    &.active {
+        @apply bg-slate-200 text-slate-900;
+    }
+
+    &:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-blue-500;
+    }
+
+    &::after {
+        content: '';
+        @apply absolute bottom-0 left-0 h-[3px] w-0 bg-current transition-[width] duration-300;
+    }
+
+    &:hover::after {
+        @apply w-full;
+    }
+}
+```
+
+## Benefits
+- Cleaner and more readable HTML
+- Centralized and maintainable styles
+- Better component reuse
+- Easier global refactors
+- Clear separation between structure and presentation
+
+## Correct Usage
+
+### Incorrect: Tailwind utilities directly in HTML
 ```php
 <a href="<?php echo esc_url( $item->url ); ?>"
-   class="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide md:text-white md:hover:bg-white md:hover:bg-opacity-20 text-slate-700 hover:bg-slate-100 hover:text-slate-900">
-    <?php echo esc_html( $item->title ); ?>
+     class="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide md:text-white md:hover:bg-white md:hover:bg-opacity-20 text-slate-700 hover:bg-slate-100 hover:text-slate-900">
+        <?php echo esc_html( $item->title ); ?>
 </a>
 ```
 
-### ✅ Correcto: Usar clases CSS con @apply
-**En HTML (template-parts/menu-primary.php):**
+### Correct: semantic class in HTML + `@apply` in CSS
+In HTML (`template-parts/menu-primary.php`):
 ```php
-<a href="<?php echo esc_url( $item->url ); ?>"
-   class="menu-link">
-    <?php echo esc_html( $item->title ); ?>
+<a href="<?php echo esc_url( $item->url ); ?>" class="menu-link">
+        <?php echo esc_html( $item->title ); ?>
 </a>
 ```
 
-**En SCSS (assets/sass/header.scss):**
+In CSS (`assets/css/header.css`):
 ```scss
 .menu-link {
     @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide;
     @apply text-slate-700 hover:bg-slate-100 hover:text-slate-900;
-    
+
     @media (min-width: 768px) {
-        @apply md:text-white md:hover:bg-white md:hover:bg-opacity-20;
+        @apply text-white;
     }
 }
 ```
 
-## Casos de Uso
+## Use Cases
 
-### 1. Componentes Reutilizables
-Cuando una clase se usa en múltiples elementos, debe definirse en CSS:
+### 1. Reusable Components
 ```scss
 .btn-primary {
-    @apply px-4 py-2 rounded-lg bg-blue-500 text-white font-medium;
-    @apply hover:bg-blue-600 transition-colors;
+    @apply rounded-lg bg-blue-500 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-600;
 }
 
 .btn-secondary {
-    @apply px-4 py-2 rounded-lg border-2 border-gray-300 text-gray-700;
-    @apply hover:border-gray-400 transition-colors;
+    @apply rounded-lg border-2 border-gray-300 px-4 py-2 text-gray-700 transition-colors hover:border-gray-400;
 }
 ```
 
-### 2. Estados Complejos
-Para elementos con múltiples estados (hover, focus, active, etc.):
+### 2. Complex States
 ```scss
 .nav-item {
-    @apply px-3 py-2 text-slate-700 hover:bg-slate-100 transition-colors;
-    
+    @apply px-3 py-2 text-slate-700 transition-colors hover:bg-slate-100;
+
     &.active {
-        @apply bg-slate-200 text-slate-900 font-semibold;
+        @apply bg-slate-200 font-semibold text-slate-900;
     }
-    
+
     &:focus-visible {
         @apply outline-2 outline-offset-2 outline-blue-500;
     }
 }
 ```
 
-### 3. Variaciones Responsivas
-Para elementos que cambian según el breakpoint:
+### 3. Responsive Variants
 ```scss
 .card {
     @apply w-full;
-    
+
     @media (min-width: 768px) {
         @apply w-1/2;
     }
-    
+
     @media (min-width: 1024px) {
         @apply w-1/3;
     }
 }
 ```
 
-## Convenciones de Nombres
+## Naming Conventions
+- Use kebab-case class names
+- Use descriptive, component-oriented names
+- Add component prefixes when useful
 
-- Usar kebab-case para nombres de clases
-- Nombre descriptivo y específico del componente
-- Prefijo del componente si aplica
+Examples:
+- `.menu-link` - menu link
+- `.mobile-menu-button` - mobile menu toggle button
+- `.hero-section` - hero section
+- `.card-primary` - primary card variant
 
-**Ejemplos:**
-- `.menu-link` - enlace de menú
-- `.mobile-menu-button` - botón de menú móvil
-- `.hero-section` - sección hero
-- `.card-primary` - tarjeta principal
+## Style Location
 
-## Ubicación de Estilos
-
-| Tipo de Componente | Ubicación |
+| Component Type | Location |
 |---|---|
-| Header y navegación | `src/assets/sass/header.scss` |
-| Footer | `src/assets/sass/footer.scss` |
-| WooCommerce | `src/assets/sass/woocommerce.scss` |
-| Botones y core | `src/assets/sass/core/buttons.scss` |
-| Estilos globales | `src/assets/sass/style.scss` |
+| Header and navigation | `assets/css/header.css` |
+| Footer | `assets/css/footer.css` |
+| WooCommerce | `assets/css/woocommerce.css` |
+| Buttons and core | `assets/css/core/buttons.css` |
+| Global styles | `assets/css/style.css` |
 
-## Proceso de Build
-
-Después de modificar cualquier archivo SCSS:
+## Build Process
+After changing CSS files:
 
 ```bash
-npm run build  # Compilar Sass a CSS y sincronizar archivos
+npm run build
 ```
 
-Esto generará:
-- `lb19/assets/css/style.css` - CSS compilado y minificado
-- `lb19/template-parts/**` - Archivos sincronizados desde src
+This generates synchronized output under `dist/`.
 
-## Archivo theme.json
+## theme.json Guidance
+For color palette and global variables:
+- Define base palette in `theme.json`
+- Reuse CSS variables in component CSS
+- Avoid hardcoded colors in one-off selectors
 
-Para paleta de colores y variables globales:
-- Definir colores base en `src/theme.json`
-- Usar variables CSS en los archivos SCSS
-- Evitar hardcodear colores en clases individuales
+## Exceptions
+Direct Tailwind classes in HTML can be acceptable for:
+1. One-off single-line utilities in isolated cases
+2. Unique styles used only once
+3. Fast prototypes (must be refactored later)
 
-## Excepciones
+Even in these cases, prefer semantic CSS classes whenever possible.
 
-Las siguientes situaciones **pueden** usar clases Tailwind directamente:
-1. **Utilidades de una sola línea**: Márgenes, padding, display en casos muy específicos
-2. **Estilos únicos**: Clases que se usan solo en un lugar específico
-3. **Prototipos rápidos**: Durante desarrollo rápido (refactorizar después)
-
-Aún así, preferir definir en CSS cuando sea posible.
-
-## Checklist para Revisión
-
-- [ ] Las clases HTML son descriptivas y usan kebab-case
-- [ ] Los estilos están definidos en archivos SCSS/CSS
-- [ ] Se usa `@apply` para aplicar clases Tailwind
-- [ ] Las clases se reutilizan en múltiples lugares
-- [ ] Los estilos están en la ubicación correcta según el tipo
-- [ ] Sin clases Tailwind directamente en el HTML (excepto utilidades simples)
-- [ ] El build se ejecutó después de cambios (`npm run build`)
+## Review Checklist
+- [ ] HTML classes are semantic and use kebab-case
+- [ ] Styles are defined in CSS files
+- [ ] Tailwind composition is done with `@apply`
+- [ ] Reusable UI patterns are centralized
+- [ ] Nesting is used for states/modifiers without excessive depth
+- [ ] Tailwind utility clutter is avoided in templates
+- [ ] Build was run after style updates (`npm run build`)

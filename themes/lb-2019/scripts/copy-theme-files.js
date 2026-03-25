@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Copy static theme files from src/ to lb19/
+ * Copy static theme files from project root to dist/
  * Ejecutado después del build de Vite
  */
 
@@ -12,8 +12,8 @@ import { globSync } from 'glob'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.join(__dirname, '..')
-const srcDir = path.join(rootDir, 'src')
-const destDir = path.join(rootDir, 'lb19')
+const srcDir = rootDir
+const destDir = path.join(rootDir, 'dist')
 
 const patterns = [
   // PHP files
@@ -24,12 +24,16 @@ const patterns = [
   'assets/images/**/*',
   // Fonts
   'assets/fonts/**/*',
+  // Languages
+  'languages/**/*',
+  // Vendor assets
+  'vendor/**/*',
   // Misc
-  '*.txt',
-  '*.json',
   'theme.json',
   'readme.txt',
-  'rtl.css'
+  'rtl.css',
+  'style.css',
+  'screenshot.png'
 ]
 
 /**
@@ -62,7 +66,17 @@ for (const pattern of patterns) {
     const files = globSync(pattern, {
       cwd: srcDir,
       nodir: true,
-      ignore: ['node_modules/**', '.git/**', '*.min.js', '*.min.css']
+      ignore: [
+        'node_modules/**',
+        '.git/**',
+        '.github/**',
+        'docs/**',
+        'scripts/**',
+        'dist/**',
+        'lb19/**',
+        '*.min.js',
+        '*.min.css'
+      ]
     })
 
     for (const file of files) {
