@@ -72,52 +72,55 @@
 <?php wp_head(); ?>
 
 </head>
-<body <?php body_class( 'lb19 bg-slate-100 text-slate-900 min-h-screen' ); ?>>
+<body <?php body_class( 'lb19 lb19-body' ); ?>>
 <?php wp_body_open(); ?>
 
 
-<div class="has-scrolling-header min-h-screen flex flex-col">
+<div class="has-scrolling-header lb19-layout-root">
 
-		<div class="min-h-screen flex flex-col">
+		<div class="lb19-layout-shell">
 
-			<header class="site-header bg-[var(--color-primary)] text-[var(--color-primary-text)] sticky top-0 z-40 shadow-sm">
-				<div class="mx-auto w-full max-w-7xl px-4 py-4">
-					<div class="flex items-center justify-between">
+			<header class="site-header site-header--sticky">
+				<div class="site-header-container">
+					<div class="site-header-row">
 						<!-- Logo on the left -->
-						<div class="flex-shrink-0">
+						<div class="site-brand-wrap">
 							<?php get_template_part( 'template-parts/header', 'title' ); ?>
 						</div>
 
 						<!-- Menu on the right (hidden on mobile) -->
-						<div class="hidden md:block">
+						<div class="site-nav-desktop">
 							<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
 						</div>
 
 						<!-- Mobile menu button -->
-						<button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white hover:bg-opacity-20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+						<button class="menu-toggle site-menu-toggle"
 								aria-expanded="false"
+								aria-label="<?php esc_attr_e( 'Open menu', 'lb19' ); ?>"
+								data-open-label="<?php esc_attr_e( 'Open menu', 'lb19' ); ?>"
+								data-close-label="<?php esc_attr_e( 'Close menu', 'lb19' ); ?>"
 								aria-controls="mobile-menu"
 								id="mobile-menu-button">
-							<span class="sr-only"><?php esc_html_e( 'Open menu', 'lb19' ); ?></span>
+							<span id="mobile-menu-label" class="screen-reader-text"><?php esc_html_e( 'Open menu', 'lb19' ); ?></span>
 							<!-- Hamburger icon -->
-							<svg class="hamburger-icon block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<svg class="hamburger-icon menu-toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 							</svg>
 							<!-- Close icon (X) -->
-							<svg class="close-icon hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<svg class="close-icon menu-toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
 					</div>
 
 					<!-- Mobile menu (hidden by default) -->
-					<div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-white border-opacity-20 pt-4">
+					<div id="mobile-menu" class="site-mobile-menu is-hidden">
 						<?php get_template_part( 'template-parts/menu', 'primary' ); ?>
 					</div>
 				</div>
 	    </header>
 
-			<div class="lb19-ribbon bg-[var(--color-primary)]"></div>
+			<div class="lb19-ribbon"></div>
 
 			<!-- Contenido principal -->
-			<main class="lb19-main flex-1">
+			<main class="lb19-main lb19-main-content">

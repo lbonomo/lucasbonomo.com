@@ -5,7 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "dev": "npm run sync && vite build --sourcemap --mode development && vite --mode development",
+    "dev": "npm run sync && CHOKIDAR_USEPOLLING=true vite build --sourcemap --mode development --watch",
     "build": "vite build && npm run sync",
     "preview": "vite preview",
     "sync": "node scripts/copy-theme-files.js"

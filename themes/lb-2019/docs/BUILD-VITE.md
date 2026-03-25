@@ -12,7 +12,7 @@ npm run build  # Ejecutaba: grunt build (clean + sync + sass)
 
 ### ✅ Ahora (Vite)
 ```bash
-npm run dev    # Ejecuta Vite dev server con HMR en puerto 5173
+npm run dev    # Compila en modo development y queda en watch (recompila al guardar)
 npm run build  # Compila assets + sincroniza archivos estáticos
 npm run sync   # Solo sincroniza archivos (sin compilación)
 npm run preview # Previsualiza el build
@@ -41,10 +41,10 @@ npm run preview # Previsualiza el build
 ```bash
 npm run dev
 ```
-- Inicia Vite en `http://localhost:5173`
-- Hot Module Reload (HMR) automático
-- Los cambios en JS/CSS se reflejan instántaneamente
-- Los cambios en PHP/JSON requieren refresh manual
+- Ejecuta `vite build --watch` en modo development
+- Recompila JS/CSS a `dist/` cada vez que detecta cambios
+- Usa polling (`CHOKIDAR_USEPOLLING=true`) para mejorar deteccion de cambios en Linux/FS montados
+- Los cambios en PHP/JSON requieren `npm run sync` si deben reflejarse en `dist/`
 
 ### Build final
 ```bash
