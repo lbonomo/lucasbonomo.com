@@ -34,9 +34,7 @@ get_header();
 				get_template_part( 'template-parts/content', get_post_type() );
 
 			endwhile;
-				echo "<!-- mdl_the_posts_navigation -->";
-				mdl_the_posts_navigation();
-				echo "<!-- mdl_the_posts_navigation -->";
+				lb19_infinite_scroll_sentinel();
 
 		else :
 			get_template_part( 'template-parts/content', 'none' );

@@ -19,3 +19,24 @@
 .post-nav__spacer {
 	@apply justify-self-center;
 }
+
+.lb-infinite-scroll {
+	@apply col-span-12 flex justify-center py-8;
+}
+
+.lb-infinite-scroll__status {
+	@apply inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-sm text-slate-600;
+}
+
+.lb-infinite-scroll.is-loading .lb-infinite-scroll__status {
+	opacity: 1;
+}
+
+.lb-infinite-scroll:not(.is-loading) .lb-infinite-scroll__status {
+	opacity: 0;
+}
+
+.lb-infinite-scroll.has-error .lb-infinite-scroll__status {
+	opacity: 1;
+	@apply border-rose-300 text-rose-700;
+}

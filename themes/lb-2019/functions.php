@@ -98,6 +98,14 @@ function lb19_scripts() {
 
 	// Load main JavaScript bundle (compiled from Vite)
 	wp_enqueue_script( 'lb19-main', get_template_directory_uri() . '/assets/js/main.min.js', array(), '1.0.0', true );
+	wp_localize_script(
+		'lb19-main',
+		'lb19InfiniteScroll',
+		array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'lb19_infinite_scroll' ),
+		)
+	);
 
 	// Load comment reply script if needed
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -105,6 +113,134 @@ function lb19_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'lb19_scripts', 99 );
+
+/**
+ * Render sentinel used by infinite scroll in archive-like templates.
+ */
+function lb19_infinite_scroll_sentinel() {
+	global $wp_query;
+
+	if ( empty( $wp_query ) || ! isset( $wp_query->max_num_pages ) || $wp_query->max_num_pages < 2 ) {
+		return;
+	}
+
+	$paged      = max( 1, absint( get_query_var( 'paged' ) ) );
+	$post_types = get_query_var( 'post_type' );
+	if ( empty( $post_types ) ) {
+		$post_types = 'post';
+	}
+	if ( is_array( $post_types ) ) {
+		$post_types = implode( ',', array_map( 'sanitize_key', $post_types ) );
+	} else {
+		$post_types = sanitize_key( $post_types );
+	}
+
+	$taxonomy = '';
+	$term_id  = 0;
+	if ( is_category() || is_tag() || is_tax() ) {
+		$term = get_queried_object();
+		if ( isset( $term->taxonomy ) ) {
+			$taxonomy = sanitize_key( $term->taxonomy );
+		}
+		if ( isset( $term->term_id ) ) {
+			$term_id = absint( $term->term_id );
+		}
+	}
+
+	$author = 0;
+	if ( is_author() ) {
+		$author = absint( get_query_var( 'author' ) );
+	}
+
+	$search = '';
+	if ( is_search() ) {
+		$search = get_search_query();
+	}
+
+	echo '<div class="lb-infinite-scroll" data-lb-infinite="1" data-post-type="' . esc_attr( $post_types ) . '" data-next-page="' . esc_attr( (string) ( $paged + 1 ) ) . '" data-max-pages="' . esc_attr( (string) absint( $wp_query->max_num_pages ) ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '" data-term-id="' . esc_attr( (string) $term_id ) . '" data-author="' . esc_attr( (string) $author ) . '" data-search="' . esc_attr( $search ) . '" data-year="' . esc_attr( (string) absint( get_query_var( 'year' ) ) ) . '" data-month="' . esc_attr( (string) absint( get_query_var( 'monthnum' ) ) ) . '" data-day="' . esc_attr( (string) absint( get_query_var( 'day' ) ) ) . '" aria-live="polite"><span class="lb-infinite-scroll__status">Cargando mas contenidos...</span></div>';
+}
+
+/**
+ * AJAX handler to load archive items for infinite scroll.
+ */
+function lb19_ajax_load_more_posts() {
+	check_ajax_referer( 'lb19_infinite_scroll', 'nonce' );
+
+	$paged = isset( $_POST['paged'] ) ? absint( $_POST['paged'] ) : 0;
+	if ( $paged < 2 ) {
+		wp_send_json_error( array( 'message' => 'Invalid page.' ), 400 );
+	}
+
+	$post_type_raw = isset( $_POST['postType'] ) ? sanitize_text_field( wp_unslash( $_POST['postType'] ) ) : 'post';
+	$post_types    = array_filter( array_map( 'sanitize_key', explode( ',', $post_type_raw ) ) );
+	if ( empty( $post_types ) ) {
+		$post_types = array( 'post' );
+	}
+
+	$args = array(
+		'post_type'           => 1 === count( $post_types ) ? $post_types[0] : $post_types,
+		'post_status'         => 'publish',
+		'paged'               => $paged,
+		'ignore_sticky_posts' => true,
+	);
+
+	$taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) : '';
+	$term_id  = isset( $_POST['termId'] ) ? absint( $_POST['termId'] ) : 0;
+	if ( ! empty( $taxonomy ) && $term_id > 0 ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => $taxonomy,
+				'field'    => 'term_id',
+				'terms'    => array( $term_id ),
+			),
+		);
+	}
+
+	$search = isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '';
+	if ( ! empty( $search ) ) {
+		$args['s'] = $search;
+	}
+
+	$author = isset( $_POST['author'] ) ? absint( $_POST['author'] ) : 0;
+	if ( $author > 0 ) {
+		$args['author'] = $author;
+	}
+
+	$year  = isset( $_POST['year'] ) ? absint( $_POST['year'] ) : 0;
+	$month = isset( $_POST['month'] ) ? absint( $_POST['month'] ) : 0;
+	$day   = isset( $_POST['day'] ) ? absint( $_POST['day'] ) : 0;
+	if ( $year > 0 ) {
+		$args['year'] = $year;
+	}
+	if ( $month > 0 ) {
+		$args['monthnum'] = $month;
+	}
+	if ( $day > 0 ) {
+		$args['day'] = $day;
+	}
+
+	$query = new WP_Query( $args );
+
+	ob_start();
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			get_template_part( 'template-parts/content', get_post_type() );
+		}
+	}
+	$html = ob_get_clean();
+	wp_reset_postdata();
+
+	wp_send_json_success(
+		array(
+			'html'      => $html,
+			'has_more'  => $paged < (int) $query->max_num_pages,
+			'next_page' => $paged + 1,
+		)
+	);
+}
+add_action( 'wp_ajax_lb19_load_more_posts', 'lb19_ajax_load_more_posts' );
+add_action( 'wp_ajax_nopriv_lb19_load_more_posts', 'lb19_ajax_load_more_posts' );
 
 
 /**
