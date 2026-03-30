@@ -1,0 +1,21 @@
+.navigation.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: 50px;
+}
+
+.post-nav {
+	@apply col-span-12 grid grid-cols-2 items-center gap-4;
+}
+
+.post-nav__button {
+	@apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold;
+	background-color: var(--color-secondary);
+	color: var(--color-secondary-text);
+}
+
+.post-nav__spacer {
+	@apply justify-self-center;
+}

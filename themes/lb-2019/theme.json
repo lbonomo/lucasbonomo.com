@@ -1,0 +1,155 @@
+{
+    "version": 2,
+    "settings": {
+        "color": {
+            "defaultPalette": false,
+            "custom": false,
+            "palette": [
+                {
+                    "name": "Primario",
+                    "slug": "primary",
+                    "color": "#1F2933"
+                },
+                {
+                    "name": "Secundario",
+                    "slug": "secondary",
+                    "color": "#F4B400"
+                },
+                {
+                    "name": "Acento",
+                    "slug": "accent",
+                    "color": "#0EA5A4"
+                },
+                {
+                    "name": "Fondo",
+                    "slug": "background",
+                    "color": "#F9FAFB"
+                },
+                {
+                    "name": "Primary Text",
+                    "slug": "primary-text",
+                    "color": "#111827"
+                },
+                {
+                    "name": "Secondary Text",
+                    "slug": "secondary-text",
+                    "color": "#374151"
+                }
+            ]
+        },
+        "spacing": {
+            "units": [
+                "px",
+                "em",
+                "rem",
+                "%"
+            ],
+            "blockGap": "1.5rem",
+            "spacingScale": {
+                "operator": "*",
+                "steps": [
+                    {
+                        "step": 0,
+                        "unit": "rem",
+                        "size": "0rem",
+                        "slug": "0"
+                    },
+                    {
+                        "step": 1,
+                        "unit": "rem",
+                        "size": "0.5rem",
+                        "slug": "xs"
+                    },
+                    {
+                        "step": 2,
+                        "unit": "rem",
+                        "size": "1rem",
+                        "slug": "sm"
+                    },
+                    {
+                        "step": 3,
+                        "unit": "rem",
+                        "size": "1.5rem",
+                        "slug": "md"
+                    },
+                    {
+                        "step": 4,
+                        "unit": "rem",
+                        "size": "2rem",
+                        "slug": "lg"
+                    },
+                    {
+                        "step": 5,
+                        "unit": "rem",
+                        "size": "3rem",
+                        "slug": "xl"
+                    },
+                    {
+                        "step": 6,
+                        "unit": "rem",
+                        "size": "4rem",
+                        "slug": "xxl"
+                    }
+                ]
+            }
+        },
+        "blocks": {
+            "core/group": {
+                "spacing": {
+                    "margin": true,
+                    "padding": true
+                }
+            },
+            "core/cover": {
+                "spacing": {
+                    "margin": true,
+                    "padding": true
+                }
+            },
+            "core/media-text": {
+                "spacing": {
+                    "margin": true,
+                    "padding": true
+                }
+            },
+            "core/columns": {
+                "spacing": {
+                    "margin": true,
+                    "padding": true
+                }
+            },
+            "core/buttons": {
+                "spacing": {
+                    "blockGap": "1rem"
+                },
+                "layout": {
+                    "type": "flex",
+                    "justifyContent": "center",
+                    "flexWrap": "wrap"
+                }
+            }
+        }
+    },
+    "styles": {
+        "color": {
+            "background": "#ffffff",
+            "text": "#212121"
+        },
+        "blocks": {
+            "core/button": {
+                "color": {
+                    "background": "var:preset|color|secondary",
+                    "text": "var:preset|color|primary-text"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "0.75rem",
+                        "right": "1.5rem",
+                        "bottom": "0.75rem",
+                        "left": "1.5rem"
+                    }
+                }
+            }
+        }
+    }
+}

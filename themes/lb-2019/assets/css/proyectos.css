@@ -1,0 +1,85 @@
+.proyecto-archive-grid {
+	@apply m-8 grid grid-cols-12 gap-6;
+}
+
+.proyecto-single-card {
+	@apply col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm;
+}
+
+.proyecto-single-content {
+	@apply grid gap-6 p-6 md:p-8;
+}
+
+.proyecto-single-tags {
+	@apply flex w-full flex-wrap gap-2;
+}
+
+.proyecto-single-tag {
+	@apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs;
+}
+
+.proyecto-single-meta {
+	@apply w-full text-right;
+}
+
+.proyecto-card {
+	@apply flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm md:col-span-6;
+}
+
+.proyecto-card-tags {
+	@apply w-full overflow-hidden whitespace-nowrap truncate;
+}
+
+.proyecto-card-tags .proyecto-card-pill {
+	@apply mr-2 inline-flex align-middle;
+}
+
+.proyecto-card-pill {
+	@apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs;
+}
+
+.proyecto-card-media {
+	@apply w-full max-h-64 overflow-hidden rounded-md border border-gray-300;
+}
+
+.proyecto-card-body {
+	@apply w-full md:col-span-7;
+}
+
+.proyecto-card-side {
+	@apply grid w-full gap-2 md:col-span-5;
+}
+
+.proyecto-card-title {
+	@apply text-2xl font-semibold leading-tight text-slate-900 font-semibold;
+}
+
+.proyecto-card-content {
+	@apply mt-3 space-y-3;
+	
+	p {
+		@apply text-base text-slate-600;
+	}
+}
+
+.proyecto-card-footer {
+	@apply mt-auto flex justify-end;
+}
+
+img.proyect-image {
+	width: 100%;
+	height: auto;
+}
+
+.mdl-chip {
+	margin: 0;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 10px;
+	&.characterist {
+		.mdl-chip__text {
+			font-size: 10px;
+
+		}
+	}
+}

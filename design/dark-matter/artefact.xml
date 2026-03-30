@@ -1,0 +1,1856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artefact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="artefact.xsd" name="Dark Matter" slug="dark-matter" type="code-package" schemaVersion="2">
+  <file path="style.css">
+    <description>Main theme stylesheet with theme header and custom CSS for Dark Matter aesthetic — scanlines, grid overlays, card hover effects, sticky header, and electric teal accents.</description>
+    <content><![CDATA[
+/*
+Theme Name: Dark Matter
+Author: WordPress Telex
+Description: A moody, cinematic dark portfolio theme for freelancers and systems designers. Features electric teal accents, monospace UI typography, scanline overlays, and a dramatic dark aesthetic. Built with TailwindCSS and reusable PHP template parts.
+Version: 0.1.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GPLv2 or later
+Text Domain: dark-matter
+Tags: portfolio, dark, custom-colors, custom-logo, featured-images, threaded-comments
+
+Dark Matter — Systems-grade portfolio theme.
+*/
+
+:root {
+	--void: #0A0A0A;
+	--deep-navy: #0D0F1A;
+	--card-bg: #111420;
+	--electric: #4AF0F0;
+	--cool-white: #E8E8EC;
+	--muted-grey: #A8A8A8;
+	--dim-grey: #555555;
+	--border-subtle: rgba(74, 240, 240, 0.15);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--void);
+	color: var(--cool-white);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+/* Sticky Header */
+.site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background: rgba(10, 10, 10, 0.85);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Logo cursor blink */
+.logo-cursor {
+	display: inline-block;
+	width: 8px;
+	height: 16px;
+	background: var(--electric);
+	animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
+/* Status dot pulse */
+.status-dot {
+	width: 6px;
+	height: 6px;
+	background: var(--electric);
+	border-radius: 50%;
+	box-shadow: 0 0 8px var(--electric);
+	animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+	0%, 100% { box-shadow: 0 0 8px var(--electric); }
+	50% { box-shadow: 0 0 20px var(--electric), 0 0 40px rgba(74, 240, 240, 0.3); }
+}
+
+/* Hero scanline overlay */
+.hero-scanline {
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	pointer-events: none;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(74, 240, 240, 0.015) 2px,
+		rgba(74, 240, 240, 0.015) 4px
+	);
+}
+
+/* Hero grid overlay */
+.hero-grid-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+	pointer-events: none;
+	background:
+		linear-gradient(90deg, rgba(74, 240, 240, 0.03) 1px, transparent 1px),
+		linear-gradient(0deg, rgba(74, 240, 240, 0.03) 1px, transparent 1px);
+	background-size: 120px 120px;
+}
+
+/* Hero image treatment */
+.hero-bg-element {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.hero-bg-element::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to right,
+		var(--void) 0%,
+		rgba(10, 10, 10, 0.7) 30%,
+		rgba(10, 10, 10, 0.3) 70%,
+		rgba(10, 10, 10, 0.5) 100%
+	);
+	z-index: 2;
+}
+
+.hero-bg-element::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40%;
+	background: linear-gradient(to top, var(--void) 0%, transparent 100%);
+	z-index: 3;
+}
+
+.hero-bg-element img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: saturate(0.15) contrast(1.2) brightness(0.6);
+}
+
+/* Nav link underline animation */
+.nav-link {
+	position: relative;
+}
+
+.nav-link::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background: var(--electric);
+	transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+	width: 100%;
+}
+
+/* CTA button base */
+.btn-electric {
+	border: 1px solid var(--electric);
+	color: var(--electric);
+	background: transparent;
+	transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn-electric:hover {
+	background: var(--electric);
+	color: var(--void);
+}
+
+/* Card styles */
+.dm-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-subtle);
+	transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dm-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--electric);
+	box-shadow: 0 8px 32px rgba(74, 240, 240, 0.08);
+}
+
+/* Card image */
+.dm-card-image {
+	position: relative;
+	overflow: hidden;
+}
+
+.dm-card-image img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	filter: saturate(0.3) contrast(1.1) brightness(0.7);
+	transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.dm-card:hover .dm-card-image img {
+	filter: saturate(0.5) contrast(1.1) brightness(0.8);
+	transform: scale(1.03);
+}
+
+/* Section divider */
+.section-divider {
+	height: 1px;
+	background: linear-gradient(to right, transparent, var(--border-subtle), transparent);
+}
+
+/* Scroll indicator */
+.scroll-line {
+	width: 1px;
+	height: 40px;
+	background: linear-gradient(to bottom, var(--electric), transparent);
+}
+
+/* Service card number */
+.service-number {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Contact banner glow */
+.contact-glow {
+	position: relative;
+}
+
+.contact-glow::before {
+	content: '';
+	position: absolute;
+	inset: -1px;
+	border-radius: inherit;
+	background: linear-gradient(135deg, rgba(74, 240, 240, 0.15), transparent 50%);
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in-up {
+	animation: fadeInUp 0.6s ease forwards;
+	opacity: 0;
+}
+
+.fade-in-up-delay-1 { animation-delay: 0.1s; }
+.fade-in-up-delay-2 { animation-delay: 0.2s; }
+.fade-in-up-delay-3 { animation-delay: 0.3s; }
+.fade-in-up-delay-4 { animation-delay: 0.4s; }
+
+/* Responsive hero adjustments */
+@media (max-width: 768px) {
+	.hero-bg-element {
+		width: 100%;
+		height: 40%;
+		top: auto;
+		bottom: 0;
+	}
+
+	.hero-bg-element::after {
+		background: linear-gradient(
+			to top,
+			var(--void) 10%,
+			rgba(10, 10, 10, 0.8) 50%,
+			rgba(10, 10, 10, 0.4) 100%
+		);
+	}
+}
+
+/* Footer credit */
+.footer-credit a {
+	color: var(--electric);
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.footer-credit a:hover {
+	opacity: 0.7;
+}
+]]></content>
+  </file>
+  <file path="theme.json">
+    <description>Theme configuration for Dark Matter — colors, typography, spacing, and layout settings.</description>
+    <content><![CDATA[
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "800px",
+			"wideSize": "1280px"
+		},
+		"color": {
+			"palette": [
+				{ "slug": "void", "color": "#0A0A0A", "name": "Void" },
+				{ "slug": "deep-navy", "color": "#0D0F1A", "name": "Deep Navy" },
+				{ "slug": "card-bg", "color": "#111420", "name": "Card Background" },
+				{ "slug": "electric", "color": "#4AF0F0", "name": "Electric Teal" },
+				{ "slug": "cool-white", "color": "#E8E8EC", "name": "Cool White" },
+				{ "slug": "muted-grey", "color": "#A8A8A8", "name": "Muted Grey" },
+				{ "slug": "dim-grey", "color": "#555555", "name": "Dim Grey" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"slug": "display",
+					"name": "Display"
+				},
+				{
+					"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+					"slug": "body",
+					"name": "Body"
+				},
+				{
+					"fontFamily": "'Courier New', 'Courier', monospace",
+					"slug": "mono",
+					"name": "Mono"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "tiny", "size": "0.6rem", "name": "Tiny" },
+				{ "slug": "small", "size": "0.75rem", "name": "Small" },
+				{ "slug": "medium", "size": "1rem", "name": "Medium" },
+				{ "slug": "large", "size": "1.25rem", "name": "Large" },
+				{ "slug": "x-large", "size": "1.75rem", "name": "Extra Large" },
+				{ "slug": "huge", "size": "clamp(2.5rem, 4vw, 3.5rem)", "name": "Huge" }
+			]
+		},
+		"spacing": {
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#0A0A0A",
+			"text": "#E8E8EC"
+		},
+		"typography": {
+			"fontFamily": "'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif",
+			"fontSize": "1rem",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif",
+					"lineHeight": "1.1"
+				},
+				"color": {
+					"text": "#E8E8EC"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#4AF0F0"
+				},
+				":hover": {
+					"color": {
+						"text": "#E8E8EC"
+					}
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "1.5rem"
+		}
+	}
+}
+]]></content>
+  </file>
+  <file path="functions.php">
+    <description>Theme setup, enqueues, nav menus, custom post type support, and Tailwind CSS integration.</description>
+    <content><![CDATA[<?php
+/**
+ * Dark Matter Theme Functions
+ *
+ * @package dark-matter
+ */
+
+require_once get_template_directory() . '/inc/class-nav-walkers.php';
+require_once get_template_directory() . '/inc/template-functions.php';
+
+if ( ! function_exists( 'dark_matter_setup' ) ) {
+	function dark_matter_setup() {
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'editor-styles' );
+		add_editor_style( 'style.css' );
+		add_theme_support( 'custom-logo', array(
+			'height'      => 40,
+			'width'       => 200,
+			'flex-height' => true,
+			'flex-width'  => true,
+		) );
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script',
+		) );
+		add_theme_support( 'automatic-feed-links' );
+
+		register_nav_menus( array(
+			'primary' => esc_html__( 'Primary Menu', 'dark-matter' ),
+		) );
+	}
+}
+add_action( 'after_setup_theme', 'dark_matter_setup' );
+
+if ( ! function_exists( 'dark_matter_enqueue_assets' ) ) {
+	function dark_matter_enqueue_assets() {
+		wp_enqueue_style(
+			'dark-matter-tailwind',
+			'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
+			array(),
+			'2.2.19'
+		);
+
+		wp_enqueue_style(
+			'dark-matter-style',
+			get_stylesheet_uri(),
+			array( 'dark-matter-tailwind' ),
+			wp_get_theme()->get( 'Version' )
+		);
+
+		wp_enqueue_style(
+			'dark-matter-fonts',
+			'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap',
+			array(),
+			null
+		);
+
+		wp_enqueue_script(
+			'dark-matter-scripts',
+			get_template_directory_uri() . '/assets/js/dark-matter.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'dark_matter_enqueue_assets' );
+
+if ( ! function_exists( 'dark_matter_enqueue_block_assets' ) ) {
+	function dark_matter_enqueue_block_assets() {
+		wp_enqueue_style(
+			'dark-matter-google-fonts',
+			'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap',
+			array(),
+			null
+		);
+	}
+}
+add_action( 'enqueue_block_assets', 'dark_matter_enqueue_block_assets' );
+
+if ( ! function_exists( 'dark_matter_body_classes' ) ) {
+	function dark_matter_body_classes( $classes ) {
+		$classes[] = 'bg-black text-gray-200 antialiased';
+		return $classes;
+	}
+}
+add_filter( 'body_class', 'dark_matter_body_classes' );
+
+if ( ! function_exists( 'dark_matter_custom_excerpt_length' ) ) {
+	function dark_matter_custom_excerpt_length( $length ) {
+		return 18;
+	}
+}
+add_filter( 'excerpt_length', 'dark_matter_custom_excerpt_length' );
+
+if ( ! function_exists( 'dark_matter_excerpt_more' ) ) {
+	function dark_matter_excerpt_more( $more ) {
+		return '&hellip;';
+	}
+}
+add_filter( 'excerpt_more', 'dark_matter_excerpt_more' );
+
+/**
+ * Rewrite theme:./ URLs in block content on the frontend.
+ */
+if ( ! function_exists( 'dark_matter_rewrite_theme_urls' ) ) {
+	function dark_matter_rewrite_theme_urls( $content ) {
+		if ( ! $content ) {
+			return $content;
+		}
+		$base    = get_stylesheet_directory_uri();
+		$content = preg_replace( '/(src|href)=(["\']?)theme:\.\//', '$1=$2' . $base . '/', $content );
+		$content = preg_replace( '/url\((["\']?)theme:\.\//', 'url($1' . $base . '/', $content );
+		return $content;
+	}
+}
+add_filter( 'render_block', 'dark_matter_rewrite_theme_urls' );
+
+/**
+ * Enqueue editor script for theme:./ URL rewriting.
+ */
+if ( ! function_exists( 'dark_matter_editor_assets_rewrite' ) ) {
+	function dark_matter_editor_assets_rewrite() {
+		$script_path = get_stylesheet_directory() . '/theme-assets-editor-rewrite.js';
+		if ( file_exists( $script_path ) ) {
+			wp_enqueue_script(
+				'theme-assets-editor-rewrite',
+				get_stylesheet_directory_uri() . '/theme-assets-editor-rewrite.js',
+				array( 'wp-hooks', 'wp-compose', 'wp-element' ),
+				'1.0.0',
+				true
+			);
+			wp_add_inline_script(
+				'theme-assets-editor-rewrite',
+				'window.THEME_ASSETS_BASE_URL=' . wp_json_encode( get_stylesheet_directory_uri() ) . ';',
+				'before'
+			);
+		}
+	}
+}
+add_action( 'enqueue_block_editor_assets', 'dark_matter_editor_assets_rewrite' );
+]]></content>
+  </file>
+  <file path="header.php">
+    <description>Site header with sticky navigation, logo cursor, and monospace nav links.</description>
+    <content><![CDATA[<?php
+/**
+ * Header template
+ *
+ * @package dark-matter
+ */
+?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
+<header class="site-header">
+	<div class="max-w-screen-xl mx-auto px-6 flex items-center justify-between h-16">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2 no-underline" style="font-family: 'JetBrains Mono', 'Courier New', monospace;">
+			<span class="logo-cursor"></span>
+			<span class="text-xs tracking-widest uppercase" style="color: var(--electric);">
+				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+			</span>
+		</a>
+
+		<nav class="hidden md:flex items-center gap-8" style="font-family: 'JetBrains Mono', 'Courier New', monospace;">
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'primary',
+				'container'      => false,
+				'items_wrap'     => '%3$s',
+				'fallback_cb'    => 'dark_matter_fallback_menu',
+				'walker'         => new Dark_Matter_Nav_Walker(),
+			) );
+			?>
+			<a href="#contact" class="btn-electric text-xs tracking-wider uppercase px-5 py-2 no-underline" style="font-family: 'JetBrains Mono', 'Courier New', monospace;">
+				<?php esc_html_e( 'Start a Project', 'dark-matter' ); ?>
+			</a>
+		</nav>
+
+		<button id="dm-mobile-toggle" class="md:hidden flex flex-col gap-1.5 p-2 bg-transparent border-0 cursor-pointer" aria-label="<?php esc_attr_e( 'Toggle navigation', 'dark-matter' ); ?>">
+			<span class="block w-6 h-px" style="background: var(--electric);"></span>
+			<span class="block w-4 h-px" style="background: var(--electric);"></span>
+			<span class="block w-6 h-px" style="background: var(--electric);"></span>
+		</button>
+	</div>
+
+	<div id="dm-mobile-menu" class="hidden md:hidden px-6 pb-6" style="background: rgba(10, 10, 10, 0.95); font-family: 'JetBrains Mono', 'Courier New', monospace;">
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'primary',
+			'container'      => false,
+			'items_wrap'     => '<div class="flex flex-col gap-4 pt-4">%3$s</div>',
+			'fallback_cb'    => 'dark_matter_fallback_mobile_menu',
+			'walker'         => new Dark_Matter_Mobile_Nav_Walker(),
+		) );
+		?>
+		<a href="#contact" class="btn-electric text-xs tracking-wider uppercase px-5 py-3 no-underline block text-center mt-4">
+			<?php esc_html_e( 'Start a Project', 'dark-matter' ); ?>
+		</a>
+	</div>
+</header>
+
+<div style="height: 64px;"></div>
+]]></content>
+  </file>
+  <file path="footer.php">
+    <description>Site footer with credit line and closing tags.</description>
+    <content><![CDATA[<?php
+/**
+ * Footer template
+ *
+ * @package dark-matter
+ */
+?>
+
+<footer class="py-12 border-t" style="border-color: var(--border-subtle); background: var(--void);">
+	<div class="max-w-screen-xl mx-auto px-6">
+		<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+			<div class="flex items-center gap-2" style="font-family: 'JetBrains Mono', 'Courier New', monospace;">
+				<span class="logo-cursor"></span>
+				<span class="text-xs tracking-widest uppercase" style="color: var(--electric);">
+					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+				</span>
+			</div>
+
+			<p class="text-xs footer-credit" style="color: var(--dim-grey); font-family: 'JetBrains Mono', 'Courier New', monospace; letter-spacing: 0.05em;">
+				<?php
+				printf(
+					/* translators: 1: Telex link, 2: WordPress link */
+					esc_html__( 'Created with %1$s, powered by %2$s', 'dark-matter' ),
+					'<a href="https://telex.automattic.ai" target="_blank" rel="noopener noreferrer">Telex</a>',
+					'<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a>'
+				);
+				?>
+			</p>
+
+			<div class="text-xs" style="color: var(--dim-grey); font-family: 'JetBrains Mono', 'Courier New', monospace; letter-spacing: 0.1em;">
+				&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<?php wp_footer(); ?>
+</body>
+</html>
+]]></content>
+  </file>
+  <file path="inc/class-nav-walkers.php">
+    <description>Custom nav menu walkers for desktop and mobile navigation.</description>
+    <content><![CDATA[<?php
+/**
+ * Custom Nav Menu Walkers
+ *
+ * @package dark-matter
+ */
+
+if ( ! class_exists( 'Dark_Matter_Nav_Walker' ) ) {
+	class Dark_Matter_Nav_Walker extends Walker_Nav_Menu {
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$output .= '<a href="' . esc_url( $item->url ) . '" class="nav-link text-xs tracking-wider uppercase no-underline transition-colors duration-200" style="color: var(--muted-grey);">';
+			$output .= esc_html( $item->title );
+			$output .= '</a>';
+		}
+
+		public function end_el( &$output, $item, $depth = 0, $args = null ) {
+			// No wrapping li needed.
+		}
+	}
+}
+
+if ( ! class_exists( 'Dark_Matter_Mobile_Nav_Walker' ) ) {
+	class Dark_Matter_Mobile_Nav_Walker extends Walker_Nav_Menu {
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+			$output .= '<a href="' . esc_url( $item->url ) . '" class="text-xs tracking-wider uppercase no-underline block py-2" style="color: var(--muted-grey); border-bottom: 1px solid var(--border-subtle);">';
+			$output .= esc_html( $item->title );
+			$output .= '</a>';
+		}
+
+		public function end_el( &$output, $item, $depth = 0, $args = null ) {
+			// No wrapping li needed.
+		}
+	}
+}
+
+if ( ! function_exists( 'dark_matter_fallback_menu' ) ) {
+	function dark_matter_fallback_menu() {
+		$links = array(
+			'#services' => __( 'Services', 'dark-matter' ),
+			'#work'     => __( 'Work', 'dark-matter' ),
+			'#journal'  => __( 'Journal', 'dark-matter' ),
+			'#about'    => __( 'About', 'dark-matter' ),
+		);
+		foreach ( $links as $href => $label ) {
+			echo '<a href="' . esc_url( $href ) . '" class="nav-link text-xs tracking-wider uppercase no-underline transition-colors duration-200" style="color: var(--muted-grey);">' . esc_html( $label ) . '</a>';
+		}
+	}
+}
+
+if ( ! function_exists( 'dark_matter_fallback_mobile_menu' ) ) {
+	function dark_matter_fallback_mobile_menu() {
+		echo '<div class="flex flex-col gap-4 pt-4">';
+		$links = array(
+			'#services' => __( 'Services', 'dark-matter' ),
+			'#work'     => __( 'Work', 'dark-matter' ),
+			'#journal'  => __( 'Journal', 'dark-matter' ),
+			'#about'    => __( 'About', 'dark-matter' ),
+		);
+		foreach ( $links as $href => $label ) {
+			echo '<a href="' . esc_url( $href ) . '" class="text-xs tracking-wider uppercase no-underline block py-2" style="color: var(--muted-grey); border-bottom: 1px solid var(--border-subtle);">' . esc_html( $label ) . '</a>';
+		}
+		echo '</div>';
+	}
+}
+]]></content>
+  </file>
+  <file path="inc/template-functions.php">
+    <description>Helper functions for template rendering — card components and section utilities.</description>
+    <content><![CDATA[<?php
+/**
+ * Template helper functions
+ *
+ * @package dark-matter
+ */
+
+if ( ! function_exists( 'dark_matter_render_post_card' ) ) {
+	/**
+	 * Render a post card component.
+	 *
+	 * @param WP_Post $post The post object.
+	 * @param array   $args Optional display arguments.
+	 */
+	function dark_matter_render_post_card( $post, $args = array() ) {
+		$defaults = array(
+			'show_excerpt' => true,
+			'show_date'    => true,
+			'show_meta'    => true,
+		);
+		$args = wp_parse_args( $args, $defaults );
+		?>
+		<article class="dm-card overflow-hidden fade-in-up" style="font-family: 'Trebuchet MS', 'Lucida Grande', sans-serif;">
+			<?php if ( has_post_thumbnail( $post ) ) : ?>
+				<div class="dm-card-image">
+					<?php echo get_the_post_thumbnail( $post, 'medium_large', array( 'class' => 'w-full' ) ); ?>
+				</div>
+			<?php else : ?>
+				<div class="dm-card-image" style="background: linear-gradient(135deg, var(--deep-navy), var(--card-bg)); height: 200px; display: flex; align-items: center; justify-content: center;">
+					<span style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;">No Image</span>
+				</div>
+			<?php endif; ?>
+
+			<div class="p-6">
+				<?php if ( $args['show_meta'] ) : ?>
+					<div class="flex items-center gap-3 mb-3">
+						<?php
+						$categories = get_the_category( $post->ID );
+						if ( ! empty( $categories ) ) :
+						?>
+							<span class="text-xs tracking-widest uppercase" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">
+								<?php echo esc_html( $categories[0]->name ); ?>
+							</span>
+						<?php endif; ?>
+						<?php if ( $args['show_date'] ) : ?>
+							<span class="text-xs" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">
+								<?php echo esc_html( get_the_date( 'M d, Y', $post ) ); ?>
+							</span>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
+
+				<h3 class="text-lg font-semibold mb-2 leading-tight" style="font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;">
+					<a href="<?php echo esc_url( get_permalink( $post ) ); ?>" class="no-underline transition-colors duration-200" style="color: var(--cool-white);">
+						<?php echo esc_html( get_the_title( $post ) ); ?>
+					</a>
+				</h3>
+
+				<?php if ( $args['show_excerpt'] ) : ?>
+					<p class="text-sm leading-relaxed" style="color: var(--muted-grey);">
+						<?php echo esc_html( get_the_excerpt( $post ) ); ?>
+					</p>
+				<?php endif; ?>
+
+				<div class="mt-4 pt-4" style="border-top: 1px solid var(--border-subtle);">
+					<a href="<?php echo esc_url( get_permalink( $post ) ); ?>" class="text-xs tracking-wider uppercase no-underline transition-colors duration-200" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+						<?php esc_html_e( 'Read More', 'dark-matter' ); ?> &rarr;
+					</a>
+				</div>
+			</div>
+		</article>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'dark_matter_render_cpt_card' ) ) {
+	/**
+	 * Render a CPT card component.
+	 *
+	 * @param WP_Post $post The post object.
+	 * @param array   $args Optional display arguments.
+	 */
+	function dark_matter_render_cpt_card( $post, $args = array() ) {
+		$defaults = array(
+			'show_excerpt' => true,
+			'label_text'   => '',
+		);
+		$args = wp_parse_args( $args, $defaults );
+
+		$post_type_obj = get_post_type_object( get_post_type( $post ) );
+		$label = ! empty( $args['label_text'] ) ? $args['label_text'] : ( $post_type_obj ? $post_type_obj->labels->singular_name : '' );
+		?>
+		<article class="dm-card overflow-hidden fade-in-up" style="font-family: 'Trebuchet MS', 'Lucida Grande', sans-serif;">
+			<?php if ( has_post_thumbnail( $post ) ) : ?>
+				<div class="dm-card-image">
+					<?php echo get_the_post_thumbnail( $post, 'medium_large', array( 'class' => 'w-full' ) ); ?>
+				</div>
+			<?php else : ?>
+				<div class="dm-card-image" style="background: linear-gradient(135deg, var(--deep-navy), var(--card-bg)); height: 200px; display: flex; align-items: center; justify-content: center;">
+					<div style="width: 48px; height: 48px; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center;">
+						<span style="color: var(--electric); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;">//</span>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<div class="p-6">
+				<?php if ( $label ) : ?>
+					<span class="inline-block text-xs tracking-widest uppercase mb-3" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">
+						<?php echo esc_html( $label ); ?>
+					</span>
+				<?php endif; ?>
+
+				<h3 class="text-lg font-semibold mb-2 leading-tight" style="font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;">
+					<a href="<?php echo esc_url( get_permalink( $post ) ); ?>" class="no-underline transition-colors duration-200" style="color: var(--cool-white);">
+						<?php echo esc_html( get_the_title( $post ) ); ?>
+					</a>
+				</h3>
+
+				<?php if ( $args['show_excerpt'] ) : ?>
+					<p class="text-sm leading-relaxed" style="color: var(--muted-grey);">
+						<?php echo esc_html( get_the_excerpt( $post ) ); ?>
+					</p>
+				<?php endif; ?>
+
+				<div class="mt-4 pt-4" style="border-top: 1px solid var(--border-subtle);">
+					<a href="<?php echo esc_url( get_permalink( $post ) ); ?>" class="text-xs tracking-wider uppercase no-underline transition-colors duration-200" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+						<?php esc_html_e( 'View Details', 'dark-matter' ); ?> &rarr;
+					</a>
+				</div>
+			</div>
+		</article>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'dark_matter_section_header' ) ) {
+	/**
+	 * Render a section header with number, title and subtitle.
+	 *
+	 * @param string $number  Section number (e.g. "01").
+	 * @param string $title   Section title.
+	 * @param string $subtitle Optional subtitle.
+	 */
+	function dark_matter_section_header( $number, $title, $subtitle = '' ) {
+		?>
+		<div class="mb-12 fade-in-up">
+			<div class="flex items-center gap-4 mb-4">
+				<span class="service-number text-xs tracking-widest" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.2em;">
+					<?php echo esc_html( $number ); ?>
+				</span>
+				<span class="block flex-1" style="height: 1px; background: var(--border-subtle);"></span>
+			</div>
+			<h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: 0.02em;">
+				<?php echo esc_html( $title ); ?>
+			</h2>
+			<?php if ( $subtitle ) : ?>
+				<p class="mt-3 text-sm leading-relaxed max-w-xl" style="color: var(--muted-grey);">
+					<?php echo esc_html( $subtitle ); ?>
+				</p>
+			<?php endif; ?>
+		</div>
+		<?php
+	}
+}
+]]></content>
+  </file>
+  <file path="template-parts/hero.php">
+    <description>Hero section with full-viewport layout, scanline overlays, grid pattern, and dramatic typography.</description>
+    <content><![CDATA[<?php
+/**
+ * Template Part: Hero Section
+ *
+ * @package dark-matter
+ */
+?>
+<section id="hero" class="relative flex items-end overflow-hidden" style="min-height: 100vh; background: var(--void);">
+
+	<div class="hero-bg-element">
+		<img
+			src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/hero.png' ); ?>"
+			alt="<?php esc_attr_e( 'Hero portrait', 'dark-matter' ); ?>"
+			loading="eager"
+		/>
+	</div>
+
+	<div class="hero-scanline"></div>
+	<div class="hero-grid-overlay"></div>
+
+	<div class="hidden lg:block absolute top-24 right-8 text-right z-10" style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim-grey); line-height: 1.8;">
+		53.3498&deg; N<br/>
+		6.2603&deg; W<br/>
+		<br/>
+		v3.2.1
+	</div>
+
+	<div class="relative z-10 w-full max-w-screen-xl mx-auto px-6" style="padding-bottom: 8vh; padding-top: 100px;">
+
+		<div class="flex items-center gap-3 mb-8 fade-in-up" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--electric);">
+			<span class="status-dot"></span>
+			<?php esc_html_e( 'Available for Q2 2026', 'dark-matter' ); ?>
+		</div>
+
+		<h1 class="fade-in-up fade-in-up-delay-1" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'Franklin Gothic Bold', sans-serif; font-weight: 900; font-size: clamp(3.5rem, 10vw, 8rem); line-height: 0.88; letter-spacing: -0.03em; text-transform: uppercase; color: var(--electric); max-width: 80vw; margin-bottom: 2.5rem;">
+			<span class="block"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+		</h1>
+
+		<p class="fade-in-up fade-in-up-delay-2" style="font-family: 'Trebuchet MS', 'Lucida Grande', sans-serif; font-size: 1.05rem; line-height: 1.65; color: var(--muted-grey); max-width: 480px; margin-bottom: 3rem;">
+			<?php echo esc_html( get_bloginfo( 'description' ) ?: __( 'Systems designer and full-stack engineer building precise, performance-driven digital products. I partner with studios and startups to ship work that scales cleanly.', 'dark-matter' ) ); ?>
+		</p>
+
+		<a href="#work" class="btn-electric inline-block no-underline fade-in-up fade-in-up-delay-3" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 2.5rem;">
+			<?php esc_html_e( 'View Selected Work', 'dark-matter' ); ?>
+		</a>
+	</div>
+
+	<div class="hidden lg:flex absolute right-8 z-10 text-right" style="bottom: 8vh; font-family: 'JetBrains Mono', monospace;">
+		<div>
+			<div class="mb-2" style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim-grey);">
+				<?php esc_html_e( 'Discipline', 'dark-matter' ); ?>
+				<span style="color: var(--muted-grey);">// <?php esc_html_e( 'Design + Engineering', 'dark-matter' ); ?></span>
+			</div>
+			<div class="mb-2" style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim-grey);">
+				<?php esc_html_e( 'Stack', 'dark-matter' ); ?>
+				<span style="color: var(--muted-grey);">// <?php esc_html_e( 'React, Node, WordPress, Go', 'dark-matter' ); ?></span>
+			</div>
+			<div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim-grey);">
+				<?php esc_html_e( 'Based', 'dark-matter' ); ?>
+				<span style="color: var(--muted-grey);">// <?php esc_html_e( 'Dublin, IE', 'dark-matter' ); ?></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 z-10" style="bottom: 3vh;">
+		<span class="scroll-line"></span>
+		<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim-grey); writing-mode: vertical-lr;">
+			<?php esc_html_e( 'Scroll', 'dark-matter' ); ?>
+		</span>
+	</div>
+</section>
+]]></content>
+  </file>
+  <file path="template-parts/services.php">
+    <description>Services grid section with numbered service cards and monospace labels.</description>
+    <content><![CDATA[<?php
+/**
+ * Template Part: Services Section
+ *
+ * @package dark-matter
+ */
+
+$services = array(
+	array(
+		'number' => '01',
+		'title'  => __( 'Systems Design', 'dark-matter' ),
+		'desc'   => __( 'Architectural planning and design systems that scale. From component libraries to full-stack infrastructure blueprints.', 'dark-matter' ),
+		'tags'   => array( 'Architecture', 'Design Systems', 'Documentation' ),
+	),
+	array(
+		'number' => '02',
+		'title'  => __( 'Frontend Engineering', 'dark-matter' ),
+		'desc'   => __( 'High-performance interfaces built with React, Vue, and modern CSS. Pixel-perfect implementations with accessibility baked in.', 'dark-matter' ),
+		'tags'   => array( 'React', 'Vue', 'Performance' ),
+	),
+	array(
+		'number' => '03',
+		'title'  => __( 'Full-Stack Development', 'dark-matter' ),
+		'desc'   => __( 'End-to-end product development from API design to deployment pipelines. Node, Go, and WordPress at scale.', 'dark-matter' ),
+		'tags'   => array( 'Node.js', 'Go', 'WordPress' ),
+	),
+	array(
+		'number' => '04',
+		'title'  => __( 'Creative Direction', 'dark-matter' ),
+		'desc'   => __( 'Brand identity, motion design, and visual storytelling. Translating complex ideas into compelling digital experiences.', 'dark-matter' ),
+		'tags'   => array( 'Branding', 'Motion', 'Strategy' ),
+	),
+);
+?>
+
+<section id="services" class="py-20 md:py-32" style="background: var(--void);">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<?php dark_matter_section_header(
+			'01',
+			__( 'Services', 'dark-matter' ),
+			__( 'Focused capabilities across design and engineering. Each engagement is scoped to deliver measurable outcomes.', 'dark-matter' )
+		); ?>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<?php foreach ( $services as $index => $service ) : ?>
+				<div class="dm-card p-8 fade-in-up fade-in-up-delay-<?php echo esc_attr( $index + 1 ); ?>">
+					<div class="flex items-start justify-between mb-6">
+						<span class="service-number" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--electric);">
+							<?php echo esc_html( $service['number'] ); ?>
+						</span>
+						<span style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">//</span>
+					</div>
+
+					<h3 class="text-xl font-bold mb-3 uppercase tracking-wide" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: 0.02em; color: var(--cool-white);">
+						<?php echo esc_html( $service['title'] ); ?>
+					</h3>
+
+					<p class="text-sm leading-relaxed mb-6" style="color: var(--muted-grey);">
+						<?php echo esc_html( $service['desc'] ); ?>
+					</p>
+
+					<div class="flex flex-wrap gap-2">
+						<?php foreach ( $service['tags'] as $tag ) : ?>
+							<span class="text-xs px-3 py-1" style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted-grey); border: 1px solid var(--border-subtle);">
+								<?php echo esc_html( $tag ); ?>
+							</span>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+]]></content>
+  </file>
+  <file path="template-parts/latest-posts.php">
+    <description>Latest blog posts section using the reusable post card component.</description>
+    <content><![CDATA[<?php
+/**
+ * Template Part: Latest Posts
+ *
+ * @package dark-matter
+ */
+
+$recent_posts = get_posts( array(
+	'numberposts' => 3,
+	'post_status' => 'publish',
+) );
+
+if ( empty( $recent_posts ) ) {
+	return;
+}
+?>
+
+<section id="journal" class="py-20 md:py-32" style="background: var(--deep-navy);">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<?php dark_matter_section_header(
+			'02',
+			__( 'Journal', 'dark-matter' ),
+			__( 'Thoughts on systems thinking, engineering craft, and the intersection of design and technology.', 'dark-matter' )
+		); ?>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<?php foreach ( $recent_posts as $post ) :
+				setup_postdata( $post );
+				dark_matter_render_post_card( $post );
+			endforeach;
+			wp_reset_postdata();
+			?>
+		</div>
+
+		<div class="mt-12 text-center fade-in-up">
+			<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn-electric inline-block no-underline" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem;">
+				<?php esc_html_e( 'View All Entries', 'dark-matter' ); ?> &rarr;
+			</a>
+		</div>
+	</div>
+</section>
+]]></content>
+  </file>
+  <file path="template-parts/cpt-showcase.php">
+    <description>Dynamic CPT showcase section — queries any registered custom post type passed via template configuration.</description>
+    <content><![CDATA[<?php
+/**
+ * Template Part: CPT Showcase
+ *
+ * Dynamically queries a registered custom post type.
+ *
+ * Usage in templates:
+ *   set_query_var( 'dm_cpt_slug', 'project' );
+ *   set_query_var( 'dm_cpt_section_number', '03' );
+ *   set_query_var( 'dm_cpt_title', 'Selected Work' );
+ *   set_query_var( 'dm_cpt_subtitle', 'Recent projects...' );
+ *   set_query_var( 'dm_cpt_count', 4 );
+ *   get_template_part( 'template-parts/cpt-showcase' );
+ *
+ * @package dark-matter
+ */
+
+$cpt_slug   = get_query_var( 'dm_cpt_slug', 'post' );
+$section_no = get_query_var( 'dm_cpt_section_number', '03' );
+$title      = get_query_var( 'dm_cpt_title', __( 'Selected Work', 'dark-matter' ) );
+$subtitle   = get_query_var( 'dm_cpt_subtitle', '' );
+$count      = absint( get_query_var( 'dm_cpt_count', 4 ) );
+
+if ( ! post_type_exists( $cpt_slug ) && 'post' !== $cpt_slug ) {
+	return;
+}
+
+$cpt_posts = get_posts( array(
+	'post_type'   => $cpt_slug,
+	'numberposts' => $count,
+	'post_status' => 'publish',
+) );
+
+if ( empty( $cpt_posts ) ) {
+	return;
+}
+
+$columns = $count >= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2';
+?>
+
+<section id="work" class="py-20 md:py-32" style="background: var(--void);">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<?php dark_matter_section_header( $section_no, $title, $subtitle ); ?>
+
+		<div class="grid grid-cols-1 <?php echo esc_attr( $columns ); ?> gap-6">
+			<?php foreach ( $cpt_posts as $cpt_post ) :
+				dark_matter_render_cpt_card( $cpt_post );
+			endforeach; ?>
+		</div>
+	</div>
+</section>
+]]></content>
+  </file>
+  <file path="template-parts/contact-cta.php">
+    <description>Contact CTA banner section with dramatic styling and electric teal glow.</description>
+    <content><![CDATA[<?php
+/**
+ * Template Part: Contact CTA Banner
+ *
+ * @package dark-matter
+ */
+?>
+<section id="contact" class="py-20 md:py-32" style="background: var(--deep-navy);">
+	<div class="max-w-screen-xl mx-auto px-6">
+		<div class="contact-glow relative overflow-hidden p-12 md:p-20 text-center" style="background: var(--card-bg); border: 1px solid var(--border-subtle);">
+
+			<div class="relative z-10">
+				<div class="mb-6 fade-in-up" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--electric);">
+					<?php esc_html_e( '// Ready to collaborate?', 'dark-matter' ); ?>
+				</div>
+
+				<h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 fade-in-up fade-in-up-delay-1" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: -0.01em; line-height: 1.05;">
+					<?php esc_html_e( "Let's Build Something", 'dark-matter' ); ?><br/>
+					<span style="color: var(--electric);"><?php esc_html_e( 'Extraordinary', 'dark-matter' ); ?></span>
+				</h2>
+
+				<p class="text-sm leading-relaxed max-w-lg mx-auto mb-10 fade-in-up fade-in-up-delay-2" style="color: var(--muted-grey);">
+					<?php esc_html_e( 'I take on a limited number of projects each quarter to ensure every engagement gets the focus it deserves. Get in touch to discuss your next build.', 'dark-matter' ); ?>
+				</p>
+
+				<div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up fade-in-up-delay-3">
+					<a href="mailto:hello@example.com" class="btn-electric inline-block no-underline" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 2.5rem;">
+						<?php esc_html_e( 'Start a Conversation', 'dark-matter' ); ?>
+					</a>
+					<span class="text-xs" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+						<?php esc_html_e( 'or', 'dark-matter' ); ?>
+					</span>
+					<a href="#" class="text-xs tracking-wider uppercase no-underline transition-colors duration-200" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+						<?php esc_html_e( 'Schedule a Call', 'dark-matter' ); ?> &rarr;
+					</a>
+				</div>
+			</div>
+
+			<div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(74, 240, 240, 0.05) 0%, transparent 60%);"></div>
+		</div>
+	</div>
+</section>
+]]></content>
+  </file>
+  <file path="front-page.php">
+    <description>Homepage template assembling hero, services, latest posts, CPT showcase, and contact CTA sections.</description>
+    <content><![CDATA[<?php
+/**
+ * Front Page Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+
+// Hero
+get_template_part( 'template-parts/hero' );
+
+// Divider
+echo '<div class="section-divider"></div>';
+
+// Services
+get_template_part( 'template-parts/services' );
+
+// Divider
+echo '<div class="section-divider"></div>';
+
+// CPT Showcase — configure which CPT to display.
+// Change 'dm_cpt_slug' to any registered custom post type slug.
+set_query_var( 'dm_cpt_slug', 'post' );
+set_query_var( 'dm_cpt_section_number', '03' );
+set_query_var( 'dm_cpt_title', __( 'Selected Work', 'dark-matter' ) );
+set_query_var( 'dm_cpt_subtitle', __( 'A curated selection of recent projects across design, engineering, and creative direction.', 'dark-matter' ) );
+set_query_var( 'dm_cpt_count', 3 );
+get_template_part( 'template-parts/cpt-showcase' );
+
+// Divider
+echo '<div class="section-divider"></div>';
+
+// Latest Posts
+get_template_part( 'template-parts/latest-posts' );
+
+// Divider
+echo '<div class="section-divider"></div>';
+
+// Contact CTA
+get_template_part( 'template-parts/contact-cta' );
+
+get_footer();
+]]></content>
+  </file>
+  <file path="index.php">
+    <description>Main fallback template displaying posts in the Dark Matter card grid style.</description>
+    <content><![CDATA[<?php
+/**
+ * Main Index Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="py-20 md:py-32" style="background: var(--void); min-height: 70vh;">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<?php dark_matter_section_header(
+			'///',
+			__( 'All Posts', 'dark-matter' ),
+			__( 'Browse the complete archive.', 'dark-matter' )
+		); ?>
+
+		<?php if ( have_posts() ) : ?>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<?php while ( have_posts() ) :
+					the_post();
+					dark_matter_render_post_card( $GLOBALS['post'] );
+				endwhile; ?>
+			</div>
+
+			<div class="mt-16 flex items-center justify-center gap-4" style="font-family: 'JetBrains Mono', monospace;">
+				<?php
+				the_posts_pagination( array(
+					'mid_size'  => 1,
+					'prev_text' => '&larr; ' . __( 'Prev', 'dark-matter' ),
+					'next_text' => __( 'Next', 'dark-matter' ) . ' &rarr;',
+				) );
+				?>
+			</div>
+		<?php else : ?>
+			<div class="text-center py-20">
+				<p class="text-sm" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase;">
+					<?php esc_html_e( 'No entries found.', 'dark-matter' ); ?>
+				</p>
+			</div>
+		<?php endif; ?>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="single.php">
+    <description>Single post template with monospace meta, full-width featured image, and article content.</description>
+    <content><![CDATA[<?php
+/**
+ * Single Post Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="py-20 md:py-32" style="background: var(--void); min-height: 70vh;">
+	<div class="max-w-3xl mx-auto px-6">
+		<?php while ( have_posts() ) :
+			the_post();
+		?>
+			<article>
+				<div class="mb-8 fade-in-up">
+					<div class="flex items-center gap-3 mb-4">
+						<?php
+						$categories = get_the_category();
+						if ( ! empty( $categories ) ) :
+						?>
+							<span class="text-xs tracking-widest uppercase" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">
+								<?php echo esc_html( $categories[0]->name ); ?>
+							</span>
+						<?php endif; ?>
+						<span style="height: 1px; flex: 1; background: var(--border-subtle);"></span>
+						<time class="text-xs" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;">
+							<?php echo esc_html( get_the_date( 'M d, Y' ) ); ?>
+						</time>
+					</div>
+
+					<h1 class="text-3xl md:text-4xl font-bold uppercase leading-tight mb-4" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: -0.01em;">
+						<?php the_title(); ?>
+					</h1>
+
+					<p class="text-sm" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;">
+						<?php
+						printf(
+							/* translators: %s: author name */
+							esc_html__( 'by %s', 'dark-matter' ),
+							esc_html( get_the_author() )
+						);
+						?>
+						&mdash;
+						<?php
+						printf(
+							/* translators: %s: reading time */
+							esc_html__( '%s min read', 'dark-matter' ),
+							esc_html( max( 1, round( str_word_count( wp_strip_all_tags( get_the_content() ) ) / 250 ) ) )
+						);
+						?>
+					</p>
+				</div>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+					<div class="mb-12 overflow-hidden fade-in-up fade-in-up-delay-1" style="border: 1px solid var(--border-subtle);">
+						<?php the_post_thumbnail( 'large', array(
+							'class' => 'w-full',
+							'style' => 'filter: saturate(0.4) contrast(1.1) brightness(0.8);',
+						) ); ?>
+					</div>
+				<?php endif; ?>
+
+				<div class="prose prose-invert max-w-none fade-in-up fade-in-up-delay-2" style="color: var(--muted-grey); line-height: 1.75; font-size: 1.05rem;">
+					<?php the_content(); ?>
+				</div>
+
+				<div class="mt-16 pt-8" style="border-top: 1px solid var(--border-subtle);">
+					<div class="flex items-center justify-between">
+						<div>
+							<?php
+							$prev_post = get_previous_post();
+							if ( $prev_post ) :
+							?>
+								<a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>" class="text-xs tracking-wider uppercase no-underline" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+									&larr; <?php esc_html_e( 'Previous', 'dark-matter' ); ?>
+								</a>
+							<?php endif; ?>
+						</div>
+						<div>
+							<?php
+							$next_post = get_next_post();
+							if ( $next_post ) :
+							?>
+								<a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>" class="text-xs tracking-wider uppercase no-underline" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">
+									<?php esc_html_e( 'Next', 'dark-matter' ); ?> &rarr;
+								</a>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</article>
+		<?php endwhile; ?>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="page.php">
+    <description>Page template for static pages.</description>
+    <content><![CDATA[<?php
+/**
+ * Page Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="py-20 md:py-32" style="background: var(--void); min-height: 70vh;">
+	<div class="max-w-3xl mx-auto px-6">
+		<?php while ( have_posts() ) :
+			the_post();
+		?>
+			<article>
+				<h1 class="text-3xl md:text-4xl font-bold uppercase leading-tight mb-8 fade-in-up" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: -0.01em;">
+					<?php the_title(); ?>
+				</h1>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+					<div class="mb-12 overflow-hidden fade-in-up fade-in-up-delay-1" style="border: 1px solid var(--border-subtle);">
+						<?php the_post_thumbnail( 'large', array(
+							'class' => 'w-full',
+							'style' => 'filter: saturate(0.4) contrast(1.1) brightness(0.8);',
+						) ); ?>
+					</div>
+				<?php endif; ?>
+
+				<div class="prose prose-invert max-w-none fade-in-up fade-in-up-delay-1" style="color: var(--muted-grey); line-height: 1.75; font-size: 1.05rem;">
+					<?php the_content(); ?>
+				</div>
+			</article>
+		<?php endwhile; ?>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="archive.php">
+    <description>Archive template for category, tag, date, and author archives.</description>
+    <content><![CDATA[<?php
+/**
+ * Archive Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="py-20 md:py-32" style="background: var(--void); min-height: 70vh;">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<div class="mb-12 fade-in-up">
+			<div class="flex items-center gap-4 mb-4">
+				<span class="text-xs tracking-widest" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.2em;">
+					<?php esc_html_e( 'ARCHIVE', 'dark-matter' ); ?>
+				</span>
+				<span class="block flex-1" style="height: 1px; background: var(--border-subtle);"></span>
+			</div>
+			<h1 class="text-2xl md:text-3xl font-bold uppercase tracking-wide" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: 0.02em;">
+				<?php the_archive_title(); ?>
+			</h1>
+			<?php the_archive_description( '<p class="mt-3 text-sm leading-relaxed max-w-xl" style="color: var(--muted-grey);">', '</p>' ); ?>
+		</div>
+
+		<?php if ( have_posts() ) : ?>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<?php while ( have_posts() ) :
+					the_post();
+					dark_matter_render_post_card( $GLOBALS['post'] );
+				endwhile; ?>
+			</div>
+
+			<div class="mt-16 flex items-center justify-center gap-4" style="font-family: 'JetBrains Mono', monospace;">
+				<?php
+				the_posts_pagination( array(
+					'mid_size'  => 1,
+					'prev_text' => '&larr; ' . __( 'Prev', 'dark-matter' ),
+					'next_text' => __( 'Next', 'dark-matter' ) . ' &rarr;',
+				) );
+				?>
+			</div>
+		<?php else : ?>
+			<div class="text-center py-20">
+				<p class="text-sm" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase;">
+					<?php esc_html_e( 'No entries found.', 'dark-matter' ); ?>
+				</p>
+			</div>
+		<?php endif; ?>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="search.php">
+    <description>Search results template.</description>
+    <content><![CDATA[<?php
+/**
+ * Search Results Template
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="py-20 md:py-32" style="background: var(--void); min-height: 70vh;">
+	<div class="max-w-screen-xl mx-auto px-6">
+
+		<div class="mb-12 fade-in-up">
+			<div class="flex items-center gap-4 mb-4">
+				<span class="text-xs tracking-widest" style="color: var(--electric); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.2em;">
+					<?php esc_html_e( 'SEARCH', 'dark-matter' ); ?>
+				</span>
+				<span class="block flex-1" style="height: 1px; background: var(--border-subtle);"></span>
+			</div>
+			<h1 class="text-2xl md:text-3xl font-bold uppercase tracking-wide" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; letter-spacing: 0.02em;">
+				<?php
+				printf(
+					/* translators: %s: search query */
+					esc_html__( 'Results for "%s"', 'dark-matter' ),
+					'<span style="color: var(--electric);">' . esc_html( get_search_query() ) . '</span>'
+				);
+				?>
+			</h1>
+		</div>
+
+		<?php if ( have_posts() ) : ?>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<?php while ( have_posts() ) :
+					the_post();
+					dark_matter_render_post_card( $GLOBALS['post'] );
+				endwhile; ?>
+			</div>
+
+			<div class="mt-16 flex items-center justify-center gap-4" style="font-family: 'JetBrains Mono', monospace;">
+				<?php
+				the_posts_pagination( array(
+					'mid_size'  => 1,
+					'prev_text' => '&larr; ' . __( 'Prev', 'dark-matter' ),
+					'next_text' => __( 'Next', 'dark-matter' ) . ' &rarr;',
+				) );
+				?>
+			</div>
+		<?php else : ?>
+			<div class="text-center py-20">
+				<p class="text-sm mb-6" style="color: var(--dim-grey); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase;">
+					<?php esc_html_e( 'No results found. Try a different search term.', 'dark-matter' ); ?>
+				</p>
+				<?php get_search_form(); ?>
+			</div>
+		<?php endif; ?>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="404.php">
+    <description>404 error page with dramatic styling.</description>
+    <content><![CDATA[<?php
+/**
+ * 404 Error Page
+ *
+ * @package dark-matter
+ */
+
+get_header();
+?>
+
+<main class="flex items-center justify-center" style="min-height: 80vh; background: var(--void);">
+	<div class="text-center px-6">
+
+		<div class="mb-8 fade-in-up" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif; font-size: clamp(5rem, 15vw, 12rem); line-height: 0.9; letter-spacing: -0.03em; text-transform: uppercase; color: var(--electric); opacity: 0.15;">
+			404
+		</div>
+
+		<div class="mb-4 fade-in-up fade-in-up-delay-1" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--electric);">
+			<?php esc_html_e( '// Page Not Found', 'dark-matter' ); ?>
+		</div>
+
+		<h1 class="text-2xl md:text-3xl font-bold uppercase mb-4 fade-in-up fade-in-up-delay-2" style="font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;">
+			<?php esc_html_e( 'Signal Lost', 'dark-matter' ); ?>
+		</h1>
+
+		<p class="text-sm mb-10 fade-in-up fade-in-up-delay-3" style="color: var(--muted-grey); max-width: 400px; margin-left: auto; margin-right: auto;">
+			<?php esc_html_e( 'The page you are looking for has been moved, deleted, or never existed. Try navigating back to a known location.', 'dark-matter' ); ?>
+		</p>
+
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn-electric inline-block no-underline fade-in-up fade-in-up-delay-4" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 2.5rem;">
+			<?php esc_html_e( 'Return Home', 'dark-matter' ); ?>
+		</a>
+	</div>
+</main>
+
+<?php
+get_footer();
+]]></content>
+  </file>
+  <file path="assets/js/dark-matter.js">
+    <description>Theme JavaScript — mobile menu toggle and scroll-triggered fade-in animations.</description>
+    <content><![CDATA[
+/**
+ * Dark Matter Theme Scripts
+ *
+ * @package dark-matter
+ */
+
+( function() {
+	'use strict';
+
+	/* Mobile menu toggle */
+	var toggle = document.getElementById( 'dm-mobile-toggle' );
+	var mobileMenu = document.getElementById( 'dm-mobile-menu' );
+
+	if ( toggle && mobileMenu ) {
+		toggle.addEventListener( 'click', function() {
+			var isHidden = mobileMenu.classList.contains( 'hidden' );
+			if ( isHidden ) {
+				mobileMenu.classList.remove( 'hidden' );
+			} else {
+				mobileMenu.classList.add( 'hidden' );
+			}
+		} );
+	}
+
+	/* Scroll-triggered fade-in animations */
+	function initScrollAnimations() {
+		var elements = document.querySelectorAll( '.fade-in-up' );
+
+		if ( ! elements.length ) {
+			return;
+		}
+
+		if ( 'IntersectionObserver' in window ) {
+			var observer = new IntersectionObserver( function( entries ) {
+				entries.forEach( function( entry ) {
+					if ( entry.isIntersecting ) {
+						entry.target.style.animationPlayState = 'running';
+						observer.unobserve( entry.target );
+					}
+				} );
+			}, {
+				threshold: 0.1,
+				rootMargin: '0px 0px -40px 0px',
+			} );
+
+			elements.forEach( function( el ) {
+				el.style.animationPlayState = 'paused';
+				observer.observe( el );
+			} );
+		}
+	}
+
+	/* Smooth scroll for anchor links */
+	function initSmoothScroll() {
+		var links = document.querySelectorAll( 'a[href^="#"]' );
+
+		links.forEach( function( link ) {
+			link.addEventListener( 'click', function( e ) {
+				var targetId = this.getAttribute( 'href' );
+
+				if ( targetId === '#' ) {
+					return;
+				}
+
+				var target = document.querySelector( targetId );
+
+				if ( target ) {
+					e.preventDefault();
+					var headerHeight = 64;
+					var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+					window.scrollTo( {
+						top: targetPosition,
+						behavior: 'smooth',
+					} );
+
+					/* Close mobile menu if open */
+					if ( mobileMenu && ! mobileMenu.classList.contains( 'hidden' ) ) {
+						mobileMenu.classList.add( 'hidden' );
+					}
+				}
+			} );
+		} );
+	}
+
+	/* Header background opacity on scroll */
+	function initHeaderScroll() {
+		var header = document.querySelector( '.site-header' );
+
+		if ( ! header ) {
+			return;
+		}
+
+		window.addEventListener( 'scroll', function() {
+			if ( window.scrollY > 100 ) {
+				header.style.background = 'rgba(10, 10, 10, 0.95)';
+			} else {
+				header.style.background = 'rgba(10, 10, 10, 0.85)';
+			}
+		}, { passive: true } );
+	}
+
+	/* Initialize */
+	document.addEventListener( 'DOMContentLoaded', function() {
+		initScrollAnimations();
+		initSmoothScroll();
+		initHeaderScroll();
+	} );
+} )();
+]]></content>
+  </file>
+  <file path="templates/index.html">
+    <description>Required block theme fallback template (unused in classic mode but required by theme spec).</description>
+    <content><![CDATA[
+<!-- wp:paragraph -->
+<p>This is a classic PHP theme. Templates are handled via PHP template files.</p>
+<!-- /wp:paragraph -->
+]]></content>
+  </file>
+  <file path="styles.php">
+    <content><![CDATA[<?php
+
+/**
+ * Theme styles and editor styles setup.
+ * It enqueues the main stylesheet in the front-end and in the editor.
+**/
+
+add_action( 'after_setup_theme', function () {
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'style.css' );
+} );
+
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'telex-theme-style', get_stylesheet_uri(), [], wp_get_theme()->get( 'Version' ) );
+} );]]></content>
+  </file>
+  <file path="theme-assets-rewrite.php">
+    <content><![CDATA[<?php
+
+/**
+ * Rewrites theme:./ URLs in block content.
+ * It allows theme asset relative paths in templates e.g. theme:./assets/image.png
+**/
+
+// Rewrites theme:./ URLs of block content in the frontend.
+add_filter( 'render_block', function ( $content ) {
+	if ( ! $content ) {
+		return $content;
+	}
+	$base = get_stylesheet_directory_uri();
+	$content = preg_replace( '/(src|href)=(["\']?)theme:\.\//', '$1=$2' . $base . '/', $content );
+	$content = preg_replace( '/url\((["\']?)theme:\.\//', 'url($1' . $base . '/', $content );
+	return $content;
+} );
+
+// Enqueues script for theme:./ URL rewriting in the editor.
+add_action( 'enqueue_block_editor_assets', function () {
+	wp_enqueue_script( 'theme-assets-editor-rewrite', get_stylesheet_directory_uri() . '/theme-assets-editor-rewrite.js', [ 'wp-hooks', 'wp-compose', 'wp-element' ], '1.0.0', true );
+	wp_add_inline_script( 'theme-assets-editor-rewrite', 'window.THEME_ASSETS_BASE_URL=' . wp_json_encode( get_stylesheet_directory_uri() ) . ';', 'before' );
+} );
+]]></content>
+  </file>
+  <file path="theme-assets-editor-rewrite.js">
+    <content><![CDATA[/**
+ * Theme Assets Editor Rewrite
+ *
+ * This script rewrites URLs in block attributes that start with 'theme:./'
+ * to point to the correct theme assets.
+ * It allows blocks in templates to reference theme assets using relative paths in the editor.
+**/
+(function (wp) {
+	const base = window.THEME_ASSETS_BASE_URL || '';
+	const prefix = 'theme:./';
+
+	if (!wp?.hooks || !wp?.compose) return;
+
+	const rewrite = (url) => {
+		if (typeof url === 'string' && url.startsWith(prefix)) {
+			const path = url.slice(prefix.length);
+			return base + '/' + path;
+		}
+		return null;
+	};
+
+	// Recursively walk any value and rewrite all theme:./ URLs found in it.
+	// Returns a new structure if anything changed, or null if nothing changed.
+	const deepRewrite = (value) => {
+		if (typeof value === 'string') {
+			return rewrite(value);
+		}
+		if (Array.isArray(value)) {
+			let changed = false;
+			const result = value.map((item) => {
+				const rewritten = deepRewrite(item);
+				if (rewritten !== null) {
+					changed = true;
+					return rewritten;
+				}
+				return item;
+			});
+			return changed ? result : null;
+		}
+		if (value && typeof value === 'object') {
+			let changed = false;
+			const result = {};
+			for (const key of Object.keys(value)) {
+				const rewritten = deepRewrite(value[key]);
+				if (rewritten !== null) {
+					changed = true;
+					result[key] = rewritten;
+				} else {
+					result[key] = value[key];
+				}
+			}
+			return changed ? result : null;
+		}
+		return null;
+	};
+
+	wp.hooks.addFilter(
+		'editor.BlockEdit',
+		'theme-assets/rewrite-image-urls',
+		wp.compose.createHigherOrderComponent((BlockEdit) => (props) => {
+			const { attributes } = props;
+
+			// Deep-rewrite all attributes to resolve any theme:./ URLs
+			const rewrittenAttributes = deepRewrite(attributes);
+
+			// Pass rewritten URLs to BlockEdit for display only, without persisting changes
+			if (rewrittenAttributes) {
+				const modifiedProps = {
+					...props,
+					attributes: rewrittenAttributes,
+				};
+				return wp.element.createElement(BlockEdit, modifiedProps);
+			}
+
+			return wp.element.createElement(BlockEdit, props);
+		}, 'withThemeAssetsRewrite')
+	);
+
+})(window.wp);]]></content>
+  </file>
+</artefact>

@@ -1,0 +1,219 @@
+# Copyright (C) 2021
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lb19\n"
+"POT-Creation-Date: 2021-03-29 02:39:25+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2021-03-28 23:49-0300\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: \n"
+"Language: es_ES\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: org/lb19/404.php:18
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oops! Esta página no se puede encontrar."
+
+#: org/lb19/404.php:22 src/404.php:15
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Parece que no se encontró nada en esta ubicación. ¿Quizás probar uno de los "
+"enlaces a continuación o una búsqueda?"
+
+#: org/lb19/404.php:31
+msgid "Most Used Categories"
+msgstr ""
+
+#. translators: %1$s: smiley
+#: org/lb19/404.php:47
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#. translators: 1: title.
+#: org/lb19/comments.php:35 src/comments.php:35
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: org/lb19/comments.php:66 src/comments.php:66
+msgid "Comments are closed."
+msgstr ""
+
+#: org/lb19/footer.php:18
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#. translators: %s: CMS name, i.e. WordPress.
+#: org/lb19/footer.php:21
+msgid "Proudly powered by %s"
+msgstr "Proudly powered by %s"
+
+#. translators: 1: Theme name, 2: Theme author.
+#: org/lb19/footer.php:27
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: org/lb19/functions.php:47 src/functions.php:64
+msgid "Primary"
+msgstr ""
+
+#: org/lb19/functions.php:108
+msgid "Sidebar"
+msgstr ""
+
+#: org/lb19/functions.php:110 src/inc/widgets-areas.php:16
+#: src/inc/widgets-areas.php:28 src/inc/widgets-areas.php:40
+#: src/inc/widgets-areas.php:52
+msgid "Add widgets here."
+msgstr "Añadir."
+
+#: org/lb19/header.php:25
+msgid "Skip to content"
+msgstr ""
+
+#: org/lb19/header.php:48
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#. translators: used between list items, there is a space after the comma
+#: org/lb19/inc/template-tags.php:62 src/inc/template-tags.php:82
+msgid ", "
+msgstr ""
+
+#. translators: 1: list of categories.
+#: org/lb19/inc/template-tags.php:65 src/inc/template-tags.php:85
+msgid "Posted in %1$s"
+msgstr ""
+
+#. translators: 1: list of tags.
+#: org/lb19/inc/template-tags.php:72 src/inc/template-tags.php:92
+msgid "Tagged %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: org/lb19/inc/template-tags.php:82 src/inc/template-tags.php:102
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: org/lb19/inc/template-tags.php:99
+#: org/lb19/template-parts/content-page.php:37 src/inc/template-tags.php:119
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#. translators: %s: search query.
+#: org/lb19/search.php:22 src/search.php:20
+#, fuzzy
+msgid "Search Results for: %s"
+msgstr "Mostrando resultados de búsqueda para: %s"
+
+#: org/lb19/template-parts/content-none.php:14
+#: src/template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "Parece que no se encontró nada"
+
+#. translators: 1: link to WP admin new post page.
+#: org/lb19/template-parts/content-none.php:24
+#: src/template-parts/content-none.php:24
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: org/lb19/template-parts/content-none.php:37
+#: src/template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: org/lb19/template-parts/content-none.php:44
+#: src/template-parts/content-none.php:44
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: org/lb19/template-parts/content-page.php:24
+#: org/lb19/template-parts/content.php:50 src/template-parts/content.php:54
+msgid "Pages:"
+msgstr "Paginas:"
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: org/lb19/template-parts/content.php:39 src/template-parts/content.php:41
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: src/404.php:14
+msgid "Oops! That page can’t be found."
+msgstr "Oops! Esta página no se puede encontrar."
+
+#: src/functions.php:65
+msgid "Secondary"
+msgstr ""
+
+#. translators: %s: post author.
+#: src/inc/template-tags.php:65
+#, fuzzy
+msgid "por %s"
+msgstr "por %s"
+
+#: src/inc/widgets-areas.php:14
+msgid "Footer column 1"
+msgstr "Pie columna 1"
+
+#: src/inc/widgets-areas.php:26
+msgid "Footer column 2"
+msgstr "Pie columna 2"
+
+#: src/inc/widgets-areas.php:38
+msgid "Footer column 3"
+msgstr "Pie columna 3"
+
+#: src/inc/widgets-areas.php:50
+msgid "Footer column 4"
+msgstr "Pie columna 4"
+
+#. translators: 1: comment count number, 2: title.
+#: org/lb19/comments.php:41 src/comments.php:41
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: post date.
+#: org/lb19/inc/template-tags.php:29
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#. translators: %s: post date.
+#: src/inc/template-tags.php:48
+msgctxt "post date"
+msgid "Publicado el %s"
+msgstr ""
+
+#. translators: %s: post author.
+#: org/lb19/inc/template-tags.php:45
+msgctxt "post author"
+msgid "by %s"
+msgstr "por %s"
+
+#. translators: used between list items, there is a space after the comma
+#: org/lb19/inc/template-tags.php:69 src/inc/template-tags.php:89
+msgctxt "list item separator"
+msgid ", "
+msgstr ""
