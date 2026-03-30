@@ -1,6 +1,6 @@
 
 .cta {
-	@apply border-0 inline-flex items-center rounded-sm bg-[var(--color-secondary)] px-4 py-2 text-[var(--color-secondary-text)] text-sm font-semibold transition-transform duration-200;
+	@apply border-0 inline-flex items-center rounded-md bg-[var(--color-secondary)] px-4 py-2 text-[var(--color-secondary-text)] text-sm font-semibold transition-transform duration-200;
 
 	&:hover {
 		@apply scale-105;

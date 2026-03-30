@@ -7,10 +7,10 @@
  * @package lb19
  */
 
-
 get_header();
 ?>
 <!-- primary -->
+<!-- <h1>archive.php</h1> -->
 <div class="archive-grid">
 		<?php if ( have_posts() ) : ?>
 

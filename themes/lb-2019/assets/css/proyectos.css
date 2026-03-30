@@ -23,11 +23,15 @@
 }
 
 .proyecto-card {
-	@apply col-span-12 grid gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:col-span-6;
+	@apply col-span-12 grid gap-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm md:col-span-6 md:grid-cols-12;
 }
 
 .proyecto-card-tags {
-	@apply flex w-full flex-wrap gap-2;
+	@apply w-full overflow-hidden whitespace-nowrap truncate;
+}
+
+.proyecto-card-tags .proyecto-card-pill {
+	@apply mr-2 inline-flex align-middle;
 }
 
 .proyecto-card-pill {
@@ -35,11 +39,15 @@
 }
 
 .proyecto-card-media {
-	@apply w-full;
+	@apply w-full max-h-64 overflow-hidden rounded-md border border-gray-300;
 }
 
 .proyecto-card-body {
-	@apply w-full;
+	@apply w-full md:col-span-7;
+}
+
+.proyecto-card-side {
+	@apply grid w-full gap-2 md:col-span-5;
 }
 
 .proyecto-card-title {
@@ -55,7 +63,7 @@
 }
 
 .proyecto-card-footer {
-	@apply flex justify-end;
+	@apply flex justify-end md:col-span-12;
 }
 
 img.proyect-image {

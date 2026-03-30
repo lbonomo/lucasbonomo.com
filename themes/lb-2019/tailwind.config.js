@@ -20,7 +20,18 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      // Keep preflight disabled, but restore the border baseline Tailwind utilities expect.
+      addBase({
+        '*, ::before, ::after': {
+          borderWidth: '0',
+          borderStyle: 'solid',
+          borderColor: 'currentColor',
+        },
+      })
+    },
+  ],
   corePlugins: {
     preflight: false, // Desactiva reset de Tailwind si no quieres conflictos con normalize.css
   },

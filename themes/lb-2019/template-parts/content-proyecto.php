@@ -66,9 +66,9 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 			?>
 
 	</div>
-		<div class="proyecto-card-footer">
-			<a class="cta"
-				href="<?php the_permalink(); ?>" >Leer más</a>
-		</div>
+	</div>
+	<div class="proyecto-card-footer">
+		<a class="cta"
+			href="<?php the_permalink(); ?>" >Leer más</a>
 	</div>
 </div>

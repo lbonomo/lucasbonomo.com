@@ -1,5 +1,53 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import fs from 'fs'
+import { globSync } from 'glob'
+
+const distDir = path.resolve(__dirname, 'dist')
+
+/**
+ * Patrones de archivos estáticos del tema que deben copiarse a dist/
+ * cuando cambian durante npm run dev.
+ */
+const STATIC_PATTERNS = [
+  '**/*.php',
+  'acf-json/**/*',
+  'languages/**/*',
+  'theme.json',
+]
+
+function watchStaticFilesPlugin() {
+  return {
+    name: 'watch-static-files',
+    buildStart() {
+      const files = globSync(STATIC_PATTERNS, {
+        cwd: __dirname,
+        ignore: ['node_modules/**', 'dist/**'],
+        nodir: true,
+      })
+      for (const file of files) {
+        this.addWatchFile(path.resolve(__dirname, file))
+      }
+    },
+    watchChange(id, { event }) {
+      const rel = path.relative(__dirname, id)
+      if (rel.startsWith('..') || rel.startsWith('node_modules') || rel.startsWith('dist')) {
+        return
+      }
+      if (!/\.php$/.test(id) && !rel.startsWith('acf-json') && !rel.startsWith('languages') && rel !== 'theme.json') {
+        return
+      }
+      const dest = path.join(distDir, rel)
+      if (event === 'delete') {
+        try { fs.unlinkSync(dest) } catch {}
+      } else if (fs.existsSync(id)) {
+        fs.mkdirSync(path.dirname(dest), { recursive: true })
+        fs.copyFileSync(id, dest)
+        console.log(`[watch-static] → dist/${rel}`)
+      }
+    },
+  }
+}
 
 function ensureCssMapPlugin() {
   return {
@@ -81,5 +129,5 @@ export default defineConfig(({ mode }) => ({
     postcss: './postcss.config.js',
     devSourcemap: true
   },
-  plugins: 'development' === mode ? [ensureCssMapPlugin()] : []
+  plugins: 'development' === mode ? [ensureCssMapPlugin(), watchStaticFilesPlugin()] : []
 }))
