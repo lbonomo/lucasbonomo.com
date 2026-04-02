@@ -45,9 +45,6 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 			<a href="<?php echo esc_url( get_the_permalink() ); ?>" ><?php the_title(); ?></a>
 		</h2>
 
-		
-		<!-- <div class="pt-3"><span></span></div> -->
-
 		<div class="proyecto-card-content">
 			<?php
 			the_excerpt();
