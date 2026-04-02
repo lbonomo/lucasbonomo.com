@@ -11,7 +11,7 @@
   @apply flex-1;
   
   .archive-grid {
-    @apply m-8 grid grid-cols-12 gap-6 max-w-5xl mx-auto;
+    @apply px-8 py-8 grid grid-cols-12 gap-6 max-w-5xl mx-auto;
     /* content-max-width content-contact */
   }
 
