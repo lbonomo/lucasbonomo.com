@@ -157,7 +157,7 @@ body.admin-bar .mdl-layout__container {
 }
 
 .card-pill {
-	@apply inline-flex items-center rounded-full border border-slate-300 text-slate-700 px-3 py-1 text-xs;
+	@apply mr-1 inline-flex items-center rounded-full border border-slate-300 text-slate-700 px-3 py-1 text-xs;
   a {
     @apply text-slate-700;
   }
@@ -454,7 +454,6 @@ img.article-image {
   width: auto;
   height: auto;
   max-height: 300px;
-  max-width: calc(100% - 16px);
 }
 
 .content-copy {

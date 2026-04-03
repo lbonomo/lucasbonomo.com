@@ -8,20 +8,22 @@
 ?>
 
 <div class="post-card">
-	<div class="post-image post-card-media">
-		<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
-			<img
-				class="article-image"
-				src="
-				<?php
-				if ( has_post_thumbnail() ) {
-						the_post_thumbnail_url( 'small' );
-				}
-				?>
-				"
-				alt=""
-				border="0">
-		</a>
+	<div class="post-card-media-wrapper">
+		<div class="post-image post-card-media">
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
+				<img
+					class="article-image"
+					src="
+					<?php
+					if ( has_post_thumbnail() ) {
+							the_post_thumbnail_url( 'small' );
+					}
+					?>
+					"
+					alt=""
+					border="0">
+			</a>
+		</div>
 		<?php if ( has_category() || has_tag() ) : ?>
 			<div class="post-card-taxonomies">
 				<?php

@@ -15,6 +15,7 @@
 	}
 }
 
+
 .proyecto-single-card {
 	@apply col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm;
 }
