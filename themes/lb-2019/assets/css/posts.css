@@ -4,9 +4,12 @@
 
 .post-card-media {
 	@apply md:col-span-4;
-
-	& img {
-		@apply w-full rounded-lg object-cover;
+	& a {
+		@apply flex justify-center;
+		
+		& img {
+			@apply w-full rounded-lg object-cover mx-auto;
+		}
 	}
 }
 
@@ -40,4 +43,20 @@
 
 .post-card-link {
 	@apply inline-flex items-center rounded-md bg-[var(--color-secondary)] px-4 py-2 text-sm font-semibold text-[var(--color-secondary-text)];
+}
+
+.post-single {
+	@apply col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm m-3 p-4;
+}
+
+.post-single-content {
+	@apply p-0;
+}
+
+.post-single-taxonomies {
+	@apply flex flex-wrap items-center gap-2 p-0;
+}
+
+.post-single-pill {
+	@apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs;
 }
