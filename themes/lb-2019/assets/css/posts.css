@@ -8,7 +8,7 @@
 		@apply flex justify-center;
 		
 		& img {
-			@apply w-full rounded-lg object-cover mx-auto;
+			@apply w-auto h-auto max-h-full rounded-lg object-cover mx-auto;
 		}
 	}
 }
