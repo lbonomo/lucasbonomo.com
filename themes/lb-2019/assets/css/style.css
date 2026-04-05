@@ -199,11 +199,11 @@
   @apply md:col-span-4;
 
   a {
-    @apply flex justify-center;
+    @apply flex justify-center md:justify-start;
   }
 
   img {
-    @apply mx-auto h-auto w-auto max-h-[300px] rounded-lg object-cover;
+    @apply mx-auto md:mx-0 h-auto w-auto max-h-[300px] rounded-lg object-cover;
   }
 }
 
