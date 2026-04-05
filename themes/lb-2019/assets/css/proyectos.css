@@ -2,9 +2,6 @@
 	.archive-grid {
 		@apply max-w-5xl mx-auto py-8 px-6 m-0 gap-4 grid grid-cols-1 md:grid-cols-2;
 
-		.proyecto-card {
-			@apply flex min-w-0 flex-col gap-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm;
-		}
 		.lb-infinite-scroll {
 			@apply col-span-1 w-full max-w-full md:col-span-2;
 		}
@@ -13,67 +10,6 @@
 			@apply block w-full text-center;
 		}
 	}
-}
-
-
-.proyecto-single-card {
-	@apply col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm;
-}
-
-.proyecto-single-content {
-	@apply grid gap-6 p-6 md:p-8;
-}
-
-.proyecto-single-tags {
-	@apply flex w-full flex-wrap gap-2;
-}
-
-.proyecto-single-tag {
-	@apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs;
-}
-
-.proyecto-single-meta {
-	@apply w-full text-right;
-}
-
-.proyecto-card-tags {
-	@apply w-full overflow-hidden whitespace-nowrap truncate;
-}
-
-.proyecto-card-tags .proyecto-card-pill {
-	@apply mr-2 inline-flex align-middle;
-}
-
-.proyecto-card-pill {
-	@apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs;
-}
-
-.proyecto-card-media {
-	@apply w-full max-h-36 md:max-h-64 overflow-hidden rounded-md border border-gray-300;
-}
-
-.proyecto-card-body {
-	@apply min-w-0 w-full md:col-span-7;
-}
-
-.proyecto-card-side {
-	@apply grid w-full gap-2 md:col-span-5;
-}
-
-.proyecto-card-title {
-	@apply mt-0 mb-2 my-0 text-2xl font-semibold leading-tight text-slate-900 font-semibold;
-}
-
-.proyecto-card-content {
-	@apply m-0 p-0 min-w-0 space-y-3;
-	
-	p {
-		@apply m-0 p-0 text-base text-slate-600;
-	}
-}
-
-.proyecto-card-footer {
-	@apply mt-auto flex justify-end;
 }
 
 img.proyect-image {

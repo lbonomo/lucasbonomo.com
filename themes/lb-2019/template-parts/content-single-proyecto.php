@@ -24,29 +24,29 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 
 <!-- template-parts/content-single.php -->
 
-	<div class="post proyecto-single-card">
-		<div class="post-title proyecto-single-content">
+	<div class="post content-panel proyecto-single-card">
+		<div class="post-title content-panel__body proyecto-single-content">
 			<div>
 				<h1><?php the_title(); ?></h1>
 			</div>
 
 			<?php if ( count( $characteristics ) >= 1 ) : ?>
-			<div class="proyecto-single-tags">
+			<div class="content-panel__tags">
 				<?php foreach ( $characteristics as $characterist ) : ?>
-					<span class="characterist proyecto-single-tag">
+					<span class="characterist content-pill">
 						<span><?php echo esc_html( $characterist ); ?></span>
 					</span>
-				<?php endforeach ?>
+				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 
 			<div>
 				<a href="<?php echo esc_url( $fields['url'] ); ?>" target="_blank" rel="noopener noreferrer">
-					<?php the_post_thumbnail('large', array( 'class' => 'proyect-image' )); ?>
+					<?php the_post_thumbnail( 'large', array( 'class' => 'proyect-image' ) ); ?>
 				</a>
 			</div>
 
-			<div class="proyecto-single-meta">
+			<div class="content-panel__meta">
 				<!-- <span class="post-date"> <?php echo esc_html( get_the_date() ); ?></span> -->
 			</div>
 
