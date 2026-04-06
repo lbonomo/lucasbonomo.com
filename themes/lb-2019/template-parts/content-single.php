@@ -11,7 +11,7 @@
 
 <!-- template-parts/content-single.php -->
 
-<div class="post col-span-12 rounded-xl border border-slate-200 bg-white shadow-sm">
+<div class="post-single">
 	<div class="p-6 md:p-8">
 		<?php the_content(); ?>
 	</div>

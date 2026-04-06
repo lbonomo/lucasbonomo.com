@@ -141,6 +141,173 @@
   margin: auto;
 }
 
+.content-shell {
+  @apply grid grid-cols-12 gap-6;
+  max-width: 1120px;
+  margin: auto;
+}
+
+.content-card,
+.post-card,
+.proyecto-card,
+.content-panel,
+.post-single,
+.proyecto-single-card {
+  @apply min-w-0 rounded-xl border border-slate-200 bg-white shadow-sm gap-2 flex flex-col;
+}
+
+.content-card--split,
+.post-card {
+  @apply col-span-12 grid gap-4 p-4 md:grid-cols-12;
+}
+
+.content-card--stack,
+.proyecto-card {
+  @apply flex flex-col gap-4 p-3;
+}
+
+.content-card__media-wrap,
+.post-card-media-wrapper {
+  @apply flex w-full flex-col gap-2 overflow-hidden;
+}
+
+.content-card--split .content-card__media-wrap,
+.post-card-media-wrapper {
+  @apply md:col-span-4;
+}
+
+.content-card__media,
+.proyecto-card-media {
+  @apply w-full overflow-hidden rounded-md;
+
+  img {
+    @apply block;
+  }
+
+  a {
+    @apply block;
+  }
+
+  img.proyect-image {
+      @apply rounded-md h-auto w-full object-cover;
+    }
+  }
+
+.content-card--split .content-card__media,
+.post-card-media {
+  @apply md:col-span-4;
+
+  a {
+    @apply flex justify-center md:justify-start;
+  }
+
+  img {
+    @apply mx-auto md:mx-0 h-auto w-auto max-h-[300px] rounded-lg object-cover;
+  }
+}
+
+.content-card--project .content-card__media,
+.proyecto-card-media {
+  @apply max-h-36 border border-gray-300 md:max-h-64;
+}
+
+.content-card__tags,
+.post-card-taxonomies,
+.proyecto-card-tags,
+.content-panel__tags,
+.post-single-taxonomies,
+.proyecto-single-tags {
+  @apply flex w-full flex-wrap items-center gap-2;
+}
+
+.content-card__tags--truncate,
+.post-card-taxonomies,
+.proyecto-card-tags {
+  @apply flex-nowrap overflow-hidden whitespace-nowrap;
+}
+
+.content-card__body,
+.post-card-body,
+.proyecto-card-body {
+  @apply min-w-0 w-full;
+}
+
+.content-card--split .content-card__body,
+.post-card-body {
+  @apply flex flex-col gap-4 md:col-span-8;
+}
+
+.content-card__title,
+.post-card-title,
+.proyecto-card-title {
+  @apply m-0 text-2xl leading-tight text-slate-900;
+}
+
+.content-card__title--strong,
+.post-card-title {
+  @apply font-bold;
+}
+
+.content-card--project .content-card__title,
+.proyecto-card-title {
+  @apply mb-2 font-semibold;
+}
+
+.content-card__meta,
+.post-card-date {
+  @apply text-sm text-slate-500;
+}
+
+.content-card__content,
+.post-card-content,
+.proyecto-card-content,
+.content-panel__body,
+.post-single-content,
+.proyecto-single-content {
+  @apply m-0 min-w-0 p-0;
+
+  p {
+    @apply m-0 p-0 text-base text-slate-600;
+  }
+}
+
+.content-card__content,
+.proyecto-card-content {
+  @apply space-y-3;
+}
+
+.post-card-content {
+  @apply space-y-1 gap-1;
+}
+
+.content-card__footer,
+.post-card-footer,
+.proyecto-card-footer {
+  @apply mt-auto flex justify-end;
+}
+
+.content-panel,
+.post-single,
+.proyecto-single-card {
+  @apply col-span-12;
+}
+
+.content-panel__body,
+.post-single-content,
+.proyecto-single-content {
+  @apply grid gap-6 p-6 md:p-8;
+}
+
+.content-panel__body--compact,
+.post-single-content {
+  @apply p-0;
+}
+
+.content-panel__meta,
+.proyecto-single-meta {
+  @apply w-full text-right;
+}
+
 /*  */
 /* Layout */
 body {
@@ -156,8 +323,13 @@ body.admin-bar .mdl-layout__container {
   z-index: 99999;
 }
 
-.card-pill {
-	@apply mr-1 inline-flex items-center rounded-full border border-slate-300 text-slate-700 px-3 py-1 text-xs;
+.content-pill,
+.card-pill,
+.post-single-pill,
+.proyecto-card-pill,
+.proyecto-single-tag {
+  @apply inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700;
+
   a {
     @apply text-slate-700;
   }

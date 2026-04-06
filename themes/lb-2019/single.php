@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<div class="grid grid-cols-12 gap-6 content-max-width">
+<div class="content-shell">
 
 		<?php
 		while ( have_posts() ) :

@@ -7,11 +7,14 @@
     grid-auto-rows: 120px;
     padding: 50px;
 
-    article.trabajo {
+    article.trabajo,
+    article.content-card--work {
         border: 1px solid var(--border);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        border-radius: 0.75rem;
+        background: var(--bg);
 
         .entry-header {
             padding: 1rem;
@@ -39,7 +42,8 @@
 }
 
 .grid-trabajos.first-page {
-    article.trabajo {
+    article.trabajo,
+    article.content-card--work {
         &:nth-child(1) {
             background-color: lightcoral;
             grid-column-start: 1;
