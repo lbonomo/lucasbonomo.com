@@ -24,12 +24,6 @@
 	padding: 0;
 }
 
-.wp-block-simple-service-services-grid .simple-service-grid-editor__preview {
-	padding: 1.5rem;
-	border-radius: 14px;
-	background: #d1d6de;
-}
-
 .wp-block-simple-service-services-grid .simple-service-grid-editor__preview .simple-service-grid {
 	margin-top: 0;
 }

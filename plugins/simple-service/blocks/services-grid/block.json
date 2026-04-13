@@ -38,11 +38,9 @@
 	},
 	"supports": {
 		"html": true,
-		"supports": {
-			"spacing": {
-				"padding": true,
-				"margin": ["top", "bottom"]
-			}
+		"spacing": {
+			"padding": true,
+			"margin": true
 		}
 	},
 	"editorScript": "file:./build/index.js",
