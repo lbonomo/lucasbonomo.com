@@ -1,5 +1,6 @@
 {
     "require-dev": {
+        "phpunit/phpunit": "^9.6",
         "squizlabs/php_codesniffer": "^3.11",
         "phpmd/phpmd": "^2.15",
         "wp-coding-standards/wpcs": "^3.1",
@@ -7,7 +8,8 @@
     },
     "scripts": {
         "phpcs": "phpcs",
-		"phpmd": "phpmd --cache-strategy timestamp src/*.php ansi ./phpmd.xml"
+		"phpmd": "phpmd --cache-strategy timestamp src/*.php ansi ./phpmd.xml",
+		"test:simple-service": "phpunit -c plugins/simple-service/phpunit.xml"
     },
     "config": {
         "allow-plugins": {

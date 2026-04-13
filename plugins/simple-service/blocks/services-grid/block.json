@@ -1,0 +1,53 @@
+{
+	"apiVersion": 3,
+	"name": "simple-service/services-grid",
+	"version": "0.1.0",
+	"title": "Services Grid",
+	"category": "widgets",
+	"icon": "screenoptions",
+	"description": "Display a selected list of services in a responsive grid.",
+	"textdomain": "simple-service",
+	"attributes": {
+		"selectedServiceIds": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			},
+			"default": []
+		},
+		"cardHeight": {
+			"type": "number",
+			"default": 160
+		},
+		"titleFontSize": {
+			"type": "number",
+			"default": 23
+		},
+		"descriptionFontSize": {
+			"type": "number",
+			"default": 16
+		},
+		"fontColor": {
+			"type": "string",
+			"default": "#0f172a"
+		},
+		"cardBackground": {
+			"type": "string",
+			"default": "#ffffff"
+		}
+	},
+	"supports": {
+		"html": true,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": [
+		"file:./build/index.css",
+		"file:./build/style-index.css"
+	],
+	"style": "file:./build/style-index.css",
+	"render": "file:./render.php"
+}
