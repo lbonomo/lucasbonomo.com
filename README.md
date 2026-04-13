@@ -52,3 +52,18 @@ rsync -av themes/lb-2019/dst/* vanguard.com.ar:/var/www/lucasbonomo.com/wordpres
 - `npm install`
 - `npm run dev` -> to developer
 - `npm run build` -> to build for production
+
+## Testing simple-service block
+
+Run these commands from repository root.
+
+1. Install PHP test dependencies:
+  - `composer install`
+2. Install Playwright dependencies for the plugin test suite:
+  - `cd plugins/simple-service && npm install`
+3. Prepare deterministic fixtures on local Lando WordPress:
+  - `cd plugins/simple-service && npm run fixtures`
+4. Run E2E tests against `https://lucasbonomo.lndo.site/service-block-page-test/`:
+  - `cd plugins/simple-service && npm run test:e2e`
+5. Run integration tests for block rendering:
+  - `composer test:simple-service`
