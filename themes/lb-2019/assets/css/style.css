@@ -295,7 +295,7 @@
 .content-panel__body,
 .post-single-content,
 .proyecto-single-content {
-  @apply grid gap-6 p-6 md:p-8;
+  @apply grid p-6 md:p-8;
 }
 
 .content-panel__body--compact,
@@ -581,6 +581,7 @@ h2 {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.04em;
+  margin: 0.5em 0 0.2em;
 }
 
 div.post.mdl-cell {
