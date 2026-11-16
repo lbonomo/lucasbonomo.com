@@ -318,7 +318,7 @@ html img:is([sizes="auto" i], [sizes^="auto," i]) {
   @apply m-0 min-w-0 p-0;
 
   p {
-    @apply m-0 p-0 text-base text-slate-600;
+    @apply m-0 p-0 text-lg text-slate-600;
     line-height: 1.6;
     font-weight: 400;
   }
