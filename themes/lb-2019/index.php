@@ -10,8 +10,7 @@
 get_header();
 ?>
 <!-- primary -->
-<!-- <h1>archive.php</h1> -->
-<div class="grid grid-cols-12 gap-6 content-max-width content-contact">
+<div class="archive-grid">
 		<?php if ( have_posts() ) : ?>
 
 			<?php

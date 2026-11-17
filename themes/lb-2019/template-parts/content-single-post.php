@@ -33,6 +33,9 @@
 	
 	<div class="content-panel__body content-panel__body--compact">
 		<h1 class="post-title"><?php the_title(); ?></h1>
+		<div class="content-card__meta">
+			<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
+		</div>
 		<?php the_content(); ?>
 	</div>
 

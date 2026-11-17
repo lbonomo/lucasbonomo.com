@@ -21,6 +21,7 @@
 
 		const setMenuState = function( isOpen ) {
 			mobileMenu.classList.toggle( 'is-hidden', ! isOpen );
+			mobileMenu.setAttribute( 'aria-hidden', isOpen ? 'false' : 'true' );
 			mobileMenuButton.classList.toggle( 'is-open', isOpen );
 			mobileMenuButton.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
 			mobileMenuButton.setAttribute( 'aria-label', isOpen ? closeLabel : openLabel );

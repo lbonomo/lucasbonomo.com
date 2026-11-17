@@ -12,6 +12,10 @@ get_header();
 ?>
 <!-- primary -->
 <div class="archive-grid">
+	<header class="archive-header">
+		<h1 class="archive-header__title"><?php post_type_archive_title(); ?></h1>
+		<p class="archive-header__subtitle"><?php esc_html_e( 'Casos reales de desarrollo a medida, infraestructura y optimización web.', 'lb19' ); ?></p>
+	</header>
 		<?php if ( have_posts() ) : ?>
 			<?php
 			/* Start the Loop */

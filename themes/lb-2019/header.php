@@ -14,25 +14,15 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-title" content="LB19">
-	<link rel="apple-touch-icon-precomposed" href="<?php echo get_template_directory_uri() ?>/assets/images/ios-desktop.png">
+	<link rel="apple-touch-icon-precomposed" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/android-desktop.png' ); ?>">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
-	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-	<meta name="msapplication-TileColor" content="#3372DF">
-	<link rel="shortcut icon" href="images/favicon.png">
+	<meta name="msapplication-TileImage" content="<?php echo esc_url( get_template_directory_uri() . '/assets/images/android-desktop.png' ); ?>">
+	<meta name="msapplication-TileColor" content="#1F2933">
+	<link rel="shortcut icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/favicon.png' ); ?>">
 
 
 	<style>
-	#view-source {
-		position: fixed;
-		display: block;
-		right: 0;
-		bottom: 0;
-		margin-right: 40px;
-		margin-bottom: 40px;
-		z-index: 900;
-	}
-
 	<?php
 	if ( is_single() ) { echo "
 
@@ -47,14 +37,10 @@
 
 		div.lb19-ribbon {
 			width: 100%;
-	    height: 40vh;
-	    -webkit-flex-shrink: 0;
-	    -ms-flex-negative: 0;
-	    flex-shrink: 0;
-		}
-
-		div.post {
-
+			height: 40vh;
+			-webkit-flex-shrink: 0;
+			-ms-flex-negative: 0;
+			flex-shrink: 0;
 		}
 
 	"; } else {
@@ -66,7 +52,7 @@
 	;
 	?>
 
-</style>
+	</style>
 
 
 <?php wp_head(); ?>

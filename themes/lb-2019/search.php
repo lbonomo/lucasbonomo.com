@@ -9,18 +9,18 @@
 
 get_header();
 ?>
-<div class="grid grid-cols-12 gap-6 portfolio-max-width portfolio-contact">
+<div class="archive-grid">
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header col-span-12">
-				<h1 class="page-title">
+			<header class="archive-header">
+				<h1 class="archive-header__title">
 					<?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'lb19' ), '<span>' . get_search_query() . '</span>' );
+					printf( esc_html__( 'Search Results for: %s', 'lb19' ), '<span>' . esc_html( get_search_query() ) . '</span>' );
 					?>
 				</h1>
-			</header><!-- .page-header -->
+			</header><!-- .archive-header -->
 
 			<?php
 			/* Start the Loop */
@@ -48,5 +48,4 @@ get_header();
 </div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

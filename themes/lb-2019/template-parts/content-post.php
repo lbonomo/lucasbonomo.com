@@ -5,27 +5,48 @@
  * @package lb19
  */
 
+$has_thumb = has_post_thumbnail();
+$card_class = $has_thumb ? 'content-card content-card--split' : 'content-card content-card--full';
 ?>
 
-<div class="content-card content-card--split">
-	<div class="content-card__media-wrap">
-		<div class="post-image content-card__media">
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
-				<img
-					class="article-image"
-					src="
+<article id="post-<?php the_ID(); ?>" <?php post_class( $card_class ); ?>>
+	<?php if ( $has_thumb ) : ?>
+		<div class="content-card__media-wrap">
+			<div class="post-image content-card__media">
+				<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 					<?php
-					if ( has_post_thumbnail() ) {
-							the_post_thumbnail_url( 'small' );
+					the_post_thumbnail(
+						'medium_large',
+						array(
+							'class' => 'article-image',
+							'loading' => 'lazy',
+						)
+					);
+					?>
+				</a>
+			</div>
+			<?php if ( has_category() || has_tag() ) : ?>
+				<div class="content-card__tags content-card__tags--truncate">
+					<?php
+					if ( has_category() ) {
+						foreach ( get_the_category() as $category ) {
+							echo '<span class="content-pill"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></span>';
+						}
+					}
+					if ( has_tag() ) {
+						foreach ( get_the_tags() as $tag_post ) {
+							echo '<span class="content-pill"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_html( $tag_post->name ) . '</a></span>';
+						}
 					}
 					?>
-					"
-					alt=""
-					border="0">
-			</a>
+				</div>
+			<?php endif; ?>
 		</div>
-		<?php if ( has_category() || has_tag() ) : ?>
-			<div class="content-card__tags content-card__tags--truncate">
+	<?php endif; ?>
+
+	<div class="content-card__body">
+		<?php if ( ! $has_thumb && ( has_category() || has_tag() ) ) : ?>
+			<div class="content-card__tags">
 				<?php
 				if ( has_category() ) {
 					foreach ( get_the_category() as $category ) {
@@ -34,31 +55,25 @@
 				}
 				if ( has_tag() ) {
 					foreach ( get_the_tags() as $tag_post ) {
-						echo '<span class="content-pill"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_attr( $tag_post->name ) . '</a></span>';
+						echo '<span class="content-pill"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_html( $tag_post->name ) . '</a></span>';
 					}
 				}
 				?>
 			</div>
 		<?php endif; ?>
-	</div>
-	<div class="content-card__body">
 
 		<h2 class="content-card__title content-card__title--strong">
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>" ><?php the_title(); ?></a>
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
 		</h2>
 		<div class="content-card__meta">
-			<span><?php the_modified_date(); ?></span>
+			<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
 		</div>
 
 		<div class="content-card__content">
-			<?php
-			the_excerpt();
-			?>
-
-	</div>
+			<?php the_excerpt(); ?>
+		</div>
 		<div class="content-card__footer">
-			<a class="content-cta"
-				href="<?php the_permalink(); ?>" >Leer más</a>
+			<a class="content-cta" href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e( 'Leer más', 'lb19' ); ?></a>
 		</div>
 	</div>
-</div>
+</article>

@@ -12,6 +12,10 @@ get_header();
 <!-- primary -->
 <!-- <h1>archive.php</h1> -->
 <div class="archive-grid">
+	<header class="archive-header">
+		<h1 class="archive-header__title"><?php echo esc_html( single_post_title( '', false ) ? single_post_title( '', false ) : __( 'Blog', 'lb19' ) ); ?></h1>
+		<p class="archive-header__subtitle"><?php esc_html_e( 'Artículos técnicos sobre desarrollo web, WordPress, infraestructura y automatización.', 'lb19' ); ?></p>
+	</header>
 		<?php if ( have_posts() ) : ?>
 
 			<?php
