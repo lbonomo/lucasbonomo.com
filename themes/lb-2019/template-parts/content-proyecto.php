@@ -18,7 +18,7 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 }
 ?>
 
-<div class="proyecto-card">
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'proyecto-card' ); ?>>
 
 	<?php if ( count( $characteristics ) >= 1 ) : ?>
 		<div class="proyecto-card-tags">
@@ -31,41 +31,48 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 	<?php endif; ?>
 
 	<div class="proyecto-card-media">
-		<a href="<?php echo esc_url( get_the_permalink() ); ?>" >
+		<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 			<?php
-				the_post_thumbnail('large', array(
-					'class' => 'proyect-image'
-				));
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail(
+					'large',
+					array(
+						'class'   => 'proyect-image',
+						'loading' => 'lazy',
+					)
+				);
+			}
 			?>
 		</a>
 	</div>
 	<div class="proyecto-card-body">
 
 		<h2 class="proyecto-card-title">
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>" ><?php the_title(); ?></a>
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
 		</h2>
 
 		<div class="proyecto-card-content">
-			<?php
-			the_excerpt();
-			// Categorias y etiquetas.
-			if ( has_category() ) {
-				foreach ( get_the_category() as $category ) {
-					echo '<span class="post-category proyecto-card-pill"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></span>';
-				}
-			}
-			if ( has_tag() ) {
-				foreach ( get_the_tags() as $tag_post ) {
-					echo '<span class="post-tag proyecto-card-pill"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_attr( $tag_post->name ) . '</a></span>';
-				}
-			}
+			<?php the_excerpt(); ?>
+		</div>
 
-			?>
-
-	</div>
+		<?php if ( has_category() || has_tag() ) : ?>
+			<div class="proyecto-card-tags">
+				<?php
+				if ( has_category() ) {
+					foreach ( get_the_category() as $category ) {
+						echo '<span class="post-category proyecto-card-pill"><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></span>';
+					}
+				}
+				if ( has_tag() ) {
+					foreach ( get_the_tags() as $tag_post ) {
+						echo '<span class="post-tag proyecto-card-pill"><a href="' . esc_url( get_tag_link( $tag_post->term_id ) ) . '">' . esc_html( $tag_post->name ) . '</a></span>';
+					}
+				}
+				?>
+			</div>
+		<?php endif; ?>
 	</div>
 	<div class="proyecto-card-footer">
-		<a class="cta"
-			href="<?php the_permalink(); ?>" >Leer más</a>
+		<a class="cta" href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e( 'Leer más', 'lb19' ); ?></a>
 	</div>
-</div>
+</article>

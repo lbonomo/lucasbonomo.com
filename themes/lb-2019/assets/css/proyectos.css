@@ -1,6 +1,10 @@
 .post-type-archive-proyecto {
 	.archive-grid {
-		@apply max-w-5xl mx-auto py-8 px-6 m-0 gap-4 grid grid-cols-1 md:grid-cols-2;
+		@apply max-w-6xl mx-auto py-8 px-4 sm:px-6 gap-6 grid grid-cols-1 md:grid-cols-2;
+
+		.archive-header {
+			@apply col-span-1 md:col-span-2;
+		}
 
 		.lb-infinite-scroll {
 			@apply col-span-1 w-full max-w-full md:col-span-2;
@@ -13,14 +17,14 @@
 }
 
 .project-image-wrappr {
-	@apply w-full;
+	@apply w-full min-w-0;
 
 	img.proyect-image {
-		@apply w-full h-auto rounded-lg border border-solid border-slate-200 object-contain;
+		@apply w-full h-auto max-h-[520px] rounded-lg border border-solid border-slate-200 object-cover bg-slate-100;
 	}
 
-	.content-cta {
-		@apply float-right mt-2;
+	.project-live-action {
+		@apply mt-4 flex justify-end;
 	}
 }
 

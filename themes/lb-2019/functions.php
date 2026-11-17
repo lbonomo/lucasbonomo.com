@@ -93,11 +93,17 @@ require get_template_directory() . '/inc/widgets-areas.php';
  * Enqueue scripts and styles.
  */
 function lb19_scripts() {
+	$style_path = get_template_directory() . '/assets/css/style.min.css';
+	$style_ver  = file_exists( $style_path ) ? (string) filemtime( $style_path ) : '1.0.0';
+
 	// Load main stylesheet (compiled from Vite + Tailwind + SCSS)
-	wp_enqueue_style( 'lb19-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0.0', 'all' );
+	wp_enqueue_style( 'lb19-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $style_ver, 'all' );
+
+	$script_path = get_template_directory() . '/assets/js/main.min.js';
+	$script_ver  = file_exists( $script_path ) ? (string) filemtime( $script_path ) : '1.0.0';
 
 	// Load main JavaScript bundle (compiled from Vite)
-	wp_enqueue_script( 'lb19-main', get_template_directory_uri() . '/assets/js/main.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'lb19-main', get_template_directory_uri() . '/assets/js/main.min.js', array(), $script_ver, true );
 	wp_localize_script(
 		'lb19-main',
 		'lb19InfiniteScroll',

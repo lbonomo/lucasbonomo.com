@@ -14,7 +14,7 @@
 
 get_header();
 ?>
-<div class="grid grid-cols-12 gap-6 content-max-width">
+<div class="grid grid-cols-12 gap-6 content-max-width py-8">
 
 		<?php
 		while ( have_posts() ) :

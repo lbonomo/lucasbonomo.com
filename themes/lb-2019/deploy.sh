@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# Load secrets (Cloudflare) from .env
+cd "$(dirname "$0")"
+if [ -f .env ]; then
+    set -a; . ./.env; set +a
+fi
 ip=45.152.44.24
 port=65002
 user=u112496268
@@ -28,12 +34,25 @@ fi
 
 # Clean up Claudflare cache.
 echo "🌐 Limpiando cache de Cloudflare..."
-zone_id="8bc7d21dcec20fd1dc75c3384d47f13a"
-api_token="cfut_D7t1FitYA2rD3SLgzlvXJSWR2eO5aiRXEWrhpgif9fa392ba"
-curl -X POST "https://api.cloudflare.com/client/v4/zones/$zone_id/purge_cache" \
-     -H "Authorization: Bearer $api_token" \
-     -H "Content-Type: application/json" \
-     --data '{"purge_everything":true}'
+if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "${CLOUDFLARE_ZONE_ID:-}" ]; then
+    echo "⚠️  Falta CLOUDFLARE_API_TOKEN/CLOUDFLARE_ZONE_ID en .env, se omite la purga."
+else
+    curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+         -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+         -H "Content-Type: application/json" \
+         --data '{"purge_everything":true}'
+    echo
+fi
 
-
-     
+# Optional post-deploy audit (opt-in).
+#   AUDIT=1 ./deploy.sh              -> quick checks
+#   AUDIT=1 AUDIT_DEEP=1 ./deploy.sh -> quick checks + Kiro web-audit agent
+if [ "${AUDIT:-0}" = "1" ]; then
+    echo ""
+    echo "🔎 Auditando https://$domain ..."
+    # Give Cloudflare a moment after the cache purge.
+    sleep 5
+    deep_flag=""
+    [ "${AUDIT_DEEP:-0}" = "1" ] && deep_flag="--deep"
+    ./scripts/audit.sh "https://$domain" $deep_flag --out ./audit-reports
+fi

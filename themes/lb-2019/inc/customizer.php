@@ -36,7 +36,7 @@ function lb19_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'mdl-color-primary',
 		array(
-			'default'           => 'ffffff',
+			'default'           => '1a1918',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => '',
 		)

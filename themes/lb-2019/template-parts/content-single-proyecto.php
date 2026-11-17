@@ -7,11 +7,9 @@
  * @package lb19
  */
 
-$fields          = get_fields();
+$fields          = function_exists( 'get_fields' ) ? get_fields() : array();
 $characteristics = array();
 $terms           = get_the_terms( get_the_ID(), 'caracteristica' );
-
-// var_dump($fields);
 
 if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 	$characteristics = array_map(
@@ -24,11 +22,11 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 
 ?>
 
-<!-- template-parts/content-single.php -->
+<!-- template-parts/content-single-proyecto.php -->
 
 	<div class="post-single">
 		<div>
-			<h1><?php the_title(); ?></h1>
+			<h1 class="post-title"><?php the_title(); ?></h1>
 		</div>
 
 		<?php if ( count( $characteristics ) >= 1 ) : ?>
@@ -42,17 +40,23 @@ if ( is_array( $terms ) && ! is_wp_error( $terms ) ) {
 		<?php endif; ?>
 
 		<div class="project-image-wrappr">
-			<?php the_post_thumbnail( 'large', array( 'class' => 'proyect-image' ) ); ?>
+			<?php
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail( 'large', array( 'class' => 'proyect-image' ) );
+			}
+			?>
 
-			<?php if ( ! empty( $fields['status'] )  && 'On-line' === $fields['status'] ) : ?>
-				<a class="content-cta" href="<?php echo esc_url( $fields['url'] ); ?>" target="_blank" rel="noopener noreferrer">
-					<?php esc_html_e( 'Visit project', 'lb19' ); ?>
-				</a>
+			<?php if ( ! empty( $fields['status'] ) && 'On-line' === $fields['status'] && ! empty( $fields['url'] ) ) : ?>
+				<div class="project-live-action">
+					<a class="content-cta" href="<?php echo esc_url( $fields['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+						<?php esc_html_e( 'Ver proyecto en vivo', 'lb19' ); ?>
+					</a>
+				</div>
 			<?php endif; ?>
 		</div>
 
 
-		<div>
+		<div class="proyecto-single-content content-panel__body--compact">
 			<?php the_content(); ?>
 		</div>
 	</div>

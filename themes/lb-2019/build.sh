@@ -1,24 +1,59 @@
 #!/bin/bash
+set -euo pipefail
 
-# Build theme
-npm run build
+# Run from the theme root (directory of this script)
+cd "$(dirname "$0")"
 
-if [ $? -ne 0 ]; then
-    echo "Error: Previous command failed."
+THEME_SLUG="lb-2019"
+
+# Get version from the source style.css (source of truth)
+VERSION=$(grep -i "Version:" style.css | head -n1 | cut -d':' -f2 | tr -d ' \r')
+if [ -z "$VERSION" ]; then
+    echo "❌ Error: no se pudo leer la versión de style.css"
     exit 1
 fi
 
-# Get version from style.css
-VERSION=$(grep "Version:" dist/style.css | cut -d':' -f2 | tr -d ' ')
+echo "🚀 Empaquetando ${THEME_SLUG} v${VERSION}..."
 
-# Create zip file with lb19/ as root directory
+# Clean dist/ so stale artifacts don't leak into the zip
+rm -rf dist
+
+# Build theme (vite build + sync of static files into dist/)
+npm run build
+
+if [ ! -d dist ]; then
+    echo "❌ Error: el build no generó el directorio dist/"
+    exit 1
+fi
+
+# Assemble the zip with the theme slug as the root directory
+ZIP_NAME="${THEME_SLUG}.${VERSION}.zip"
+OUT_ZIP="$PWD/${ZIP_NAME}"
+
+# Remove a previous zip with the same version, if any
+rm -f "$OUT_ZIP"
+
 TMP_DIR="$(mktemp -d)"
-mkdir -p "$TMP_DIR/lb19"
-cp -a dist/. "$TMP_DIR/lb19/"
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+mkdir -p "$TMP_DIR/${THEME_SLUG}"
+cp -a dist/. "$TMP_DIR/${THEME_SLUG}/"
+
+# Defensive cleanup: drop any nested build artifacts that may exist in dist/
+rm -rf "$TMP_DIR/${THEME_SLUG}/dist" \
+       "$TMP_DIR/${THEME_SLUG}/lb19" \
+       "$TMP_DIR/${THEME_SLUG}/${THEME_SLUG}."*
+find "$TMP_DIR/${THEME_SLUG}" -name '*.zip' -delete
 
 (
-    cd "$TMP_DIR" || exit 1
-    zip -r "$OLDPWD/lb-2019.$VERSION.zip" lb19
+    cd "$TMP_DIR"
+    zip -rq "$OUT_ZIP" "${THEME_SLUG}"
 )
 
-rm -rf "$TMP_DIR"
+if [ ! -f "$OUT_ZIP" ]; then
+    echo "❌ Error: no se pudo crear el archivo ZIP"
+    exit 1
+fi
+
+SIZE=$(du -h "$OUT_ZIP" | cut -f1)
+echo "✅ ZIP creado: ${ZIP_NAME} (${SIZE})"

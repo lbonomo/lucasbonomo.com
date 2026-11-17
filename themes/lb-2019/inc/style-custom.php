@@ -8,22 +8,57 @@
 /**
  * Get the contrast of color
  *
- * @param string $hex Hexadecimal color.
+ * @param string $hex Hexadecimal color, with or without leading '#'.
  */
 function getcontrast( $hex ) {
-	$r   = hexdec( substr( $hex, 1, 2 ) );
-	$g   = hexdec( substr( $hex, 3, 2 ) );
+	$hex = ltrim( (string) $hex, '#' );
+
+	// Expand shorthand (e.g. "fff" => "ffffff").
+	if ( 3 === strlen( $hex ) ) {
+		$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+	}
+
+	// Fallback to white if the value is not a valid 6-digit hex.
+	if ( ! preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
+		$hex = 'ffffff';
+	}
+
+	$r   = hexdec( substr( $hex, 0, 2 ) );
+	$g   = hexdec( substr( $hex, 2, 2 ) );
 	$b   = hexdec( substr( $hex, 4, 2 ) );
 	$yiq = ( ( $r * 299 ) + ( $g * 587 ) + ( $b * 114 ) ) / 1000;
 	return ( $yiq >= 128 ) ? 'rgba(0, 0, 0, 0.87)' : 'rgba(255, 255, 255, 1)';
 }
 
 /**
+ * Normalize a stored color value into a valid CSS hex color.
+ *
+ * The Customizer stores colors without a leading '#'.
+ *
+ * @param string $hex      Stored color value.
+ * @param string $fallback Fallback hex (without '#') if the value is invalid.
+ * @return string CSS color value including the leading '#'.
+ */
+function lb19_normalize_hex( $hex, $fallback = 'ffffff' ) {
+	$hex = ltrim( (string) $hex, '#' );
+
+	if ( 3 === strlen( $hex ) ) {
+		$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+	}
+
+	if ( ! preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
+		$hex = $fallback;
+	}
+
+	return '#' . $hex;
+}
+
+/**
  * Return the CSS code
  */
 function custom_style() {
-	$color_primary   = get_theme_mod( 'mdl-color-primary' );
-	$color_secondary = get_theme_mod( 'mdl-color-secondary' );
+	$color_primary   = lb19_normalize_hex( get_theme_mod( 'mdl-color-primary', '1a1918' ) );
+	$color_secondary = lb19_normalize_hex( get_theme_mod( 'mdl-color-secondary', 'ffffff' ) );
 	$color_primary_text   = getcontrast( $color_primary );
 	$color_secondary_text = getcontrast( $color_secondary );
 
@@ -50,8 +85,24 @@ function custom_style() {
     color: var(--color-primary);
   }
 
-  a {
-    color: var( --color-secondary );
+  /* Scoped high-contrast links for editorial prose (avoids illegible amber on white) */
+  :where(.post-single-content, .proyecto-single-content, .entry-content, .content-panel__body) a:not(.cta):not(.content-cta):not(.wp-block-button__link):not(.button) {
+    color: #0f766e;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  :where(.post-single-content, .proyecto-single-content, .entry-content, .content-panel__body) a:not(.cta):not(.content-cta):not(.wp-block-button__link):not(.button):hover {
+    color: #0d9488;
+  }
+
+  .has-secondary-background-color a:not(.cta):not(.content-cta):not(.wp-block-button__link):not(.button) {
+    color: #111827;
+  }
+
+  .has-primary-background-color a:not(.cta):not(.content-cta):not(.wp-block-button__link):not(.button),
+  .has-secondary-text-background-color a:not(.cta):not(.content-cta):not(.wp-block-button__link):not(.button) {
+    color: #ffffff;
   }
 
   .post-nav a,
@@ -72,13 +123,14 @@ function custom_style() {
   button[type="submit"].button:hover,
   .button:hover {
     background-color: var(--color-primary);
+    color: var(--color-primary-text);
   }
 ';
 	?>
 
 	<style type="text/css" id="lb19-custom-styles">
 
-	<?php echo esc_attr( $css ); ?>
+	<?php echo $css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS built from sanitized hex/rgba values. ?>
 
 	</style>
 
