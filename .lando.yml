@@ -2,7 +2,7 @@ name: lucasbonomo
 recipe: wordpress
 config:
   webroot: wordpress
-  php: '8.2'
+  php: '8.4'
 services:
   appserver:
     ssl: true
