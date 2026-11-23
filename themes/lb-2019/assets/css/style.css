@@ -244,7 +244,7 @@ html img:is([sizes="auto" i], [sizes^="auto," i]) {
 
 .content-card--split .content-card__media,
 .post-card-media {
-  @apply aspect-[16/10] w-full;
+  @apply aspect-[1/1] w-full;
 
   a {
     @apply block h-full w-full;
