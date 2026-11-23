@@ -113,6 +113,17 @@ function lb19_scripts() {
 		)
 	);
 
+	$audio_player_path = get_template_directory() . '/assets/js/audio-player.min.js';
+	$audio_player_ver  = file_exists( $audio_player_path ) ? (string) filemtime( $audio_player_path ) : '1.0.0';
+
+	wp_enqueue_script(
+		'lb19-audio-player',
+		get_template_directory_uri() . '/assets/js/audio-player.min.js',
+		array(),
+		$audio_player_ver,
+		true
+	);
+
 	// Load comment reply script if needed
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

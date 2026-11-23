@@ -108,7 +108,8 @@ export default defineConfig(({ mode }) => ({
         main: path.resolve(__dirname, 'main.js'),
         style: path.resolve(__dirname, 'style.css'),
         customizer: path.resolve(__dirname, 'assets/js/customizer.js'),
-        palette: path.resolve(__dirname, 'assets/js/palette.js')
+        palette: path.resolve(__dirname, 'assets/js/palette.js'),
+        'audio-player': path.resolve(__dirname, 'assets/js/audio-player.js')
       },
       output: {
         entryFileNames: 'assets/js/[name].min.js',
