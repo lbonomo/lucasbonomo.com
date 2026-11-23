@@ -281,6 +281,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/gallery-lightbox.php';
 
 /**
+ * Native table block accessibility and responsive layout enhancements.
+ */
+require get_template_directory() . '/inc/table-block.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
