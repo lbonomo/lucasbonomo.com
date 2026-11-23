@@ -50,7 +50,7 @@ if ( ! function_exists( 'lb19_posted_on' ) ) :
 			$time_string
 		);
 
-		echo '<span class="posted-on">' . esc_attr( $posted_on ) . '</span>';
+		echo '<span class="posted-on">' . wp_kses_post( $posted_on ) . '</span>';
 
 	}
 endif;
@@ -82,7 +82,7 @@ if ( ! function_exists( 'lb19_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'lb19' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lb19' ) . '</span>', esc_attr( $categories_list ) );
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lb19' ) . '</span>', wp_kses_post( $categories_list ) );
 			}
 
 			/* translators: used between list items, there is a space after the comma */

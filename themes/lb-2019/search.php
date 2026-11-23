@@ -17,7 +17,11 @@ get_header();
 				<h1 class="archive-header__title">
 					<?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'lb19' ), '<span>' . esc_html( get_search_query() ) . '</span>' );
+					printf(
+						/* translators: %s: search query. */
+						esc_html__( 'Resultados de la búsqueda: %s', 'lb19' ),
+						'<span>' . esc_html( get_search_query() ) . '</span>'
+					);
 					?>
 				</h1>
 			</header><!-- .archive-header -->
@@ -36,7 +40,7 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			lb19_infinite_scroll_sentinel();
 
 		else :
 
