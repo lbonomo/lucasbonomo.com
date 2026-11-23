@@ -276,6 +276,11 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ * Native gallery block lightbox support.
+ */
+require get_template_directory() . '/inc/gallery-lightbox.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';

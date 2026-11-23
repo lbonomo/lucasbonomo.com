@@ -871,17 +871,203 @@ figure img {
   min-width: 0;
 }
 
+.wp-block-gallery .lb-gallery-trigger {
+  display: block;
+  width: 100%;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  line-height: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.wp-block-gallery .lb-gallery-trigger:focus-visible {
+  outline: 2px solid var(--wp--preset--color--accent, var(--brand-600));
+  outline-offset: 3px;
+}
+
 .wp-block-gallery .wp-block-image img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   background-color: var(--surface);
   border-radius: 0.5rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.wp-block-gallery .lb-gallery-trigger:hover img {
+  transform: scale(1.02);
+  opacity: 0.94;
 }
 
 .wp-block-gallery figcaption.wp-element-caption {
   color: var(--text-primary) !important;
   text-shadow: none !important;
+}
+
+/* Gallery Lightbox */
+.lb-gallery-lightbox {
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.75rem;
+  width: min(92vw, 1100px);
+  max-width: 92vw;
+  max-height: 92dvh;
+  background: #0f172a;
+  color: #f9fafb;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+}
+
+.lb-gallery-lightbox[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-gallery-lightbox:modal {
+  overscroll-behavior: contain;
+}
+
+.lb-gallery-lightbox::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.lb-gallery-lightbox__surface {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 92dvh;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+.lb-gallery-lightbox__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.25rem;
+}
+
+.lb-gallery-lightbox__counter {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(249, 250, 251, 0.8);
+  padding-left: 0.25rem;
+}
+
+.lb-gallery-lightbox__close-form {
+  margin: 0;
+}
+
+.lb-gallery-lightbox__close,
+.lb-gallery-lightbox__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #f9fafb;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.lb-gallery-lightbox__close:hover,
+.lb-gallery-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.lb-gallery-lightbox__close:focus-visible,
+.lb-gallery-lightbox__nav:focus-visible {
+  outline: 2px solid var(--wp--preset--color--secondary, #f4b400);
+  outline-offset: 2px;
+}
+
+.lb-gallery-lightbox__close svg,
+.lb-gallery-lightbox__nav svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.lb-gallery-lightbox__nav[hidden] {
+  display: none;
+}
+
+.lb-gallery-lightbox__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 0;
+  flex: 1;
+}
+
+.lb-gallery-lightbox__figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.lb-gallery-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: 76dvh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.375rem;
+}
+
+.lb-gallery-lightbox__caption {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(249, 250, 251, 0.88);
+  max-width: 65ch;
+}
+
+@media screen and (max-width: 640px) {
+  .lb-gallery-lightbox {
+    width: 96vw;
+    max-width: 96vw;
+  }
+
+  .lb-gallery-lightbox__surface {
+    padding: 0.5rem;
+  }
+
+  .lb-gallery-lightbox__stage {
+    position: relative;
+    gap: 0.25rem;
+  }
+
+  .lb-gallery-lightbox__nav {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .lb-gallery-lightbox__image {
+    max-height: 72dvh;
+  }
 }
 
 /* LB audio player */
