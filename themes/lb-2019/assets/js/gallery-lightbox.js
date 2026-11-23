@@ -201,29 +201,29 @@ function createLightbox() {
 		counterEl.textContent = ''
 	})
 
-	// Fallback for browsers without native <dialog closedby="any"> support (e.g. Safari)
-	if (!('closedBy' in HTMLDialogElement.prototype)) {
-		const isOutsideDialog = (event) => {
-			const rect = dialog.getBoundingClientRect()
-			return (
-				event.clientX < rect.left ||
-				event.clientX > rect.right ||
-				event.clientY < rect.top ||
-				event.clientY > rect.bottom
-			)
+	// Close when clicking the empty blurred area outside the image and controls
+	// (also acts as the light-dismiss fallback for browsers without closedBy support).
+	const isOutsideContent = (event) => {
+		const target = event.target instanceof Element ? event.target : null
+		if (!target) {
+			return true
 		}
 
-		let pressedOutside = false
-		dialog.addEventListener('pointerdown', (event) => {
-			pressedOutside = isOutsideDialog(event)
-		})
-		dialog.addEventListener('pointerup', (event) => {
-			if (pressedOutside && isOutsideDialog(event)) {
-				dialog.close()
-			}
-			pressedOutside = false
-		})
+		return !target.closest(
+			'.lb-gallery-lightbox__image, .lb-gallery-lightbox__caption, .lb-gallery-lightbox__close, .lb-gallery-lightbox__nav, .lb-gallery-lightbox__counter'
+		)
 	}
+
+	let pressedOutside = false
+	dialog.addEventListener('pointerdown', (event) => {
+		pressedOutside = isOutsideContent(event)
+	})
+	dialog.addEventListener('pointerup', (event) => {
+		if (pressedOutside && isOutsideContent(event)) {
+			dialog.close()
+		}
+		pressedOutside = false
+	})
 
 	return {
 		open(items, startIndex) {
