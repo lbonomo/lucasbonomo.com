@@ -7,6 +7,8 @@
     "advanced_configuration": true,
     "import_source": "",
     "import_date": "",
+    "enable_acf_abilities": true,
+    "ai_description": "",
     "labels": {
         "name": "Proyectos",
         "singular_name": "Proyecto",
@@ -45,7 +47,7 @@
     "description": "Proyectos",
     "public": true,
     "hierarchical": false,
-    "exclude_from_search": true,
+    "exclude_from_search": false,
     "publicly_queryable": true,
     "show_ui": true,
     "show_in_menu": true,
@@ -73,9 +75,8 @@
     "has_archive": true,
     "has_archive_slug": "proyectos",
     "rewrite": {
-        "permalink_rewrite": "custom_permalink",
-        "slug": "proyectos",
-        "with_front": "1",
+        "permalink_rewrite": "post_type_key",
+        "with_front": "0",
         "feeds": "1",
         "pages": "1"
     },
@@ -85,5 +86,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1765908956
+    "modified": 1795538039
 }
